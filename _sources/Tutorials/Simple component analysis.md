@@ -38,12 +38,11 @@ $$
 
 选择该组件进行编辑。 
 
-### Properties
+### 属性
 
-The component interface opens on the Properties tab. This is where you define the core properties of your component.
-Fill in a component name, `paraboloid`, and select the `generic-python3-comp:latest` component API. 
+在【属性】选项卡下，可以打开组件接口。这里是您定义组件核心属性的地方。填写组件名称为`paraboloid`，并选择`generic-python3-comp:latest`作为组件的API（应用程序接口）。
 
-Press the tab key or click within the component interface to validate the selected API. This triggers the display of a list of API input files, as shown below.
+按Tab键或单击组件接口内部以验证所选API。这将触发API输入文件列表的显示，如下图所示。
 
 ```{image} media/paraboloid_1.png
 :alt: properties-tab-empty
@@ -52,12 +51,12 @@ Press the tab key or click within the component interface to validate the select
 :align: center
 ```
 
-```{note}
-{term}`Component` Names should only contain lower case letters a-z, numbers 0-9 and dash (-), without spaces. 
+```{注意}
+{term}`组件` 名称只应包括小写字母a-z，数字0-9和端横线（-），不应包含空格。
 ```
 
-```{warning}
-Clicking outside the component interface closes the component without saving changes. 
+```{警告}
+单击组件界面之外的区域会关闭组件，并且不会自动保存更改。
 ```
 
 We can see that the `generic-python3-comp` API has three input files: 
