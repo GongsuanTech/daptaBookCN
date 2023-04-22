@@ -108,7 +108,7 @@ $$
 因为我们实际上尚未定义Python函数的参数和输入 - 请参见下文。
 
 ```{warning}
-尽管您刚刚'保存'了组件，但您工作区的内容实际上并没有保存在任何地方，如果您现在刷新网页或关闭浏览器，您将会丢失您的作业信息。为避免这种情况，您应该定期保存已编辑的组件，然后选择工作区`下载`按钮，保存您会话的JSON格式版本（请参见用户手册中的相关部分）。
+尽管您刚刚`保存`了组件，但您工作区的内容实际上并没有保存在任何地方，如果您现在刷新网页或关闭浏览器，您将会丢失您的作业信息。为避免这种情况，您应该定期保存已编辑的组件，然后选择工作区`下载`按钮，保存您会话的JSON格式版本（请参见用户手册中的相关部分）。
 ```
 
 (tutorials-paraboloid-parameters)=
@@ -127,14 +127,14 @@ $$
 我们将参数定义为组件执行所需的值，但它们不是来自其他{term}`组件`的输入。
 例如，参数可以是常量值或与应用程序相关的输入文件。对于这个抛物面示例，
 我们使用{term}`参数`选项卡定义了一些默认的组件输入和输出值，这些值用于在设置函数中初始化组件。
-要更全面地使用参数，请参见示例[Chaining component analyses](./Chaining%20component%20analyses.md)。
+要更全面地使用参数，请参见示例[链接组件分析](./Chaining%20component%20analyses.md)。
 
 ### 输入与输出
 
 打开组件以编辑它，并将以下 JSON 对象添加到`输入`和`输出`选项卡中的文本框中。
 通过将抛物面函数的输入和输出分别定义为{term}`组件`的输入和输出，
-我们可以将这些值暴露给其他{term}`运行`组件，
-例如驱动程序。我们将在下一个教程示例[Simple optimisation problem](./Simple%20optimisation%20problem.md)中探讨这个问题。
+我们可以将这些值暴露给其他{term}`运行`组件，例如驱动程序。
+我们将在下一个教程示例[简单优化问题](./Simple%20optimisation%20problem.md)中探讨这个问题。
 
 输入句柄:
 ```{code}
@@ -155,22 +155,26 @@ $$
 
 选择`保存数据`以保存组件并关闭它。现在，您应该能够在工作区组件的左侧和右侧看到一些输入和输出句柄。将鼠标光标悬停在句柄上以查看变量名称。
 
-## Component analysis 
+## 组件分析
 
-All being well, you should now be able to launch a {term}`Run` by selecting the play symbol ▶ in the {term}`Run` controls interface. 
-The control symbols will start to fade in and out as your {term}`Run` is sent for analysis in the Cloud, this may take a few minutes the first time. 
-Eventually, the {term}`Run` should execute (this will happen very quickly) and you should see an alert window confirming that 'The {term}`Run` has completed successfully'. 
-If you don't get any messages, try to refresh your web browser page, or consult the [FAQ](../Reference/FAQs.md) section for troubleshooting suggestions. 
+如果一切顺利，您现在应该能够通过在运行控件界面中选择{term}`运行`符号 ▶ 来启动运行。
+{term}`运行`符号 ▶ 将开始闪烁当您的运行被发送到云端进行分析，
+这可能需要几分钟时间（如果是第一次运行）。最终，{term}`运行`应该会被执行（这将非常快），
+并且您应该会看到一个警示窗口，确认【{term}`运行`已成功完成】。如果您没有收到任何消息，
+请尝试刷新您的网络浏览器页面，
+或查阅[常见问题](../Reference/FAQs.md)解答部分以获得故障排除建议。
 
-We can now inspect the outputs of the {term}`Run`. 
+现在我们可以检查{term}`运行`的输出。
 
-### The Run Log
+### 运行日志
 
-Select `View Log` in the interface controls to view a summary of the {term}`Run` as a nested JSON text object as shown below. 
+在界面控件中选择`查看日志`来查看以嵌套的 JSON 文本对象给出的{term}`运行`总结，如下图所示。
 
-The 'time' entry corresponds to the time the Run Log file was generated, while the time stamps in the messages that appear in the 'run_output' and 'paraboloid' relate to the paraboloid compute function execution time. The inputs and outputs of the paraboloid component are available under the corresponding 'paraboloid' entries.   
+'time'(时间)条目对应于生成运行日志文件的时间，而出现在'run_output'和'paraboloid'
+'message'中的时间戳与抛物面计算函数的执行时间有关。抛物面组件的输入和输出可在相应的'paraboloid'条目下找到。
 
-To save a copy of the Run Log, select `Close` to return to the workspace view and then select `Download`. This should download two JSON files: the Run Log as 'runlog.json' and the copy of your work session as 'dapta_input.json'. 
+要保存运行日志的副本，请选择`关闭`以返回工作区视图，然后选择`下载`。
+这应该会下载两个 JSON 文件：运行日志为'runlog.json'，工作会话的副本为'dapta_input.json'。 
 
 ```{image} media/paraboloid_3.png
 :alt: run-log
@@ -179,17 +183,22 @@ To save a copy of the Run Log, select `Close` to return to the workspace view an
 :align: center
 ```
 
-### The Component Log
+### 组件日志
 
-Select the component again and navigate to the `Log` tab as shown below. 
+请重新选择组件并导航到如下图所示的`日志`选项卡。
 
-Both the Run Log and the Component Log are updated as the {term}`Run` executes, which allows us to monitor progress and view intermediary results.
-The Component Log lists events related to the component in order of time of occurrence. A 'SETUP' event corresponds to the execution of the component's setup function and a 'COMPUTE' event corresponds to the execution of the compute function, as defined in the `setup.py` and `compute.py` modules. The event name is followed by a number, that indicates the number of times the component has been executed during the current {term}`Run`. Note that the Component Log is not cleared between successive Runs, but it will clear if you refresh the page. 
+运行日志和组件日志都会在{term}`运行`时更新，这使得我们能够监察进度并查看中间结果。
+组件日志按发生时间顺序列出与组件相关的事件。 'SETUP'事件对应于执行组件的设置函数，
+'COMPUTE'事件对应于在`setup.py`和`compute.py`模块中定义的计算函数。
+事件名称后跟着一个数字，表示当前{term}`运行`期间执行该组件的次数。请注意，
+组件日志在连续运行之间不会清除，但如果您刷新页面，它将会被清除。
 
-The Component Log has another important function: if errors occur during the execution of the component, the Log will list an 'ERROR' event with a description of the error message and traceback information.  
+组件日志还有另一个重要的功能：如果在组件执行过程中发生错误，
+则日志将列出一个带有错误消息和回溯信息描述的'ERROR'事件。
 
-The `Log` tab also includes a `download files snapshot` link. Select this to download a zip file that contains all input and output files as they currently exist in your workspace for this component. 
-Save this data, along with the JSON formatted version of your session ('dapta_input.json') and a copy of the {term}`Run` Log ('runlog.json'), to allow you to re-load this example in the future, or to compare inputs and outputs with other Runs. 
+`日志`选项卡还包括一个`下载文件快照`链接。选择此选项以下载一个zip文件，
+其中包含您工作区中此组件的所有输入和输出文件的当前版本。
+将此数据与您会话的JSON格式版本（'dapta_input.json'）和{term}`运行`日志的副本（'runlog.json'）一起保存，以便您将来重新加载此示例，或者与其他运行比较输入和输出。
 
 ```{image} media/paraboloid_4.png
 :alt: component-log
@@ -198,21 +207,24 @@ Save this data, along with the JSON formatted version of your session ('dapta_in
 :align: center
 ```
 
-## Editing a Run
+## 编辑运行
 
-Once you have successfully started a {term}`Run`, the session and all associated data will be saved in the Cloud until you decide to overwrite or delete it. 
+一旦您成功启动了一次{term}`运行`，会话和所有相关数据将被保存在云端，直到您决定覆盖或删除它们。
 
-A {term}`Run` can only be edited once it has been stopped (using the stop symbol ⏹) or once it has completed successfully. The second time a {term}`Run` is started it will execute much faster since the processes are already set up in the Cloud, except if you renamed, added or removed components, in which case the existing {term}`Run` will need to be deleted first. Try this by editing the x and y values in the paraboloid component Parameters and starting the {term}`Run` again.    
+只有在停止运行（使用停止符号 ⏹）或成功完成{term}`运行`后，才能进行编辑。
+第二次启动{term}`运行`时，它将执行得更快，因为进程已经在云端设置好了，
+除非您重命名、添加或删除组件。在这种情况下，现有的{term}`运行`需要首先被删除。
+可以通过编辑拋物面组件参数中的x和y值，然后重新启动{term}`运行`来尝试此操作。
 
-## Clean-up
+## 清理
 
-You can delete a session by creating a new session (select `New` in from the interface controls) or by loading a JSON session file from your machine (select `Open`). 
-It may take a minute or so for the Cloud session to be reset. 
+您可以通过创建新会话（从界面控件中选择`新建`）或从计算机加载JSON会话文件（选择`打开`）来删除会话，可能需要一分钟左右在云端重置会话。
 
 ```{warning}
-You should see a warning message whenever you are about to delete a {term}`Run`. If you select to continue, then all the {term}`Run` session data (Run log and component logs) will be permanently deleted. 
+当您即将删除一个{term}`运行`时，您应该会看到一个警告消息。如果您选择继续，
+则所有的{term}`运行`数据（会话数据、输入和输出）将被永久删除。
 ```
 
-## References
+## 参考文献
 
 1. ['Paraboloid - A Single-Discipline Model'](https://openmdao.org/newdocs/versions/latest/basic_user_guide/single_disciplinary_optimization/first_analysis.html) example from the openMDAO user guide.
