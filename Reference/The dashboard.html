@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome!
+                    欢迎大家!
                 </a>
             </li>
         </ul>
@@ -373,8 +373,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-controls">Interface controls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-workspace">The workspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">界面控制</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">工作区</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connections">Connections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valid-connections">Valid Connections</a></li>
@@ -394,53 +394,54 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>控制面板<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>The dashboard is a graphical web interface that allows user to create, edit, execute and inspect the outputs of an analysis <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.
-To access your dashboard, open a web browser and navigate to <a class="reference external" href="https://www.dapta.com">https://www.dapta.com</a>.
-Then log in with your user credentials and click on the 'Dashboard' button that has appeared in the main website menu.</p>
+<p>The dashboard is a graphical web interface that allows user to create, edit, execute and inspect the outputs of an analysis <span class="xref std std-term">Run</span>.
+控制面板是一个图形化的网页界面，允许用户创建、编辑、执行和检查一次分析<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>的输出。
+要访问您的控制面板，请打开一个网页浏览器并访问 <a class="reference external" href="https://www.dapta.com">https://www.dapta.com</a> 。
+然后使用您的用户名和密码登录，并单击出现在网站菜单中的【控制面板】按钮。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/dashboard-overview.png"><img alt="dashboard-overview" class="bg-primary mb-1 align-center" src="../_images/dashboard-overview.png" style="width: 700px;" /></a>
-<section id="interface-controls">
-<h2>Interface controls<a class="headerlink" href="#interface-controls" title="Permalink to this heading">#</a></h2>
-<p><strong>New</strong> : Reset the workspace. Also use this to delete your session from the Cloud after completing a <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.</p>
-<p><strong>Open</strong> : Open a saved workspace session by uploading a JSON-formatted session definition file.</p>
-<p><strong>Download</strong> : Download a JSON-formatted version of your current session and the Run Log (if available).</p>
-<p><strong>View Log</strong> : View the current Run Log (if available).</p>
-<p><strong>...</strong> : View menu of secondary controls, useful links and new features.</p>
+<section id="id2">
+<h2>界面控制<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p><strong>新建</strong> : 重置工作区。完成一次<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>后，也可使用此功能从云端删除您的会话。</p>
+<p><strong>打开</strong> : 通过上传一个JSON格式的会话定义文件，打开已保存的工作区会话。</p>
+<p><strong>下载</strong> : 下载当前会话的JSON格式版本以及运行日志（如果有）。</p>
+<p><strong>查看日志</strong> : 查看当前的运行日志（如果有）。</p>
+<p><strong>...</strong> : 查看次要控件、有用链接和新功能菜单列表。</p>
 </section>
-<section id="the-workspace">
-<h2>The workspace<a class="headerlink" href="#the-workspace" title="Permalink to this heading">#</a></h2>
-<p>The workspace provides a visual representation of the <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s and <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s currently defined in your session.</p>
-<p><strong>Right-click</strong> in the workspace to open a workspace context menu. Select the 'Add Empty Node' option to add an empty template <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> to the session.</p>
-<p><strong>Left-click</strong> <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s or <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s to edit or delete them.</p>
-<p><strong>Left-click and hold</strong> to drag <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s or <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s across the workspace.</p>
+<section id="id3">
+<h2>工作区<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>The workspace provides a visual representation of the <span class="xref std std-term">Component</span>s and <span class="xref std std-term">Connection</span>s currently defined in your session.</p>
+<p><strong>Right-click</strong> in the workspace to open a workspace context menu. Select the 'Add Empty Node' option to add an empty template <span class="xref std std-term">Component</span> to the session.</p>
+<p><strong>Left-click</strong> <span class="xref std std-term">Component</span>s or <span class="xref std std-term">Connection</span>s to edit or delete them.</p>
+<p><strong>Left-click and hold</strong> to drag <span class="xref std std-term">Component</span>s or <span class="xref std std-term">Connection</span>s across the workspace.</p>
 <p><strong>Scroll</strong> to zoom-in or out.</p>
-<p>Select the workspace controls <strong>+</strong> and <strong>-</strong> to zoom in and out, or the <strong>◻</strong> to fit all <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s into the current view.</p>
+<p>Select the workspace controls <strong>+</strong> and <strong>-</strong> to zoom in and out, or the <strong>◻</strong> to fit all <span class="xref std std-term">Component</span>s into the current view.</p>
 </section>
 <section id="components">
 <h2>Components<a class="headerlink" href="#components" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s are defined as calculation blocks that appear as boxes in the workspace.
-Select a <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> to edit it.</p>
-<p>Each <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> has a name that is displayed at the top of the <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> box in the workspace view.
-A symbol appearing next to the name indicates the validity status of the <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>:</p>
+<p><span class="xref std std-term">Component</span>s are defined as calculation blocks that appear as boxes in the workspace.
+Select a <span class="xref std std-term">Component</span> to edit it.</p>
+<p>Each <span class="xref std std-term">Component</span> has a name that is displayed at the top of the <span class="xref std std-term">Component</span> box in the workspace view.
+A symbol appearing next to the name indicates the validity status of the <span class="xref std std-term">Component</span>:</p>
 <p><strong>?</strong> : Pending : Some inputs are missing.</p>
 <p><strong>🗸</strong> : Valid : All necessary inputs have been defined.</p>
 <p><strong>!</strong> : Invalid : Some inputs are erroneous.</p>
 </section>
 <section id="connections">
 <h2>Connections<a class="headerlink" href="#connections" title="Permalink to this heading">#</a></h2>
-<p>A <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a> is defined as a data link from an origin <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> output handle (right side handle) to a target <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> input handle (left side handle).
-There are three types of <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s:</p>
-<p><strong>Design variable connection</strong> : transfer design variable values (numbers or arrays of numbers only) between <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s.
+<p>A <span class="xref std std-term">Connection</span> is defined as a data link from an origin <span class="xref std std-term">Component</span> output handle (right side handle) to a target <span class="xref std std-term">Component</span> input handle (left side handle).
+There are three types of <span class="xref std std-term">Connection</span>s:</p>
+<p><strong>Design variable connection</strong> : transfer design variable values (numbers or arrays of numbers only) between <span class="xref std std-term">Component</span>s.
 They appear as <strong>black</strong> arrows in the workspace view.
-Updated variables are transferred after every origin <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> calculation iteration.
-This is the default <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a> type.</p>
-<p><strong>Implicit variable or file connection</strong> : transfer implicit variables (any JSON serialisable object) or files between <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s.
+Updated variables are transferred after every origin <span class="xref std std-term">Component</span> calculation iteration.
+This is the default <span class="xref std std-term">Connection</span> type.</p>
+<p><strong>Implicit variable or file connection</strong> : transfer implicit variables (any JSON serialisable object) or files between <span class="xref std std-term">Component</span>s.
 They appear as <strong>green</strong> arrows in the workspace view.
-Updated variables are transferred after every origin <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> calculation iteration.
-This is the default <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a> type for file <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s.</p>
-<p><strong>Setup variable or file connection</strong> :  transfer setup variables (any JSON serialisable object) or files between <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s.
+Updated variables are transferred after every origin <span class="xref std std-term">Component</span> calculation iteration.
+This is the default <span class="xref std std-term">Connection</span> type for file <span class="xref std std-term">Connection</span>s.</p>
+<p><strong>Setup variable or file connection</strong> :  transfer setup variables (any JSON serialisable object) or files between <span class="xref std std-term">Component</span>s.
 They appear as <strong>blue</strong> arrows in the workspace view.
-Updated variables are transferred only once after all <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s completed setup and before the first compute of the connection target <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>.</p>
-<p>The data transferred through <a class="reference internal" href="Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s has to be a JSON serialisable python object (this includes most python data types) or a file reference.
+Updated variables are transferred only once after all <span class="xref std std-term">Component</span>s completed setup and before the first compute of the connection target <span class="xref std std-term">Component</span>.</p>
+<p>The data transferred through <span class="xref std std-term">Connection</span>s has to be a JSON serialisable python object (this includes most python data types) or a file reference.
 File reference keys start with the prefix &quot;files.&quot; .</p>
 <section id="valid-connections">
 <h3>Valid Connections<a class="headerlink" href="#valid-connections" title="Permalink to this heading">#</a></h3>
@@ -451,9 +452,9 @@ Driver components cannot have any connections.</p>
 </section>
 <section id="run-controls">
 <h2>Run Controls<a class="headerlink" href="#run-controls" title="Permalink to this heading">#</a></h2>
-<p><strong>▶</strong> / <strong>Play</strong>: Launch a new <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. This option only becomes available once all <a class="reference internal" href="Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s are valid.</p>
-<p><strong>⏸</strong> / <strong>Pause</strong> : Pause a <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. This option only becomes available once a <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> has been started. Execution can be continued by selecting the play ▶ button.</p>
-<p><strong>⏹</strong> / <strong>Stop</strong>: Stop a <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. This option only becomes available once a <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> has been started. This terminates the current <a class="reference internal" href="Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> and may result in an error message.</p>
+<p><strong>▶</strong> / <strong>Play</strong>: Launch a new <span class="xref std std-term">Run</span>. This option only becomes available once all <span class="xref std std-term">Component</span>s are valid.</p>
+<p><strong>⏸</strong> / <strong>Pause</strong> : Pause a <span class="xref std std-term">Run</span>. This option only becomes available once a <span class="xref std std-term">Run</span> has been started. Execution can be continued by selecting the play ▶ button.</p>
+<p><strong>⏹</strong> / <strong>Stop</strong>: Stop a <span class="xref std std-term">Run</span>. This option only becomes available once a <span class="xref std std-term">Run</span> has been started. This terminates the current <span class="xref std std-term">Run</span> and may result in an error message.</p>
 </section>
 </section>
 
@@ -524,8 +525,8 @@ Driver components cannot have any connections.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-controls">Interface controls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-workspace">The workspace</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">界面控制</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">工作区</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connections">Connections</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valid-connections">Valid Connections</a></li>

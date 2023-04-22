@@ -1,8 +1,9 @@
 # 控制面板
 
 The dashboard is a graphical web interface that allows user to create, edit, execute and inspect the outputs of an analysis {term}`Run`. 
-To access your dashboard, open a web browser and navigate to [https://www.dapta.com](https://www.dapta.com). 
-Then log in with your user credentials and click on the 'Dashboard' button that has appeared in the main website menu. 
+控制面板是一个图形化的网页界面，允许用户创建、编辑、执行和检查一次分析{term}`运行`的输出。
+要访问您的控制面板，请打开一个网页浏览器并访问 https://www.dapta.com 。
+然后使用您的用户名和密码登录，并单击出现在网站菜单中的【控制面板】按钮。
 
 ```{image} media/dashboard-overview.png
 :alt: dashboard-overview
@@ -11,19 +12,19 @@ Then log in with your user credentials and click on the 'Dashboard' button that 
 :align: center
 ```
 
-## Interface controls
+## 界面控制
  
-**New** : Reset the workspace. Also use this to delete your session from the Cloud after completing a {term}`Run`. 
+**新建** : 重置工作区。完成一次{term}`运行`后，也可使用此功能从云端删除您的会话。
 
-**Open** : Open a saved workspace session by uploading a JSON-formatted session definition file. 
+**打开** : 通过上传一个JSON格式的会话定义文件，打开已保存的工作区会话。
 
-**Download** : Download a JSON-formatted version of your current session and the Run Log (if available).
+**下载** : 下载当前会话的JSON格式版本以及运行日志（如果有）。
 
-**View Log** : View the current Run Log (if available). 
+**查看日志** : 查看当前的运行日志（如果有）。
 
-**...** : View menu of secondary controls, useful links and new features. 
+**...** : 查看次要控件、有用链接和新功能菜单列表。
 
-## The workspace
+## 工作区
 
 The workspace provides a visual representation of the {term}`Component`s and {term}`Connection`s currently defined in your session. 
 
