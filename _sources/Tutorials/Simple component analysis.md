@@ -24,21 +24,19 @@ $$
   f(x,y) = (x-3.0)^2 + x y + (y + 4.0)^2 -3.0 
 $$
 
-where x and y are the component inputs and f(x,y) is the output. 
-The minimum of this function is located at
+其中，x和y是组件的输入，f(x,y)是组件的输出。该函数的最小值位于
 
 $$
   x = \frac{20}{3} \quad , \quad y = -\frac{22}{3}
 $$
 
-## Create the component
+## 创建组件
 
-Navigate to the [dashboard](https://app.daptaflow.com/Interface) and create a blank workspace by selecting `New` (if required). 
+单击[控制面板](https://app.daptaflow.com/Interface)，通过选择`新建`创建一个空白工作区。
 
-Right-click in the workspace and select `Add Empty Node`.
-This creates an empty template component in your workspace. 
+在空白工作区域，单击鼠标右键并选择`添加空节点`，从而创建一个空模板组件。
 
-Select the component to edit it. 
+选择该组件进行编辑。 
 
 ### Properties
 
