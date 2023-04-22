@@ -378,8 +378,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 组件描述</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2. 创建组件</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.1. 属性</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">1.2.2. Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-outputs">1.2.3. Inputs and Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-paraboloid-parameters">1.2.2. 参数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.2.3. 输入与输出</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-analysis">1.3. Component analysis</a><ul class="nav section-nav flex-column">
@@ -447,8 +447,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">compute.py</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p></li>
 </ul>
-<p>The first two files are required and the last one is optional. You can inspect the paraboloid example file contents below.
-前两个文件是必需的，最后一个是可选的。您可以查看下面给出的关于拋物面示例的文件内容。
+<p>前两个文件是必需的，最后一个是可选的。您可以查看下面给出的关于拋物面示例的文件内容。
 这里我们不需要<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>文件，因为Python代码不导入任何第三方Python程序包。
 我们将在下一个示例<a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">简单优化问题</span></a>中使用它来导入openMDAO的类和函数。</p>
 <p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code>模块必须包含一个<strong>setup</strong>（设置）函数，该函数将返回在计算函数过程中可用的数据。
@@ -624,21 +623,21 @@ compute</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>对于以上每个文件，将其内容复制到文本编辑器中并保存在本地设备。确保在文件名中包括'.py'扩展名。</p>
-<p>Next, select <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> in the component interface to upload the corresponding file. A green tick and a file upload time stamp should appear to confirm that the upload was successful. Repeat for the <code class="docutils literal notranslate"><span class="pre">compute.py</span></code> file.</p>
-<p>Check the boxes next to the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Node</span></code> and <code class="docutils literal notranslate"><span class="pre">End</span> <span class="pre">Node</span></code> options (since we only have one component in this <span class="xref std std-term">Run</span>), as shown below.</p>
+<p>接下来，在组件界面中选择<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>以上传相应的文件。应该会出现一个绿色的勾号和一个文件上传的时间戳，以确认上传成功。重复以上步骤上传<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>文件。</p>
+<p>勾选<code class="docutils literal notranslate"><span class="pre">开始节点</span></code>和<code class="docutils literal notranslate"><span class="pre">结束节点</span></code>选项旁边的复选框（因为在此<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>中我们只有一个组件），如下图所示。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/paraboloid_2.png"><img alt="properties-tab-completed" class="bg-primary mb-1 align-center" src="../_images/paraboloid_2.png" style="width: 700px;" /></a>
-<p>Finally, select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save the component and close the component interface.</p>
-<p>In your work space, the component name should have updated and a green tick should appear next to it to indicate that the component is apparently valid.
-However, if you tried to run it now, you would get error messages as we haven't actually defined the python function Parameters and Inputs yet - see below.</p>
+<p>最后，选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>以保存组件并关闭组件界面。</p>
+<p>在您的工作区中，组件名称应该也已更新，并且将出现绿色勾号，以表示该组件是有效的。
+但是，如果您现在尝试运行它，您将会收到报错消息，
+因为我们实际上尚未定义Python函数的参数和输入 - 请参见下文。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Although you have just 'saved' the component, the contents of your workspace have not actually been saved anywhere and you would lose your work if you refreshed the webpage or closed the web browser now.
-To avoid this situation you should save your edited components regularly and then select the workspace <code class="docutils literal notranslate"><span class="pre">Download</span></code> button to save an a JSON formatted version of your session (see the related sections in the User Manual).</p>
+<p>尽管您刚刚'保存'了组件，但您工作区的内容实际上并没有保存在任何地方，如果您现在刷新网页或关闭浏览器，您将会丢失您的作业信息。为避免这种情况，您应该定期保存已编辑的组件，然后选择工作区<code class="docutils literal notranslate"><span class="pre">下载</span></code>按钮，保存您会话的JSON格式版本（请参见用户手册中的相关部分）。</p>
 </div>
 </section>
-<section id="parameters">
-<span id="tutorials-paraboloid-parameters"></span><h3><span class="section-number">1.2.2. </span>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h3>
-<p>Select the component again to edit it, then select the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab and copy the following JSON object into the text box. Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save the edits.</p>
+<section id="tutorials-paraboloid-parameters">
+<span id="id5"></span><h3><span class="section-number">1.2.2. </span>参数<a class="headerlink" href="#tutorials-paraboloid-parameters" title="Permalink to this heading">#</a></h3>
+<p>请再次选择要编辑的组件，然后选择<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡并将以下 JSON 对象复制到文本框中。选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>以保存编辑。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
   <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
@@ -646,29 +645,32 @@ To avoid this situation you should save your edited components regularly and the
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We define Parameters as values that the component needs to execute, but that are not Inputs from other <span class="xref std std-term">Component</span>s.
-For example, Parameters could be constant values or application related input files. For this paraboloid example, we use the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab to define some default component input and output values, which are used to initialise the component in the setup function. For a more comprehensive use of Parameters see the example <a class="reference internal" href="Chaining%20component%20analyses.html"><span class="doc std std-doc">Chaining component analyses</span></a>.</p>
+<p>我们将参数定义为组件执行所需的值，但它们不是来自其他<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>的输入。
+例如，参数可以是常量值或与应用程序相关的输入文件。对于这个抛物面示例，
+我们使用<span class="xref std std-term">参数</span>选项卡定义了一些默认的组件输入和输出值，这些值用于在设置函数中初始化组件。
+要更全面地使用参数，请参见示例<a class="reference internal" href="Chaining%20component%20analyses.html"><span class="doc std std-doc">Chaining component analyses</span></a>。</p>
 </section>
-<section id="inputs-and-outputs">
-<h3><span class="section-number">1.2.3. </span>Inputs and Outputs<a class="headerlink" href="#inputs-and-outputs" title="Permalink to this heading">#</a></h3>
-<p>Open the component to edit it and add the following JSON objects into the text boxes in the <code class="docutils literal notranslate"><span class="pre">Inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">Outputs</span></code> tabs.
-By defining the paraboloid function inputs and outputs as <span class="xref std std-term">Component</span> Inputs and Outputs respectively, we can expose these values to other <span class="xref std std-term">Run</span> components, such as drivers.
-We will explore this in the next tutorial <a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">Simple optimisation problem</span></a>.</p>
-<p>Input Handles:</p>
+<section id="id6">
+<h3><span class="section-number">1.2.3. </span>输入与输出<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>打开组件以编辑它，并将以下 JSON 对象添加到<code class="docutils literal notranslate"><span class="pre">输入</span></code>和<code class="docutils literal notranslate"><span class="pre">输出</span></code>选项卡中的文本框中。
+通过将抛物面函数的输入和输出分别定义为<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>的输入和输出，
+我们可以将这些值暴露给其他<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>组件，
+例如驱动程序。我们将在下一个教程示例<a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">Simple optimisation problem</span></a>中探讨这个问题。</p>
+<p>输入句柄:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
   <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Output Handles:</p>
+<p>输出句柄：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;f_xy&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We will look at the <code class="docutils literal notranslate"><span class="pre">Log</span></code> tab in the next section.</p>
-<p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save the component and close it. You should now be able to see some input and output handles appear on the left and right of the component in the workspace. Hover over the handles with your mouse cursor to view the names of the variables.</p>
+<p>我们将在下一节中讨论<code class="docutils literal notranslate"><span class="pre">日志</span></code>选项卡。</p>
+<p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>以保存组件并关闭它。现在，您应该能够在工作区组件的左侧和右侧看到一些输入和输出句柄。将鼠标光标悬停在句柄上以查看变量名称。</p>
 </section>
 </section>
 <section id="component-analysis">
@@ -788,8 +790,8 @@ It may take a minute or so for the Cloud session to be reset.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 组件描述</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2. 创建组件</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.1. 属性</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">1.2.2. Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inputs-and-outputs">1.2.3. Inputs and Outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-paraboloid-parameters">1.2.2. 参数</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.2.3. 输入与输出</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-analysis">1.3. Component analysis</a><ul class="nav section-nav flex-column">

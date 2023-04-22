@@ -65,7 +65,6 @@ $$
 * `compute.py`
 * `requirements.txt`
 
-The first two files are required and the last one is optional. You can inspect the paraboloid example file contents below. 
 前两个文件是必需的，最后一个是可选的。您可以查看下面给出的关于拋物面示例的文件内容。
 这里我们不需要`requirements.txt`文件，因为Python代码不导入任何第三方Python程序包。
 我们将在下一个示例[简单优化问题](./Simple%20optimisation%20problem.md)中使用它来导入openMDAO的类和函数。
@@ -91,12 +90,9 @@ The first two files are required and the last one is optional. You can inspect t
 
 对于以上每个文件，将其内容复制到文本编辑器中并保存在本地设备。确保在文件名中包括'.py'扩展名。
 
+接下来，在组件界面中选择`setup.py`以上传相应的文件。应该会出现一个绿色的勾号和一个文件上传的时间戳，以确认上传成功。重复以上步骤上传`compute.py`文件。
 
-
-
-Next, select `setup.py` in the component interface to upload the corresponding file. A green tick and a file upload time stamp should appear to confirm that the upload was successful. Repeat for the `compute.py` file.  
-
-Check the boxes next to the `Start Node` and `End Node` options (since we only have one component in this {term}`Run`), as shown below. 
+勾选`开始节点`和`结束节点`选项旁边的复选框（因为在此{term}`运行`中我们只有一个组件），如下图所示。
 
 ```{image} media/paraboloid_2.png
 :alt: properties-tab-completed
@@ -105,20 +101,20 @@ Check the boxes next to the `Start Node` and `End Node` options (since we only h
 :align: center
 ```
 
-Finally, select `Save data` to save the component and close the component interface. 
+最后，选择`保存数据`以保存组件并关闭组件界面。
 
-In your work space, the component name should have updated and a green tick should appear next to it to indicate that the component is apparently valid. 
-However, if you tried to run it now, you would get error messages as we haven't actually defined the python function Parameters and Inputs yet - see below. 
+在您的工作区中，组件名称应该也已更新，并且将出现绿色勾号，以表示该组件是有效的。
+但是，如果您现在尝试运行它，您将会收到报错消息，
+因为我们实际上尚未定义Python函数的参数和输入 - 请参见下文。
 
 ```{warning}
-Although you have just 'saved' the component, the contents of your workspace have not actually been saved anywhere and you would lose your work if you refreshed the webpage or closed the web browser now. 
-To avoid this situation you should save your edited components regularly and then select the workspace `Download` button to save an a JSON formatted version of your session (see the related sections in the User Manual). 
+尽管您刚刚'保存'了组件，但您工作区的内容实际上并没有保存在任何地方，如果您现在刷新网页或关闭浏览器，您将会丢失您的作业信息。为避免这种情况，您应该定期保存已编辑的组件，然后选择工作区`下载`按钮，保存您会话的JSON格式版本（请参见用户手册中的相关部分）。
 ```
 
 (tutorials-paraboloid-parameters)=
-### Parameters
+### 参数
 
-Select the component again to edit it, then select the `Parameters` tab and copy the following JSON object into the text box. Select `Save data` to save the edits. 
+请再次选择要编辑的组件，然后选择`参数`选项卡并将以下 JSON 对象复制到文本框中。选择`保存数据`以保存编辑。
 
 ```{code}
 {
@@ -128,16 +124,19 @@ Select the component again to edit it, then select the `Parameters` tab and copy
 }
 ```
 
-We define Parameters as values that the component needs to execute, but that are not Inputs from other {term}`Component`s. 
-For example, Parameters could be constant values or application related input files. For this paraboloid example, we use the `Parameters` tab to define some default component input and output values, which are used to initialise the component in the setup function. For a more comprehensive use of Parameters see the example [Chaining component analyses](./Chaining%20component%20analyses.md). 
+我们将参数定义为组件执行所需的值，但它们不是来自其他{term}`组件`的输入。
+例如，参数可以是常量值或与应用程序相关的输入文件。对于这个抛物面示例，
+我们使用{term}`参数`选项卡定义了一些默认的组件输入和输出值，这些值用于在设置函数中初始化组件。
+要更全面地使用参数，请参见示例[Chaining component analyses](./Chaining%20component%20analyses.md)。
 
-### Inputs and Outputs
+### 输入与输出
 
-Open the component to edit it and add the following JSON objects into the text boxes in the `Inputs` and `Outputs` tabs.
-By defining the paraboloid function inputs and outputs as {term}`Component` Inputs and Outputs respectively, we can expose these values to other {term}`Run` components, such as drivers. 
-We will explore this in the next tutorial [Simple optimisation problem](./Simple%20optimisation%20problem.md).  
+打开组件以编辑它，并将以下 JSON 对象添加到`输入`和`输出`选项卡中的文本框中。
+通过将抛物面函数的输入和输出分别定义为{term}`组件`的输入和输出，
+我们可以将这些值暴露给其他{term}`运行`组件，
+例如驱动程序。我们将在下一个教程示例[Simple optimisation problem](./Simple%20optimisation%20problem.md)中探讨这个问题。
 
-Input Handles:
+输入句柄:
 ```{code}
 {
   "x": "default",
@@ -145,16 +144,16 @@ Input Handles:
 }
 ```
 
-Output Handles:
+输出句柄：
 ```{code}
 {
   "f_xy": "default"
 }
 ```
 
-We will look at the `Log` tab in the next section. 
+我们将在下一节中讨论`日志`选项卡。
 
-Select `Save data` to save the component and close it. You should now be able to see some input and output handles appear on the left and right of the component in the workspace. Hover over the handles with your mouse cursor to view the names of the variables.  
+选择`保存数据`以保存组件并关闭它。现在，您应该能够在工作区组件的左侧和右侧看到一些输入和输出句柄。将鼠标光标悬停在句柄上以查看变量名称。
 
 ## Component analysis 
 
