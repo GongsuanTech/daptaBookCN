@@ -1,6 +1,5 @@
 # 控制面板
 
-The dashboard is a graphical web interface that allows user to create, edit, execute and inspect the outputs of an analysis {term}`Run`. 
 控制面板是一个图形化的网页界面，允许用户创建、编辑、执行和检查一次分析{term}`运行`的输出。
 要访问您的控制面板，请打开一个网页浏览器并访问 https://www.dapta.com 。
 然后使用您的用户名和密码登录，并单击出现在网站菜单中的【控制面板】按钮。
@@ -26,64 +25,55 @@ The dashboard is a graphical web interface that allows user to create, edit, exe
 
 ## 工作区
 
-The workspace provides a visual representation of the {term}`Component`s and {term}`Connection`s currently defined in your session. 
+工作区提供了您会话中当前定义的{term}`组件`和{term}`连接`的视觉呈现。
 
-**Right-click** in the workspace to open a workspace context menu. Select the 'Add Empty Node' option to add an empty template {term}`Component` to the session. 
+在工作区中**右击**鼠标打开工作区内容菜单。选择【添加空节点】选项将空模板{term}`组件`添加到会话中。
 
-**Left-click** {term}`Component`s or {term}`Connection`s to edit or delete them. 
+**左键单击** {term}`组件`或{term}`连接`以编辑或删除它们。
 
-**Left-click and hold** to drag {term}`Component`s or {term}`Connection`s across the workspace.
+**按住左键**可在工作区内拖动{term}`组件`或{term}`连接`。
 
-**Scroll** to zoom-in or out. 
+**滚动**鼠标滚轮以放大或缩小视图。
 
-Select the workspace controls **+** and **-** to zoom in and out, or the **◻** to fit all {term}`Component`s into the current view.
-## Components
+选择工作区控件**+**和**-**以放大和缩小，或者选择**◻**调整所有{term}`组件`以匹配当前视图。
 
-{term}`Component`s are defined as calculation blocks that appear as boxes in the workspace. 
-Select a {term}`Component` to edit it. 
+## 组件
 
-Each {term}`Component` has a name that is displayed at the top of the {term}`Component` box in the workspace view.
-A symbol appearing next to the name indicates the validity status of the {term}`Component`:
+{term}`组件`被定义为在工作区中显示为方框的计算块。
+可以选择一个{term}`组件`进行编辑。
 
-**?** : Pending : Some inputs are missing.
+每个{term}`组件`都有一个名称，显示在组件方框的顶部。
+名称旁边出现的符号表示{term}`组件`的有效性状态：
 
-**🗸** : Valid : All necessary inputs have been defined. 
+**?** : 待处理 : 一些输入缺失。
 
-**!** : Invalid : Some inputs are erroneous. 
+**🗸** : 有效 : 所有必要的输入已被定义。
 
-## Connections
+**!** : 无效 : 一些输入错误。 
 
-A {term}`Connection` is defined as a data link from an origin {term}`Component` output handle (right side handle) to a target {term}`Component` input handle (left side handle).
-There are three types of {term}`Connection`s:
+## 连接
 
-**Design variable connection** : transfer design variable values (numbers or arrays of numbers only) between {term}`Component`s. 
-They appear as **black** arrows in the workspace view.
-Updated variables are transferred after every origin {term}`Component` calculation iteration.
-This is the default {term}`Connection` type.
+一个{term}`连接`被定义为从源{term}`组件`输出句柄（右侧）到目标{term}`组件`输入句柄（左侧）的数据链路。{term}`连接`类型有三种：
 
-**Implicit variable or file connection** : transfer implicit variables (any JSON serialisable object) or files between {term}`Component`s. 
-They appear as **green** arrows in the workspace view.
-Updated variables are transferred after every origin {term}`Component` calculation iteration.
-This is the default {term}`Connection` type for file {term}`Connection`s.
+**Design variable connection** (设计变量连接): 在{term}`组件`之间传递设计变量值（仅限数字或数字数组）。在工作区视图中，它们显示为黑色箭头。更新后的变量在每次起点{term}`组件`计算迭代后被传输，这是默认的{term}`连接`类型。
 
-**Setup variable or file connection** :  transfer setup variables (any JSON serialisable object) or files between {term}`Component`s.
-They appear as **blue** arrows in the workspace view.
-Updated variables are transferred only once after all {term}`Component`s completed setup and before the first compute of the connection target {term}`Component`.
+**Implicit variable or file connection** (隐式变量或文件连接): 在{term}`组件`之间传递隐式变量（任何JSON可序列化对象）或文件。在工作区视图中，它们显示为绿色箭头。更新后的变量在每次起点{term}`组件`计算迭代后被传输。这是文件{term}`连接`的默认{term}`连接`类型。
 
-The data transferred through {term}`Connection`s has to be a JSON serialisable python object (this includes most python data types) or a file reference. 
-File reference keys start with the prefix "files." .
+**Setup variable or file connection** （设置变量或文件连接）: 在{term}`组件`之间传递设置变量（任何JSON可序列化对象）或文件。在工作区视图中，它们显示为蓝色箭头。更新后的变量只在所有{term}`组件`完成设置之后、目标{term}`组件`的第一次计算之前被传输一次。
 
-### Valid Connections
+通过{term}`连接`传输的数据必须是JSON可序列化的Python对象（这包括大多数Python数据类型）或文件引用。文件引用键以前缀"files."开头。
 
-The compute functions will always be executed in order from a single 'Start Node' to a single 'End Node'. 
-This means that a 'Start Node' may not have any incoming connections, and an 'End Node' may not have any outgoing connections. 
-Driver components cannot have any connections. 
+### 有效连接
 
-## Run Controls
+计算功能将始终按照从单个【开始节点】到单个【结束节点】的顺序执行。这意味着【开始节点】可能没有任何传入连接，而【结束节点】可能没有任何传出连接。驱动程序组件不能有任何连接。
 
-**▶** / **Play**: Launch a new {term}`Run`. This option only becomes available once all {term}`Component`s are valid. 
+## 运行控制
 
-**⏸** / **Pause** : Pause a {term}`Run`. This option only becomes available once a {term}`Run` has been started. Execution can be continued by selecting the play ▶ button.
+**▶** / **启动**: 启动一次新的{term}`运行`。仅当所有{term}`组件`有效时，此选项才可用。
 
-**⏹** / **Stop**: Stop a {term}`Run`. This option only becomes available once a {term}`Run` has been started. This terminates the current {term}`Run` and may result in an error message.  
+**⏸** / **暂停** : 暂停{term}`运行`。仅当已启动{term}`运行`时，此选项才可用。
+通过选择运行 ▶ 按钮可以继续执行。
+
+**⏹** / **停止**: 停止{term}`运行`。仅当已启动{term}`运行`时，此选项才可用。
+这将终止当前{term}`运行`并可能导致错误消息。
 

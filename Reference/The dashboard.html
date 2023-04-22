@@ -375,12 +375,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">界面控制</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">工作区</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connections">Connections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valid-connections">Valid Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">组件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">连接</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">有效连接</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-controls">Run Controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">运行控制</a></li>
 </ul>
             </nav>
         </div>
@@ -394,8 +394,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>控制面板<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>The dashboard is a graphical web interface that allows user to create, edit, execute and inspect the outputs of an analysis <span class="xref std std-term">Run</span>.
-控制面板是一个图形化的网页界面，允许用户创建、编辑、执行和检查一次分析<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>的输出。
+<p>控制面板是一个图形化的网页界面，允许用户创建、编辑、执行和检查一次分析<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>的输出。
 要访问您的控制面板，请打开一个网页浏览器并访问 <a class="reference external" href="https://www.dapta.com">https://www.dapta.com</a> 。
 然后使用您的用户名和密码登录，并单击出现在网站菜单中的【控制面板】按钮。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/dashboard-overview.png"><img alt="dashboard-overview" class="bg-primary mb-1 align-center" src="../_images/dashboard-overview.png" style="width: 700px;" /></a>
@@ -409,52 +408,42 @@ document.write(`
 </section>
 <section id="id3">
 <h2>工作区<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>The workspace provides a visual representation of the <span class="xref std std-term">Component</span>s and <span class="xref std std-term">Connection</span>s currently defined in your session.</p>
-<p><strong>Right-click</strong> in the workspace to open a workspace context menu. Select the 'Add Empty Node' option to add an empty template <span class="xref std std-term">Component</span> to the session.</p>
-<p><strong>Left-click</strong> <span class="xref std std-term">Component</span>s or <span class="xref std std-term">Connection</span>s to edit or delete them.</p>
-<p><strong>Left-click and hold</strong> to drag <span class="xref std std-term">Component</span>s or <span class="xref std std-term">Connection</span>s across the workspace.</p>
-<p><strong>Scroll</strong> to zoom-in or out.</p>
-<p>Select the workspace controls <strong>+</strong> and <strong>-</strong> to zoom in and out, or the <strong>◻</strong> to fit all <span class="xref std std-term">Component</span>s into the current view.</p>
+<p>工作区提供了您会话中当前定义的<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>和<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>的视觉呈现。</p>
+<p>在工作区中<strong>右击</strong>鼠标打开工作区内容菜单。选择【添加空节点】选项将空模板<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>添加到会话中。</p>
+<p><strong>左键单击</strong> <a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>或<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>以编辑或删除它们。</p>
+<p><strong>按住左键</strong>可在工作区内拖动<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>或<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>。</p>
+<p><strong>滚动</strong>鼠标滚轮以放大或缩小视图。</p>
+<p>选择工作区控件**+<strong>和</strong>-<strong>以放大和缩小，或者选择</strong>◻**调整所有<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>以匹配当前视图。</p>
 </section>
-<section id="components">
-<h2>Components<a class="headerlink" href="#components" title="Permalink to this heading">#</a></h2>
-<p><span class="xref std std-term">Component</span>s are defined as calculation blocks that appear as boxes in the workspace.
-Select a <span class="xref std std-term">Component</span> to edit it.</p>
-<p>Each <span class="xref std std-term">Component</span> has a name that is displayed at the top of the <span class="xref std std-term">Component</span> box in the workspace view.
-A symbol appearing next to the name indicates the validity status of the <span class="xref std std-term">Component</span>:</p>
-<p><strong>?</strong> : Pending : Some inputs are missing.</p>
-<p><strong>🗸</strong> : Valid : All necessary inputs have been defined.</p>
-<p><strong>!</strong> : Invalid : Some inputs are erroneous.</p>
+<section id="id4">
+<h2>组件<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>被定义为在工作区中显示为方框的计算块。
+可以选择一个<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>进行编辑。</p>
+<p>每个<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>都有一个名称，显示在组件方框的顶部。
+名称旁边出现的符号表示<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>的有效性状态：</p>
+<p><strong>?</strong> : 待处理 : 一些输入缺失。</p>
+<p><strong>🗸</strong> : 有效 : 所有必要的输入已被定义。</p>
+<p><strong>!</strong> : 无效 : 一些输入错误。</p>
 </section>
-<section id="connections">
-<h2>Connections<a class="headerlink" href="#connections" title="Permalink to this heading">#</a></h2>
-<p>A <span class="xref std std-term">Connection</span> is defined as a data link from an origin <span class="xref std std-term">Component</span> output handle (right side handle) to a target <span class="xref std std-term">Component</span> input handle (left side handle).
-There are three types of <span class="xref std std-term">Connection</span>s:</p>
-<p><strong>Design variable connection</strong> : transfer design variable values (numbers or arrays of numbers only) between <span class="xref std std-term">Component</span>s.
-They appear as <strong>black</strong> arrows in the workspace view.
-Updated variables are transferred after every origin <span class="xref std std-term">Component</span> calculation iteration.
-This is the default <span class="xref std std-term">Connection</span> type.</p>
-<p><strong>Implicit variable or file connection</strong> : transfer implicit variables (any JSON serialisable object) or files between <span class="xref std std-term">Component</span>s.
-They appear as <strong>green</strong> arrows in the workspace view.
-Updated variables are transferred after every origin <span class="xref std std-term">Component</span> calculation iteration.
-This is the default <span class="xref std std-term">Connection</span> type for file <span class="xref std std-term">Connection</span>s.</p>
-<p><strong>Setup variable or file connection</strong> :  transfer setup variables (any JSON serialisable object) or files between <span class="xref std std-term">Component</span>s.
-They appear as <strong>blue</strong> arrows in the workspace view.
-Updated variables are transferred only once after all <span class="xref std std-term">Component</span>s completed setup and before the first compute of the connection target <span class="xref std std-term">Component</span>.</p>
-<p>The data transferred through <span class="xref std std-term">Connection</span>s has to be a JSON serialisable python object (this includes most python data types) or a file reference.
-File reference keys start with the prefix &quot;files.&quot; .</p>
-<section id="valid-connections">
-<h3>Valid Connections<a class="headerlink" href="#valid-connections" title="Permalink to this heading">#</a></h3>
-<p>The compute functions will always be executed in order from a single 'Start Node' to a single 'End Node'.
-This means that a 'Start Node' may not have any incoming connections, and an 'End Node' may not have any outgoing connections.
-Driver components cannot have any connections.</p>
+<section id="id5">
+<h2>连接<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>一个<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>被定义为从源<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>输出句柄（右侧）到目标<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>输入句柄（左侧）的数据链路。<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>类型有三种：</p>
+<p><strong>Design variable connection</strong> (设计变量连接): 在<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>之间传递设计变量值（仅限数字或数字数组）。在工作区视图中，它们显示为黑色箭头。更新后的变量在每次起点<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>计算迭代后被传输，这是默认的<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>类型。</p>
+<p><strong>Implicit variable or file connection</strong> (隐式变量或文件连接): 在<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>之间传递隐式变量（任何JSON可序列化对象）或文件。在工作区视图中，它们显示为绿色箭头。更新后的变量在每次起点<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>计算迭代后被传输。这是文件<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>的默认<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>类型。</p>
+<p><strong>Setup variable or file connection</strong> （设置变量或文件连接）: 在<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>之间传递设置变量（任何JSON可序列化对象）或文件。在工作区视图中，它们显示为蓝色箭头。更新后的变量只在所有<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>完成设置之后、目标<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>的第一次计算之前被传输一次。</p>
+<p>通过<a class="reference internal" href="Glossary.html#term-1"><span class="xref std std-term">连接</span></a>传输的数据必须是JSON可序列化的Python对象（这包括大多数Python数据类型）或文件引用。文件引用键以前缀&quot;files.&quot;开头。</p>
+<section id="id6">
+<h3>有效连接<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>计算功能将始终按照从单个【开始节点】到单个【结束节点】的顺序执行。这意味着【开始节点】可能没有任何传入连接，而【结束节点】可能没有任何传出连接。驱动程序组件不能有任何连接。</p>
 </section>
 </section>
-<section id="run-controls">
-<h2>Run Controls<a class="headerlink" href="#run-controls" title="Permalink to this heading">#</a></h2>
-<p><strong>▶</strong> / <strong>Play</strong>: Launch a new <span class="xref std std-term">Run</span>. This option only becomes available once all <span class="xref std std-term">Component</span>s are valid.</p>
-<p><strong>⏸</strong> / <strong>Pause</strong> : Pause a <span class="xref std std-term">Run</span>. This option only becomes available once a <span class="xref std std-term">Run</span> has been started. Execution can be continued by selecting the play ▶ button.</p>
-<p><strong>⏹</strong> / <strong>Stop</strong>: Stop a <span class="xref std std-term">Run</span>. This option only becomes available once a <span class="xref std std-term">Run</span> has been started. This terminates the current <span class="xref std std-term">Run</span> and may result in an error message.</p>
+<section id="id7">
+<h2>运行控制<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p><strong>▶</strong> / <strong>启动</strong>: 启动一次新的<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>。仅当所有<a class="reference internal" href="Glossary.html#term-0"><span class="xref std std-term">组件</span></a>有效时，此选项才可用。</p>
+<p><strong>⏸</strong> / <strong>暂停</strong> : 暂停<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>。仅当已启动<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>时，此选项才可用。
+通过选择运行 ▶ 按钮可以继续执行。</p>
+<p><strong>⏹</strong> / <strong>停止</strong>: 停止<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>。仅当已启动<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>时，此选项才可用。
+这将终止当前<a class="reference internal" href="Glossary.html#term-2"><span class="xref std std-term">运行</span></a>并可能导致错误消息。</p>
 </section>
 </section>
 
@@ -527,12 +516,12 @@ Driver components cannot have any connections.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">界面控制</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">工作区</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connections">Connections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valid-connections">Valid Connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">组件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">连接</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">有效连接</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-controls">Run Controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">运行控制</a></li>
 </ul>
   </nav></div>
 
