@@ -52,25 +52,28 @@ $$
 ```
 
 ```{Note}
-{term}`组件` 名称只应包括小写字母a-z，数字0-9和端横线（-），不应包含空格。
+{term}`组件`名称只应包括小写字母a-z，数字0-9和端横线（-），不应包含空格。
 ```
 
 ```{Warning}
 单击组件界面之外的区域会关闭组件，并且不会自动保存更改。
 ```
 
-We can see that the `generic-python3-comp` API has three input files: 
+我们可以看到，`generic-python3-comp`API有三个输入文件：
 
 * `setup.py`
 * `compute.py`
 * `requirements.txt`
 
 The first two files are required and the last one is optional. You can inspect the paraboloid example file contents below. 
-The `requirements.txt` file is not required here as the python code doesn't import any third-party python packages. We will use it in the [Simple optimisation problem](./Simple%20optimisation%20problem.md) to import openMDAO classes and functions.  
+前两个文件是必需的，最后一个是可选的。您可以查看下面给出的关于拋物面示例的文件内容。
+这里我们不需要`requirements.txt`文件，因为Python代码不导入任何第三方Python程序包。
+我们将在下一个示例[简单优化问题](./Simple%20optimisation%20problem.md)中使用它来导入openMDAO的类和函数。
 
-The `setup.py` module has to include a **setup** function that returns data that will be available to the compute function. Here we initialise x and y inputs with values from the [Parameters](tutorials-paraboloid-parameters) input dictionary. We also initialise the outputs and partials (function gradients), which will only be needed for the next example. 
+`setup.py`模块必须包含一个**setup**（设置）函数，该函数将返回在计算函数过程中可用的数据。
+这里，我们使用[参数](tutorials-paraboloid-parameters)选项卡下设定的输入字典中的值初始化 x 和 y 的输入。我们同时也初始化输出和偏微分（函数梯度），该部分仅在下一个示例中需要。
 
-The `compute.py` module has to include a **compute** function that returns a dictionary of data, which usually includes the component outputs dictionary. The compute function in this example calculates f(x,y) from the x and y values stored in the inputs dictionary. Again the partials calculation is only needed for the next example.      
+`compute.py`模块必须包含一个 **compute** （计算）函数，该函数返回一个数据字典，通常包括组件输出字典。本示例中的计算函数从输入字典中存储的 x 和 y 值计算 f（x，y）。再次强调，偏微分计算仅在下一个示例中被需要。
 
 (tutorials-paraboloid-files)=
 `````{tab-set}
@@ -86,7 +89,10 @@ The `compute.py` module has to include a **compute** function that returns a dic
 ````
 `````
 
-For each file, copy the contents above into a text editor and save it locally. Make sure you include the '.py' extension in the file name.
+对于以上每个文件，将其内容复制到文本编辑器中并保存在本地设备。确保在文件名中包括'.py'扩展名。
+
+
+
 
 Next, select `setup.py` in the component interface to upload the corresponding file. A green tick and a file upload time stamp should appear to confirm that the upload was successful. Repeat for the `compute.py` file.  
 
