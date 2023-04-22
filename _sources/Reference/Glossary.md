@@ -4,10 +4,10 @@
 组件
   组件被定义为在工作区域内显示为方框的计算块。 
 
-Connection
-  A Connection is defined as a data link from an origin {term}`Component` output handle (right-hand side handle) to a target {term}`Component` input handle (left-hand side handle).
+连接
+  连接被定义为从源{term}`组件`输出句柄（右侧）到目标{term}`组件`输入句柄（左侧）的数据链接。
 
-Run
-  A single instance of the a session model analysis, with all its inputs and outputs, that involves one or more valid {term}`Component`s.
+运行
+  一个会话模型分析的单个实例，包括其所有的输入和输出，涉及一个或多个有效的{term}`组件`。 
 
 ```
