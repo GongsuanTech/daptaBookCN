@@ -1,21 +1,20 @@
 # 技术支持
 
-## Troubleshooting
+## 故障排除
 
-Check the [Troubleshooting](reference-FAQ-troubleshooting) section of the FAQ for advice on how to debug your Runs. 
+请查看【常见问题】解答中的[故障排除](reference-FAQ-troubleshooting)部分，以获取有关如何调试您的运行程序的建议。
 
-## User community forum
+## 用户社区论坛
 
-Link: [https://github.com/daptablade/dapta/discussions](https://github.com/daptablade/dapta/discussions)
+链接: [https://github.com/daptablade/dapta/discussions](https://github.com/daptablade/dapta/discussions)
 
-The forum allows users to post questions and find solutions to common problems. 
-This is also the place to report issues and suggest specific improvements.  
+该论坛允许用户发布问题并找到常见问题的解决方案。这里也是报告问题和改进建议的地方。
+ 
+## 联系技术支持团队
 
-## Contact the support team
+您可以通过电子邮件或我们网站的聊天选项联系我们的技术支持团队。
+对于故障报告，请在消息中包含截图和其他详细信息。
+我们会查看您的支持请求，并尽快回复您。
 
-You can reach our support team via email or via our website chat option. 
-For bug reports, please include screenshots and other details in your message.  
-We will review your support request and get back to you as soon as possible. 
-
-* **website chat**: click the "chat" button in the bottom right of the window.   
-* **email**: support@dapta.com
+* **网站聊天**: 单击窗口右下角的【聊天】按钮。
+* **电子邮件**: support@dapta.com
