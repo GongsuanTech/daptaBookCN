@@ -1,7 +1,7 @@
 # 简单组件分析
 
-[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> Load tutorial into dapta app](https://app.daptaflow.com/tutorial/1).
-[<img src="media/github.svg" alt="github" width="25px" height="25px"> View files on Github](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/paraboloid).
+[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> 加载教程到dapta应用程序](https://app.daptaflow.com/tutorial/1).
+[<img src="media/github.svg" alt="github" width="25px" height="25px"> 在Github中查看文件](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/paraboloid).
 
 ```{image} media/paraboloid_rotation.gif
 :alt: paraboloid-surface
@@ -10,16 +10,15 @@
 :align: right
 ```
 
-**Duration: 10 min**
+**预计时间：10分钟**
 
-In our first example we explore the creation and analysis of a simple analytical function component.  
+我们的第一个示例将创建和分析一个简单的解析函数组件。  
 
-All you need to get started is a text editor and your web browser. 
-No need to download or install anything! 
-However, as we will use python for all our examples, a basic understanding of the python syntax will be beneficial, as well as a code editor that supports python (e.g. VS Code, PyCharm or other).
+开始工作所需的全部工具仅仅是一个文本编辑器和一个网页浏览器。无需下载或安装任何软件！
+然而，由于我们将在所有示例中将会使用Python，因此您需要基本了解Python语法以及安装使用支持Python的代码编辑器（例如VS Code和PyCharm等）。
 
-## Component description 
-The paraboloid component solves the function
+## 组件描述
+抛物面组件求解以下函数：
 
 $$
   f(x,y) = (x-3.0)^2 + x y + (y + 4.0)^2 -3.0 
