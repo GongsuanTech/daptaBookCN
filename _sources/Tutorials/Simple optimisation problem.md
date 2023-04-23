@@ -35,21 +35,25 @@
 
 选择空组件以进行编辑。
 
-### Properties
+### 属性
 
-In the `Properties` tab, fill in the component name, `open-mdao`, and select the driver component API `generic-python3-driver:latest`. 
+在`属性`选项卡中，填写组件名称`open-mdao`，
+然后选择驱动程序组件API为`generic-python3-driver:latest`。
 
-Just as in the previous example, the python driver requires `setup.py` and `compute.py` input files to be uploaded. 
-In addition, we also upload a `requirements.txt` file, so that we can access the openMDAO package in the python code.
-You can inspect the contents of the files below. 
+就像之前的示例一样，Python驱动程序需要上传`setup.py`和`compute.py`输入文件。
+此外，我们还上传了一个`requirements.txt`文件，以便我们可以在Python代码中访问openMDAO程序包。
+您可以检查下面给出的文件内容。
 
-In the `compute.py` file, we can see that the imports include the 'numpy' and 'openmdao' packages that we listed in the `requirements.txt` file. 
-In addition, we import a `call_compute` function from the `component_api2.py` module that is specific to the `generic-python3-driver` API and allows the driver to execute other components (this is the main difference with the `generic-python3-comp` API!). 
+在`compute.py`文件中，可以看到我们的导入包括我们在`requirements.txt`文件中列出的【numpy】和【openmdao】程序包。此外，我们从`component_api2.py`模块中导入一个`call_compute`函数，
+该函数专用于`generic-python3-driver`API，并允许驱动程序执行其他组件
+（这是与`generic-python3-comp`API的主要区别！）。
 
-The last import in the `compute.py` module (`from om_component import ...`) is specific to our component and provides a custom implementation of the openMDAO ExplicitComponent class. The contents of the `om_component.py` module are shown below and we will upload this as a Parameter input file in the next section.   
+`compute.py`模块中的最后一个导入（`来自 om_component import ...`）是特定于我们的组件，
+并提供了一个关于openMDAO ExplicitComponent类的自定义实施。 
+`om_component.py`模块的内容如下所示，我们将在下一节中将其上传为参数输入文件。
 
-Finally, check the box next to the `Driver` option as shown below.
-
+最后，勾选`驱动程序`选项旁的复选框，如下图所示。
+ 
 (tutorials-open-mdao-paraboloid-files)=
 `````{tab-set}
 ````{tab-item} setup
@@ -81,9 +85,9 @@ Finally, check the box next to the `Driver` option as shown below.
 :align: center
 ```
 
-### Parameters
+### 参数
 
-Select the `Parameters` tab and copy the 'unconstrained' parameters JSON object into the text box. 
+选择`参数`选项卡，将'不受限制'的参数 JSON 对象复制到文本框中。
 
 (tutorials-open-mdao-paraboloid-parameters)=
 `````{tab-set}
@@ -99,38 +103,39 @@ Select the `Parameters` tab and copy the 'unconstrained' parameters JSON object 
 ````
 `````
 
-These parameters are used in the `compute.py` module to define a standard openMDAO optimisation problem. 
+这些参数在`compute.py`模块中用于定义一个标准的openMDAO优化问题。
 
-Next, as mentioned in the previous section, we also need to upload the `om_component.py` module. 
-Copy the contents of the ['om_component' tab above](tutorials-open-mdao-paraboloid-files) into a text editor and save as 'om_component.py'.  
-Select the `upload user input files` link at the bottom of the `Parameters` tab to upload the file. 
-The upload was successful if a corresponding entry appears under the 'user_input_files' section of the JSON object in the `Parameters` text box. 
+接下来，如前一部分所述，我们还需要上传`om_component.py`模块。
+将上面的'om_component.py'选项卡中的内容复制到文本编辑器中并保存为'om_component.py'文件。
+在`参数`选项卡底部选择`上传用户输入文件`链接以上传文件。如果在`参数`文本框的JSON 对象部分出现'user_input_files'相应条目，则上传成功。
 
-By extracting parameters from the python code and defining them in the `Parameters` tab instead, we can change the optimisation setup without having to view or modify the python code. 
-This makes it easier to track input changes and to compare Runs (e.g. via the session file). 
-The component also becomes more general, robust and re-usable. 
-We will demonstrate the benefits of this approach in the next section by replacing the 'unconstrained' parameters with the 'constrained' ones.  
+通过从Python代码中提取参数并在`参数`选项卡中定义它们，
+我们可以在不必查看或修改Python代码的情况下更改优化设置。
+这使得跟踪输入更改和比较运行（例如通过会话文件）变得更加容易。
+该组件也变得更加通用、稳健和可重复使用。在下一节中，
+我们会通过将'不受限制'的参数替换为'受限制'的参数来演示这种方法的好处。
 
-Select `Save data` to save the edits and close the component interface. 
+选择`保存数据`以保存编辑并关闭组件界面。
 
-Select `Download` from the interface controls to save the current session as a local JSON file. 
+选择界面控件中的`下载`来将当前会话保存为一个本地JSON文件。
 
-## Executing the driver
+## 执行驱动程序
 
-We should now have a valid {term}`Run` with two components: the paraboloid analysis and the open-mdao driver.
+现在我们应该有一个包含两个组件的有效{term}`运行`：拋物面分析和open-mdao驱动程序。
 
-Execute the {term}`Run` by selecting the play symbol ▶ in the {term}`Run` controls interface and wait for it to complete. 
-As before, this may take a few minutes as your {term}`Run` is being processed in the Cloud. 
-If you don't get a message saying that the {term}`Run` was successful, try to refresh your web browser page or consult the [FAQ](../Reference/FAQs.md) section for troubleshooting suggestions. 
+通过选择{term}`运行`控件界面上的运行符号 ▶ 来执行{term}`运行`，并等待其完成。
+与之前一样，这可能需要几分钟，因为您的{term}`运行`正在云端被处理。
+如果您没有收到{term}`运行`成功的消息，
+请尝试刷新您的浏览器页面或查阅[常见问题](../Reference/FAQs.md)解答部分以获取故障排除建议。
 
-### The unconstrained optimisation problem 
+### 无约束优化问题 
 
-We can now inspect the outputs of the unconstrained optimisation {term}`Run`.
+现在我们可以检查无约束优化{term}`运行`的输出结果。
 
-Select `View Log` to view the Run log as shown below.
-The optimisation outcome is summarised in the 'open-mdao' entry, which indicates that the optimisation completed successfully. 
-The optimisation input values (x, y) converged to the known analytical solution within a few decimals ($x=\frac{20}{3}$, $y=-\frac{22}{3}$). 
-If we scroll down, we can see that the paraboloid component has 13 separate entries, each one corresponding to one analysis execution of the component.  
+选择`查看日志`以查看运行日志，如下图所示。优化结果被总结于'open-mdao'条目中，
+该条目显示优化成功完成。优化输入值(x，y)收敛于已知的解析解
+($x=\frac{20}{3}$, $y=-\frac{22}{3}$，小数形式显示)。如果我们向下滚动，
+我们可以看到拋物面组件有13条单独的条目，每个条目对应组件的一次分析执行。
 
 ```{image} media/open-mdao-paraboloid-2.png
 :alt: run-log-open-mdao-paraboloid-unconstrained
@@ -139,16 +144,15 @@ If we scroll down, we can see that the paraboloid component has 13 separate entr
 :align: center
 ```
 
-We can also look at the outputs of the open-mdao component in more detail. 
-Select the open-mdao component in the workspace and navigate to the `Log` tab, then select `download files snapshot`. The 'outputs' folder should contain three files:
+我们还可以更详细地查看open-mdao组件的输出。在工作区中选择open-mdao组件，
+然后导航到`日志`选项卡，选择`下载文件快照`。'outputs'文件夹应该包含三个文件：
 
-* **n2.html** : A visual representation of the optimisation problem. We can switch this output off by removing the 'n2_diagram' entry from the 'visualise' list in the component Parameters.  
-* **om_problem_recorder_(time-stamp).sqlite** : An openMDAO recorder database can be used for further data analysis, visualisation and results storage. The contents of the database can be adjusted (see the use of the 'om.SqliteRecorder' class in the open-mdao compute function).
-* **run_driver.log** : a log file that contains the openMDAO stdout output and any additional print() function outputs from the `om_component.py` module. 
+* **n2.html**：优化问题的可视化展示。我们可以通过从组件参数中的【visualise】列表中删除【n2_diagram】条目来取消此输出。 
+* **om_problem_recorder_(time-stamp).sqlite** ：记录器数据库可用于进一步的数据分析、可视化和结果存储。数据库的内容可以进行调整（参见open-mdao计算函数中【om.SqliteRecorder】类的使用）。
+* **run_driver.log** ：一个日志文件，其中包含openMDAO标准输出和来自`om_component.py`模块的任何附加print()函数输出。
 
 ````{note}
-Python print() output can be very useful for capturing intermediary variable values and for debugging purposes. 
-In order to access this output in a log file, you can use the following python code construct (see the `compute.py` module for an example): 
+Python的print()输出非常有用，可以用于实现捕获中间变量值和调试的目的。为了在日志文件中访问此输出，可以使用以下Python代码结构（请参见`compute.py`模块的示例）：
 
 ```{code}
 from contextlib import redirect_stdout
@@ -159,17 +163,19 @@ with open(run_folder / "filename.log", "w") as f:
 ```
 ````
 
-Below is an extract from the end of the `run_driver.log` file. 
-This file provides some interesting insights into the optimisation process. 
+以下是`run_driver.log`文件结尾的摘录。该文件提供了一些关于优化过程的有趣见解。
 
-It appears that the SLSQP optimisation converged to an optimum after 4 iterations, which included 5 'Function evaluations' to calculate the function outputs and 4 'Gradient evaluations' to calculate the derivatives (gradient) of the paraboloid function with respect to the design variables x and y. 
+看起来，SLSQP优化在4次迭代后收敛于一个最优解，其中包括5次【函数评估】来计算函数输出
+和4次【梯度评估】来计算抛物面函数对设计变量 x 和 y 的导数（梯度）。
 
-Looking at the frequency of the 'Calling compute' message in the last iteration, we can see that the 'Function evaluation' executed the paraboloid component once and that the 'Gradient computation' executed it twice (once for each design variable). 
-This is because we requested the finite difference gradient calculation method by setting `"approx_totals": true` in the in the Parameters (with the 'fd_step' parameter setting the size of the step). 
+观察最后一次迭代中【Calling compute】【message】出现的频次，
+我们可以看到抛物面组件的【函数评估】执行了一次，而【梯度计算】执行了两次（每个设计变量一次）。
+这是因为我们通过在参数中设置`“【approx_totals】: true`来使用有限差分梯度计算方法
+（【fd_step】参数设置步长大小）。
 
-The paraboloid component was therefore executed a total of 13 times, which matches the {term}`Run` log output. 
+因此，抛物面组件总共执行了13次，这与{term}`运行`日志输出相匹配。
 
-Save the session data and Run log by selecting `Download` from the interface controls. 
+通过从接口控件中选择`下载`，保存会话数据和运行日志。
 
 ```{code}
 Driver debug print for iter coord: rank0:ScipyOptimize_SLSQP|5
@@ -212,35 +218,35 @@ Optimization Complete
 -----------------------------------
 ```
 
-### The constrained optimisation problem 
+### 约束优化问题
 
-We now wish to add the following constraint to the optimisation problem
+我们现在希望将以下约束条件添加到优化问题中
 
 $$ 
   0.0 \leq g(x,y) \leq 10.0  \quad , \quad g(x,y) = x + y  . 
 $$
 
-Instead of adding another component to the {term}`Run`, we can implement this simple constraint using an openMDAO [ExecComp](https://openmdao.org/newdocs/versions/latest/features/building_blocks/components/exec_comp.html) component. 
+不需要添加另一个组件到{term}`运行`中，我们可以使用openMDAO [ExecComp](https://openmdao.org/newdocs/versions/latest/features/building_blocks/components/exec_comp.html)组件来实施这个简单的约束条件。
 
-Select the open-mdao component in the workspace to edit it, navigate to the `Parameters` tab, and copy and paste the [constrained](tutorials-open-mdao-paraboloid-parameters) Parameter values. 
+在工作区中选择open-mdao组件进行编辑，导航到`参数`选项卡，
+并复制和粘贴[约束](tutorials-open-mdao-paraboloid-parameters)的参数值。
 
-A few changes have been made compared to the unconstrained problem Parameters:
+与非约束问题的参数相比，进行了一些更改：
 
-* The 'ExplicitComponents' section is added to promote the paraboloid component x and y variables to global problem variables.
-* The 'ExecComps' section is added to define the a component named 'constraint'.
-* The constraint output is added to the 'output_variables' list.
-* The finite difference gradient calculations are switched off by setting 'approx_totals' to false. 
+* 添加了【ExplicitComponents】部分，以将抛物面组件的 x 和 y 变量提升为全局问题变量。
+* 添加了【ExecComps】部分，定义了一个名为【constraint】的组件。
+* 将约束输出添加到【output_variables】列表中。
+* 通过将【approx_totals】设置为【false】来关闭有限差分梯度计算。
 
-Select `Save data` to save and close the component. 
+选择`保存数据`保存并关闭组件。
 
-Note that it is not necessary to upload the `om_component.py` module again. 
-To verify this, you can open the open-mdao component `Parameters` tab and the file entry should appear again under 'user_input_files', just as before.   
+请注意，无需再次上传`om_component.py`模块。要验证这一点，您可以打开open-mdao组件`参数`选项卡，文件条目应再次出现在【user_input_files】下，就像之前一样。
 
-Create a new {term}`Run` by selecting the play symbol ▶ in the {term}`Run` controls interface. 
-This should execute very quickly. 
+通过在{term}`运行`控件界面中选择运行符号 ▶ 来创建一次新的{term}`运行`。
+这应该会非常快速地执行。
 
-Select `View Log` to view the Run log as shown below. 
-The open-mdao component entry lists optimal x and y values for the constrained problem, which have converged within a few decimals of the analytical solution ($x=7$, $y=-7$).
+选择`查看日志`查看运行日志，如下图所示。open-mdao组件条目列出了受约束问题的最优 x 和 y 值，
+这些值已经收敛到了解析解的后几个小数位上（$x=7$, $y=-7$）。
 
 ```{image} media/open-mdao-paraboloid-3.png
 :alt: run-log-open-mdao-paraboloid-constrained
@@ -249,19 +255,20 @@ The open-mdao component entry lists optimal x and y values for the constrained p
 :align: center
 ```
 
-Select the open-mdao component in the workspace, open the `Log` tab and select `download files snapshot`. 
+在工作区中选择open-mdao组件，打开`日志`选项卡并选择`下载文件快照`。
 
-Visually compare the N2 diagram (n2.html) shown below with that from the previous {term}`Run`.  
-The new constraint component appears as another Explicit Component under the paraboloid component. 
+将下图显示的N2图（n2.html）与上一次{term}`运行`的图进行直观比较。
+新的约束组件出现在抛物面组件下方作为另一个显式组件。
 
-Next, inspect the 'run_driver.log' output file. 
-Only 2 iterations, with 2 'Function evaluations' and 2 'Gradient evaluations' were required to reach convergence. 
-The 'Calling compute_partials' messages confirm that instead of using finite differencing, we are now requesting the analytical gradient information directly from the paraboloid component. 
-With one paraboloid component evaluation yielding derivatives with respect to all variables, this approach is significantly more efficient than the finite differencing method.  
+接下来，检查【run_driver.log】输出文件。只需要2次迭代，
+其中包括2次【函数评估】和2次【梯度评估】即可达到收敛。 
+【Calling compute_partials】消息证实，我们现在直接从抛物面组件获取解析梯度信息，
+而不是使用有限差分。使用一个抛物面组件评估，可以得出所有变量的导数，
+这种方法比有限差分方法更加高效。
 
-For comparison, a reference pure python/openMDAO implementation of this problem can be found in the [Optimization of Paraboloid](https://openmdao.org/newdocs/versions/latest/basic_user_guide/single_disciplinary_optimization/first_optimization.html) section of the openMDAO user guide. 
+为了对比分析，可以在openMDAO用户指南的[Optimization of Paraboloid](https://openmdao.org/newdocs/versions/latest/basic_user_guide/single_disciplinary_optimization/first_optimization.html)部分找到此问题的纯Python / openMDAO实现。
 
-Save the session data and Run log by selecting `Download` from the interface controls. 
+通过在界面控件中选择`下载`来保存会话数据和运行日志。
 
 ```{image} media/open-mdao-paraboloid-4.png
 :alt: n2-open-mdao-paraboloid-constrained
@@ -270,16 +277,16 @@ Save the session data and Run log by selecting `Download` from the interface con
 :align: center
 ```
 
-## Clean-up
+## 清理
 
-Delete your session by selecting `New` in the interface. 
-It may take a minute or so for the Cloud session to be reset. 
+您可以通过选择界面中`创建`来删除您的会话，这可能需要一分钟左右在云端重置会话。
 
 ```{warning}
-You should see a warning message whenever you are about to delete a {term}`Run`. If you select to continue, then all the {term}`Run` session data (Run log and component logs) will be permanently deleted. 
+当您即将删除一个{term}`运行`时，您应该会看到一个警告消息。
+如果您选择继续，则所有的{term}`运行`数据（会话数据、输入和输出）将被永久删除。
 ```
 
-## References
+## 参考文献
 
 1. [Simple Optimization](https://openmdao.org/newdocs/versions/latest/examples/paraboloid.html?highlight=unconstrained) example from the openMDAO user guide.
 2. [Optimization of Paraboloid](https://openmdao.org/newdocs/versions/latest/basic_user_guide/single_disciplinary_optimization/first_optimization.html) section of the openMDAO user guide.
