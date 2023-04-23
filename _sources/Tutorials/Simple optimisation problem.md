@@ -1,7 +1,7 @@
 # 简单优化问题
 
-[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> Load tutorial into dapta app](https://app.daptaflow.com/tutorial/2).
-[<img src="media/github.svg" alt="github" width="25px" height="25px"> View files on Github](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/open-mdao-paraboloid).
+[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> 加载教程到dapta应用程序](https://app.daptaflow.com/tutorial/2).
+[<img src="media/github.svg" alt="github" width="25px" height="25px"> 在Github中查看文件](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/open-mdao-paraboloid).
 
 ```{image} media/paraboloid_optimisation.gif
 :alt: paraboloid-optimisation 
@@ -10,32 +10,30 @@
 :align: right
 ```
 
-**Duration: 15 min**
+**预计时间：15分钟**
 
-In this example we solve a simple analytical function minimisation problem. 
-We create an optimisation driver component using the [openMDAO](https://openmdao.org) python package, and then use it to determine the unconstrained and constrained minimum values of the paraboloid function from the [previous example](./Simple%20component%20analysis.md).  
+在这个示例中，我们解决了一个简单的解析函数最小化问题。我们使用[openMDAO](https://openmdao.org) Python程序包创建了一个优化驱动程序组件，然后使用它来确定[先前示例](./Simple%20component%20analysis.md)中抛物面函数的无约束和有约束最小值。
 
-## Opening a saved session
+## 打开已保存的会话
 
-Since we already created and analysed the paraboloid component previously, we can load our previous session to speed things up. 
+由于我们之前已经创建并分析了抛物面组件，因此我们可以加载先前的会话以加快速度。
 
-Select `Open` from the interface controls to load the JSON formatted version of our previous session (dapta_input.json). 
-Alternatively, copy the object below into a text editor and save it locally, then select `Open` to load it. 
+从界面控件中选择`打开`以加载我们之前会话的JSON格式版本（dapta_input.json）。
+或者，将下面的对象复制到文本编辑器中并在本地保存，然后选择`打开`加载它。
 
 ```{literalinclude} ./paraboloid/dapta_input.json   
 :language: json
 ```
 
-The paraboloid component should have appeared in the workspace, but the question mark next to the component name indicates that it is missing some data. 
-To fully define it, we need to upload the component `setup.py` and `compute.py` input files under the component `Properties` tab again. 
-The file contents are available under the [Simple Component Analysis](tutorials-paraboloid-files) example.
+抛物面组件应该出现在工作区中，但组件名称旁边的问号表示它缺少一些数据。
+为了完全定义它，我们需要再次在组件`属性`选项卡下上传组件`setup.py`和`compute.py`输入文件。
+文件内容在[简单组件分析](tutorials-paraboloid-files)示例下可以获得。
 
-## Create the driver component
+## 创建驱动程序组件
 
-Right-click in the workspace and select `Add Empty Node`.
-This adds an empty template component to your workspace. 
+在工作区中单击鼠标右键，然后选择`添加空节点`。这将向您的工作区添加一个空的模板组件。
 
-Select the empty component to edit it. 
+选择空组件以进行编辑。
 
 ### Properties
 

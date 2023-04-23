@@ -163,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome!
+                    欢迎大家!
                 </a>
             </li>
         </ul>
@@ -375,8 +375,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-saved-session">2.1. Opening a saved session</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-driver-component">2.2. Create the driver component</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 打开已保存的会话</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 创建驱动程序组件</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">2.2.1. Properties</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">2.2.2. Parameters</a></li>
 </ul>
@@ -401,17 +401,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2. </span>简单优化问题<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://app.daptaflow.com/tutorial/2"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> Load tutorial into dapta app</a>.
-<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/open-mdao-paraboloid"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> View files on Github</a>.</p>
+<p><a class="reference external" href="https://app.daptaflow.com/tutorial/2"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> 加载教程到dapta应用程序</a>.
+<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/open-mdao-paraboloid"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> 在Github中查看文件</a>.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/paraboloid_optimisation.gif"><img alt="paraboloid-optimisation" class="bg-primary mb-1 align-right" src="../_images/paraboloid_optimisation.gif" style="width: 400px;" /></a>
-<p><strong>Duration: 15 min</strong></p>
-<p>In this example we solve a simple analytical function minimisation problem.
-We create an optimisation driver component using the <a class="reference external" href="https://openmdao.org">openMDAO</a> python package, and then use it to determine the unconstrained and constrained minimum values of the paraboloid function from the <a class="reference internal" href="Simple%20component%20analysis.html"><span class="doc std std-doc">previous example</span></a>.</p>
-<section id="opening-a-saved-session">
-<h2><span class="section-number">2.1. </span>Opening a saved session<a class="headerlink" href="#opening-a-saved-session" title="Permalink to this heading">#</a></h2>
-<p>Since we already created and analysed the paraboloid component previously, we can load our previous session to speed things up.</p>
-<p>Select <code class="docutils literal notranslate"><span class="pre">Open</span></code> from the interface controls to load the JSON formatted version of our previous session (dapta_input.json).
-Alternatively, copy the object below into a text editor and save it locally, then select <code class="docutils literal notranslate"><span class="pre">Open</span></code> to load it.</p>
+<p><strong>预计时间：15分钟</strong></p>
+<p>在这个示例中，我们解决了一个简单的解析函数最小化问题。我们使用<a class="reference external" href="https://openmdao.org">openMDAO</a> Python程序包创建了一个优化驱动程序组件，然后使用它来确定<a class="reference internal" href="Simple%20component%20analysis.html"><span class="doc std std-doc">先前示例</span></a>中抛物面函数的无约束和有约束最小值。</p>
+<section id="id2">
+<h2><span class="section-number">2.1. </span>打开已保存的会话<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>由于我们之前已经创建并分析了抛物面组件，因此我们可以加载先前的会话以加快速度。</p>
+<p>从界面控件中选择<code class="docutils literal notranslate"><span class="pre">打开</span></code>以加载我们之前会话的JSON格式版本（dapta_input.json）。
+或者，将下面的对象复制到文本编辑器中并在本地保存，然后选择<code class="docutils literal notranslate"><span class="pre">打开</span></code>加载它。</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
@@ -441,15 +440,14 @@ Alternatively, copy the object below into a text editor and save it locally, the
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The paraboloid component should have appeared in the workspace, but the question mark next to the component name indicates that it is missing some data.
-To fully define it, we need to upload the component <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and <code class="docutils literal notranslate"><span class="pre">compute.py</span></code> input files under the component <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab again.
-The file contents are available under the <a class="reference internal" href="Simple%20component%20analysis.html#tutorials-paraboloid-files"><span class="std std-ref">Simple Component Analysis</span></a> example.</p>
+<p>抛物面组件应该出现在工作区中，但组件名称旁边的问号表示它缺少一些数据。
+为了完全定义它，我们需要再次在组件<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下上传组件<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>和<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>输入文件。
+文件内容在<a class="reference internal" href="Simple%20component%20analysis.html#tutorials-paraboloid-files"><span class="std std-ref">简单组件分析</span></a>示例下可以获得。</p>
 </section>
-<section id="create-the-driver-component">
-<h2><span class="section-number">2.2. </span>Create the driver component<a class="headerlink" href="#create-the-driver-component" title="Permalink to this heading">#</a></h2>
-<p>Right-click in the workspace and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Empty</span> <span class="pre">Node</span></code>.
-This adds an empty template component to your workspace.</p>
-<p>Select the empty component to edit it.</p>
+<section id="id3">
+<h2><span class="section-number">2.2. </span>创建驱动程序组件<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>在工作区中单击鼠标右键，然后选择<code class="docutils literal notranslate"><span class="pre">添加空节点</span></code>。这将向您的工作区添加一个空的模板组件。</p>
+<p>选择空组件以进行编辑。</p>
 <section id="properties">
 <h3><span class="section-number">2.2.1. </span>Properties<a class="headerlink" href="#properties" title="Permalink to this heading">#</a></h3>
 <p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab, fill in the component name, <code class="docutils literal notranslate"><span class="pre">open-mdao</span></code>, and select the driver component API <code class="docutils literal notranslate"><span class="pre">generic-python3-driver:latest</span></code>.</p>
@@ -1470,13 +1468,13 @@ We will demonstrate the benefits of this approach in the next section by replaci
 </section>
 <section id="executing-the-driver">
 <h2><span class="section-number">2.3. </span>Executing the driver<a class="headerlink" href="#executing-the-driver" title="Permalink to this heading">#</a></h2>
-<p>We should now have a valid <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> with two components: the paraboloid analysis and the open-mdao driver.</p>
-<p>Execute the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> by selecting the play symbol ▶ in the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> controls interface and wait for it to complete.
-As before, this may take a few minutes as your <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> is being processed in the Cloud.
-If you don't get a message saying that the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> was successful, try to refresh your web browser page or consult the <a class="reference internal" href="../Reference/FAQs.html"><span class="doc std std-doc">FAQ</span></a> section for troubleshooting suggestions.</p>
+<p>We should now have a valid <span class="xref std std-term">Run</span> with two components: the paraboloid analysis and the open-mdao driver.</p>
+<p>Execute the <span class="xref std std-term">Run</span> by selecting the play symbol ▶ in the <span class="xref std std-term">Run</span> controls interface and wait for it to complete.
+As before, this may take a few minutes as your <span class="xref std std-term">Run</span> is being processed in the Cloud.
+If you don't get a message saying that the <span class="xref std std-term">Run</span> was successful, try to refresh your web browser page or consult the <a class="reference internal" href="../Reference/FAQs.html"><span class="doc std std-doc">FAQ</span></a> section for troubleshooting suggestions.</p>
 <section id="the-unconstrained-optimisation-problem">
 <h3><span class="section-number">2.3.1. </span>The unconstrained optimisation problem<a class="headerlink" href="#the-unconstrained-optimisation-problem" title="Permalink to this heading">#</a></h3>
-<p>We can now inspect the outputs of the unconstrained optimisation <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.</p>
+<p>We can now inspect the outputs of the unconstrained optimisation <span class="xref std std-term">Run</span>.</p>
 <p>Select <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Log</span></code> to view the Run log as shown below.
 The optimisation outcome is summarised in the 'open-mdao' entry, which indicates that the optimisation completed successfully.
 The optimisation input values (x, y) converged to the known analytical solution within a few decimals (<span class="math notranslate nohighlight">\(x=\frac{20}{3}\)</span>, <span class="math notranslate nohighlight">\(y=-\frac{22}{3}\)</span>).
@@ -1506,7 +1504,7 @@ This file provides some interesting insights into the optimisation process.</p>
 <p>It appears that the SLSQP optimisation converged to an optimum after 4 iterations, which included 5 'Function evaluations' to calculate the function outputs and 4 'Gradient evaluations' to calculate the derivatives (gradient) of the paraboloid function with respect to the design variables x and y.</p>
 <p>Looking at the frequency of the 'Calling compute' message in the last iteration, we can see that the 'Function evaluation' executed the paraboloid component once and that the 'Gradient computation' executed it twice (once for each design variable).
 This is because we requested the finite difference gradient calculation method by setting <code class="docutils literal notranslate"><span class="pre">&quot;approx_totals&quot;:</span> <span class="pre">true</span></code> in the in the Parameters (with the 'fd_step' parameter setting the size of the step).</p>
-<p>The paraboloid component was therefore executed a total of 13 times, which matches the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log output.</p>
+<p>The paraboloid component was therefore executed a total of 13 times, which matches the <span class="xref std std-term">Run</span> log output.</p>
 <p>Save the session data and Run log by selecting <code class="docutils literal notranslate"><span class="pre">Download</span></code> from the interface controls.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Driver</span> <span class="n">debug</span> <span class="nb">print</span> <span class="k">for</span> <span class="nb">iter</span> <span class="n">coord</span><span class="p">:</span> <span class="n">rank0</span><span class="p">:</span><span class="n">ScipyOptimize_SLSQP</span><span class="o">|</span><span class="mi">5</span>
 <span class="o">--------------------------------------------------------------</span>
@@ -1556,7 +1554,7 @@ This is because we requested the finite difference gradient calculation method b
 \[ 
   0.0 \leq g(x,y) \leq 10.0  \quad , \quad g(x,y) = x + y  . 
 \]</div>
-<p>Instead of adding another component to the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>, we can implement this simple constraint using an openMDAO <a class="reference external" href="https://openmdao.org/newdocs/versions/latest/features/building_blocks/components/exec_comp.html">ExecComp</a> component.</p>
+<p>Instead of adding another component to the <span class="xref std std-term">Run</span>, we can implement this simple constraint using an openMDAO <a class="reference external" href="https://openmdao.org/newdocs/versions/latest/features/building_blocks/components/exec_comp.html">ExecComp</a> component.</p>
 <p>Select the open-mdao component in the workspace to edit it, navigate to the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab, and copy and paste the <a class="reference internal" href="#tutorials-open-mdao-paraboloid-parameters"><span class="std std-ref">constrained</span></a> Parameter values.</p>
 <p>A few changes have been made compared to the unconstrained problem Parameters:</p>
 <ul class="simple">
@@ -1568,13 +1566,13 @@ This is because we requested the finite difference gradient calculation method b
 <p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save and close the component.</p>
 <p>Note that it is not necessary to upload the <code class="docutils literal notranslate"><span class="pre">om_component.py</span></code> module again.
 To verify this, you can open the open-mdao component <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab and the file entry should appear again under 'user_input_files', just as before.</p>
-<p>Create a new <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> by selecting the play symbol ▶ in the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> controls interface.
+<p>Create a new <span class="xref std std-term">Run</span> by selecting the play symbol ▶ in the <span class="xref std std-term">Run</span> controls interface.
 This should execute very quickly.</p>
 <p>Select <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Log</span></code> to view the Run log as shown below.
 The open-mdao component entry lists optimal x and y values for the constrained problem, which have converged within a few decimals of the analytical solution (<span class="math notranslate nohighlight">\(x=7\)</span>, <span class="math notranslate nohighlight">\(y=-7\)</span>).</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/open-mdao-paraboloid-3.png"><img alt="run-log-open-mdao-paraboloid-constrained" class="bg-primary mb-1 align-center" src="../_images/open-mdao-paraboloid-3.png" style="width: 700px;" /></a>
 <p>Select the open-mdao component in the workspace, open the <code class="docutils literal notranslate"><span class="pre">Log</span></code> tab and select <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">files</span> <span class="pre">snapshot</span></code>.</p>
-<p>Visually compare the N2 diagram (n2.html) shown below with that from the previous <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.<br />
+<p>Visually compare the N2 diagram (n2.html) shown below with that from the previous <span class="xref std std-term">Run</span>.<br />
 The new constraint component appears as another Explicit Component under the paraboloid component.</p>
 <p>Next, inspect the 'run_driver.log' output file.
 Only 2 iterations, with 2 'Function evaluations' and 2 'Gradient evaluations' were required to reach convergence.
@@ -1591,7 +1589,7 @@ With one paraboloid component evaluation yielding derivatives with respect to al
 It may take a minute or so for the Cloud session to be reset.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You should see a warning message whenever you are about to delete a <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. If you select to continue, then all the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> session data (Run log and component logs) will be permanently deleted.</p>
+<p>You should see a warning message whenever you are about to delete a <span class="xref std std-term">Run</span>. If you select to continue, then all the <span class="xref std std-term">Run</span> session data (Run log and component logs) will be permanently deleted.</p>
 </div>
 </section>
 <section id="references">
@@ -1670,8 +1668,8 @@ It may take a minute or so for the Cloud session to be reset.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-saved-session">2.1. Opening a saved session</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-driver-component">2.2. Create the driver component</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 打开已保存的会话</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 创建驱动程序组件</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties">2.2.1. Properties</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">2.2.2. Parameters</a></li>
 </ul>
