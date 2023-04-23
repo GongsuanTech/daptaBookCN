@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome!
+                    欢迎大家!
                 </a>
             </li>
         </ul>
@@ -373,21 +373,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-components">3.1. Create the Components</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-model-component">3.1.1. Parametric-model component</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculix-fea-component">3.1.2. Calculix-fea component</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-processor-component">3.1.3. Results processor component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1. 创建组件</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.1. 参数化模型组件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculix-fea">3.1.2. Calculix-fea组件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.3. 结果处理组件</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-connections">3.2. Create the Connections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-connection">3.2.1. First connection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-connections">3.2.2. More connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. 创建连接</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.1. 第一次连接</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.2. 更多连接</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-workflow">3.3. Execute the workflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-outputs">3.4. Inspect the outputs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up">3.5. Clean-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.6. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.3. 执行工作流程</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.4. 检查输出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.5. 清理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-chaining-component-analyses-references">3.6. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -401,33 +401,36 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">3. </span>链接组件分析<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://app.daptaflow.com/tutorial/3"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> Load tutorial into dapta app</a>.
-<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> View files on Github</a>.</p>
-<p><strong>Duration: 45 min</strong></p>
-<p>In this tutorial we explore the usage of <a class="reference internal" href="../Reference/Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a>s to chain the execution of <a class="reference internal" href="../Reference/Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s.
-The example also introduces a finite element analysis specific 'calculix-fea-comp' component API.</p>
+<p><a class="reference external" href="https://app.daptaflow.com/tutorial/3"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> 加载教程到dapta应用程序</a>.
+<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> 在Github中查看文件</a>.</p>
+<p><strong>预计时间：45分钟</strong></p>
+<p>在本教程中，我们探讨了<a class="reference internal" href="../Reference/Glossary.html#term-1"><span class="xref std std-term">连接</span></a>的用法：将<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>的执行链接起来。
+该示例还介绍了一个关于有限元分析的特定组件API ：<code class="docutils literal notranslate"><span class="pre">calculix-fea-comp</span></code>。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/parametric-model-1.png"><img alt="chained process" class="bg-primary mb-1 align-center" src="../_images/parametric-model-1.png" style="width: 700px;" /></a>
-<section id="create-the-components">
-<h2><span class="section-number">3.1. </span>Create the Components<a class="headerlink" href="#create-the-components" title="Permalink to this heading">#</a></h2>
-<p>This example replicates the chained analyses described in Parts 1 and 2 of the <a class="reference external" href="https://youtube.com/playlist?list=PL3ZV4Vo-Sjze6-DaoPgJcIvU-uAYB7KpZ">Parametric wing model series</a>.
-We make use of python and the open source software <a class="reference external" href="http://www.dhondt.de/">CalculiX GraphiX</a> to create a parametric finite element model of a composite wing subject to a static tip load, which is then analysed using <a class="reference external" href="http://www.dhondt.de/">CalculiX CrunchiX</a>.</p>
-<p>We show how the previously monolithic python code can be split into discrete and potentially re-usable <a class="reference internal" href="../Reference/Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s.
-The details of the python code were previously covered in the videos and associated blog posts (see <a class="reference internal" href="#tutorials-chaining-component-analyses-references"><span class="std std-ref">references 1 and 2</span></a>).</p>
-<p>We group the parametric model analysis processes into three distinct <a class="reference internal" href="../Reference/Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s as shown in the figure below.</p>
+<section id="id2">
+<h2><span class="section-number">3.1. </span>创建组件<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>本示例复制了<a class="reference external" href="https://youtube.com/playlist?list=PL3ZV4Vo-Sjze6-DaoPgJcIvU-uAYB7KpZ">参数化机翼模型系列</a>
+第1与2部分中介绍的链接分析。我们利用Python和开源软件<a class="reference external" href="http://www.dhondt.de/">CalculiX GraphiX</a>
+创建了一个受静态尖端载荷作用的复合材料机翼的参数化有限元模型，
+然后使用<a class="reference external" href="http://www.dhondt.de/">CalculiX CrunchiX</a>进行分析。</p>
+<p>我们展示了如何将之前的单体Python代码分割成离散的、具有潜在重用价值的<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>。
+详细的Python代码在之前的视频和相关博客文章中已经涵盖
+（见<a class="reference internal" href="#tutorials-chaining-component-analyses-references"><span class="std std-ref">参考文献1和2</span></a>）。</p>
+<p>我们将参数化模型分析过程分为三个不同的<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>，如下图所示。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/parametric-model-2.png"><img alt="chained-process-components" class="bg-primary mb-1 align-center" src="../_images/parametric-model-2.png" style="width: 700px;" /></a>
-<section id="parametric-model-component">
-<h3><span class="section-number">3.1.1. </span>Parametric-model component<a class="headerlink" href="#parametric-model-component" title="Permalink to this heading">#</a></h3>
-<p>The parametric-model component defines a parametric three-dimensional wing geometry in python. It also outputs meshing instructions for Calculix GraphiX in the .fdb file format.</p>
-<p>The component Parameters include the span and chord of the wing, as well as the aerofoil wing cross-section, which is defined by uploading a CSV input file with x and y section coordinates.</p>
-<p>Create the component:</p>
+<section id="id3">
+<h3><span class="section-number">3.1.1. </span>参数化模型组件<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>参数化模型组件使用Python定义参数化三维机翼几何形状。它还会为Calculix GraphiX输出.fdb文件格式的网格生成指令。</p>
+<p>该组件的参数包括机翼的展长和弦长，以及通过上传包含 x 和 y 截面坐标的CSV输入文件定义的翼型横截面。</p>
+<p>创建组件：</p>
 <ul class="simple">
-<li><p>Right-click in the workspace and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Empty</span> <span class="pre">Node</span></code>. Select the empty component to edit it.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab, fill in the component name, <code class="docutils literal notranslate"><span class="pre">parametric-model</span></code>, and select the generic python component API <code class="docutils literal notranslate"><span class="pre">generic-python3-comp:latest</span></code>.</p></li>
-<li><p>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">compute.py</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">naca0012.csv</span></code> files from below into a text editor, save them locally.
-Then upload the first 3 files under the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab and upload the <code class="docutils literal notranslate"><span class="pre">naca0012.csv</span></code> under the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab by selecting <code class="docutils literal notranslate"><span class="pre">upload</span> <span class="pre">user</span> <span class="pre">input</span> <span class="pre">files</span></code>.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab check the box next to the <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Node</span></code> option.</p></li>
-<li><p>Copy the contents of the parameters JSON object below into the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab text box.</p></li>
-<li><p>Copy the following JSON object into the <code class="docutils literal notranslate"><span class="pre">Outputs</span></code> tab text box:</p></li>
+<li><p>在工作区中单击右键，选择<code class="docutils literal notranslate"><span class="pre">添加空节点</span></code>。选择空组件进行编辑。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，填写组件名称为<code class="docutils literal notranslate"><span class="pre">parametric-model</span></code>，并选择通用的Python组件API<code class="docutils literal notranslate"><span class="pre">generic-python3-comp:latest</span></code>。</p></li>
+<li><p>将下面的<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>、<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>和<code class="docutils literal notranslate"><span class="pre">naca0012.csv</span></code>文件内容复制到文本编辑器中，并在本地保存。
+然后在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下上传前三个文件，在<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡下通过选择<code class="docutils literal notranslate"><span class="pre">上传用户输入文件</span></code>来上传<code class="docutils literal notranslate"><span class="pre">naca0012.csv</span></code>文件。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，勾选<code class="docutils literal notranslate"><span class="pre">开始节点</span></code>选项的复选框。</p></li>
+<li><p>将下面的参数JSON对象内容复制到<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡的文本框中。</p></li>
+<li><p>将以下JSON对象复制到<code class="docutils literal notranslate"><span class="pre">输出</span></code>选项卡的文本框中：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;files.cgx_file&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span>
@@ -435,7 +438,7 @@ Then upload the first 3 files under the <code class="docutils literal notranslat
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save and close the component.</p></li>
+<li><p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>保存并关闭组件。</p></li>
 </ul>
 <div class="sd-tab-set docutils" id="tutorials-chained-components-parametric-model-files">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -1285,22 +1288,24 @@ parameters</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="calculix-fea-component">
-<h3><span class="section-number">3.1.2. </span>Calculix-fea component<a class="headerlink" href="#calculix-fea-component" title="Permalink to this heading">#</a></h3>
-<p>This component first executes CalculiX GraphiX in batch mode on the .fdb file from the parametric-model component to generate the finite element model mesh file (all.msh).
-Then, the composite material shell section properties are generated in python and written to file (composite_shell.inp), before the finite element analysis (FEA) of the model is executed with CalculiX CrunchiX.</p>
-<p>The component outputs the mesh node deflections at the tip of the wing (FEA output file 'ccx_static_tip_shear.dat'), as well as the model mesh file and a node set definition file, which will be needed for post-processing of the FEA results in the next component.</p>
-<p>Here we use an application-specific component API called 'calculix-fea-comp', which ensures Calculix is installed in the local compute environment.
-It also allows us to execute CalculiX from python, by importing the <code class="docutils literal notranslate"><span class="pre">execute_cgx</span></code> and <code class="docutils literal notranslate"><span class="pre">execute_fea</span></code> methods from the <code class="docutils literal notranslate"><span class="pre">calculix</span></code> module in the compute function.
-In all other respects, this API is identical to the generic python component API <code class="docutils literal notranslate"><span class="pre">generic-python3-comp</span></code>.</p>
-<p>Create the component:</p>
+<section id="calculix-fea">
+<h3><span class="section-number">3.1.2. </span>Calculix-fea组件<a class="headerlink" href="#calculix-fea" title="Permalink to this heading">#</a></h3>
+<p>该组件首先在参数化模型组件的.fdb文件上批处理执行CalculiX GraphiX，生成有限元模型网格文件（all.msh）。
+然后，使用Python生成复合材料壳体截面属性并写入文件（composite_shell.inp），
+再使用CalculiX CrunchiX执行模型的有限元分析（FEA）。</p>
+<p>该组件的输出：机翼尖部的网格节点挠度（FEA输出文件【ccx_static_tip_shear.dat】），
+以及模型网格文件和节点集定义文件，都将被用于下一个组件中的有限元分析结果后处理。</p>
+<p>在这里，我们使用一个特定于应用的组件API称为【calculix-fea-comp】，它确保Calculix被安装在本地计算环境。
+它还允许我们通过从计算函数中的<code class="docutils literal notranslate"><span class="pre">calculix</span></code>模块导入<code class="docutils literal notranslate"><span class="pre">execute_cgx</span></code>和<code class="docutils literal notranslate"><span class="pre">execute_fea</span></code>方法从Python中执行CalculiX。
+在所有其他方面，该API与通用Python组件API<code class="docutils literal notranslate"><span class="pre">generic-python3-comp</span></code>相同。</p>
+<p>创建组件：</p>
 <ul class="simple">
-<li><p>Right-click in the workspace and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Empty</span> <span class="pre">Node</span></code>. Select the empty component to edit it.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab, fill in the component name, <code class="docutils literal notranslate"><span class="pre">calculix-fea</span></code>, and select the component API <code class="docutils literal notranslate"><span class="pre">calculix-fea-comp:latest</span></code>.</p></li>
-<li><p>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">compute.py</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">ccx_static_tip_shear.inp</span></code> files from below into a text editor, save them locally.
-Then upload the first 3 files under the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab and upload the last one under the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab by selecting <code class="docutils literal notranslate"><span class="pre">upload</span> <span class="pre">user</span> <span class="pre">input</span> <span class="pre">files</span></code>.</p></li>
-<li><p>Copy the contents of the parameters JSON object below into the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab text box.</p></li>
-<li><p>Copy the following JSON object into the <code class="docutils literal notranslate"><span class="pre">Inputs</span></code> tab text box:</p></li>
+<li><p>在工作区中单击右键并选择<code class="docutils literal notranslate"><span class="pre">添加空节点</span></code>。选择空组件并编辑。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中填写组件名称为<code class="docutils literal notranslate"><span class="pre">calculix-fea</span></code>，并选择组件API<code class="docutils literal notranslate"><span class="pre">calculix-fea-comp:latest</span></code>。</p></li>
+<li><p>将下面的<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>、<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>和<code class="docutils literal notranslate"><span class="pre">ccx_static_tip_shear.inp</span></code>文件的内容复制到文本编辑器中，
+并在本地保存。然后在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下上传前3个文件，在<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡下通过选择<code class="docutils literal notranslate"><span class="pre">上传用户输入文件</span></code>上传最后一个文件。</p></li>
+<li><p>将下面的参数JSON对象的内容复制到<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡文本框中。</p></li>
+<li><p>将以下JSON对象复制到<code class="docutils literal notranslate"><span class="pre">输入</span></code>选项卡文本框中：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;files.cgx_file&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
@@ -1309,7 +1314,7 @@ Then upload the first 3 files under the <code class="docutils literal notranslat
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Copy the following JSON object into the <code class="docutils literal notranslate"><span class="pre">Outputs</span></code> tab text box:</p></li>
+<li><p>将以下JSON对象复制到<code class="docutils literal notranslate"><span class="pre">输出</span></code>选项卡文本框中：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;files.analysis_output_file&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
@@ -1319,7 +1324,7 @@ Then upload the first 3 files under the <code class="docutils literal notranslat
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save and close the component.</p></li>
+<li><p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>以保存并关闭组件。</p></li>
 </ul>
 <div class="sd-tab-set docutils" id="tutorials-chained-components-calculix-fea-files">
 <input checked="checked" id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
@@ -1711,18 +1716,18 @@ parameters</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="results-processor-component">
-<h3><span class="section-number">3.1.3. </span>Results processor component<a class="headerlink" href="#results-processor-component" title="Permalink to this heading">#</a></h3>
-<p>The last component in the execution chain reads the FEA analysis outputs at the mesh nodes at the tip of the wing and calculates average wing tip deflections and rotations.
-This data is output as a python dictionary with six entries: the 3 deflections (&quot;U&quot;) in global x, y and z, and the 3 rotations (&quot;R&quot;) about x, y, z.</p>
-<p>Create the component:</p>
+<section id="id4">
+<h3><span class="section-number">3.1.3. </span>结果处理组件<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>执行链中的最后一个组件读取有限元分析输出，并计算机翼尖端网格节点处的挠度和扭转。
+该数据作为一个包括六个条目的Python字典输出：全局x、y和z中的三个挠度（“U”）以及绕x、y、z旋转的三个转角（“R”）。</p>
+<p>创建组件：</p>
 <ul class="simple">
-<li><p>Right-click in the workspace and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Empty</span> <span class="pre">Node</span></code>. Select the empty component to edit it.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab, fill in the component name, <code class="docutils literal notranslate"><span class="pre">fea-results-processor</span></code>, and select the component API <code class="docutils literal notranslate"><span class="pre">generic-python3-comp:latest</span></code>.</p></li>
-<li><p>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">compute.py</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> files from below into a text editor, save them locally.
-Then upload them under the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab check the box next to the <code class="docutils literal notranslate"><span class="pre">End</span> <span class="pre">Node</span></code> option.</p></li>
-<li><p>Copy the following JSON object into the <code class="docutils literal notranslate"><span class="pre">Inputs</span></code> tab text box:</p></li>
+<li><p>在工作区中单击右键并选择<code class="docutils literal notranslate"><span class="pre">添加空节点</span></code>。选择空组件并进行编辑。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，填写组件名称<code class="docutils literal notranslate"><span class="pre">fea-results-processor</span></code>，并选择组件API<code class="docutils literal notranslate"><span class="pre">generic-python3-comp:latest</span></code>。</p></li>
+<li><p>从下面的内容中复制<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>、<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>文件的内容到文本编辑器中，并在本地保存。
+然后在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下上传它们。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中勾选<code class="docutils literal notranslate"><span class="pre">结束节点</span></code>选项复选框。</p></li>
+<li><p>将以下JSON对象复制到<code class="docutils literal notranslate"><span class="pre">输入</span></code>选项卡文本框中：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;files.analysis_output_file&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
@@ -1732,7 +1737,7 @@ Then upload them under the <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Copy the following JSON object into the <code class="docutils literal notranslate"><span class="pre">Outputs</span></code> tab text box:</p></li>
+<li><p>将以下JSON对象复制到<code class="docutils literal notranslate"><span class="pre">输出</span></code>选项卡文本框中：</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;Ux&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
@@ -1745,11 +1750,11 @@ Then upload them under the <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save and close the component.</p></li>
+<li><p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>以保存编辑并关闭组件界面。</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Remember to save the session data now by selecting <code class="docutils literal notranslate"><span class="pre">Download</span></code> from the interface controls.</p>
+<p>现在请记得通过选择界面控件<code class="docutils literal notranslate"><span class="pre">下载</span></code>来保存会话数据。</p>
 </div>
 <div class="sd-tab-set docutils" id="tutorials-chained-components-results-processor-files">
 <input checked="checked" id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
@@ -2053,67 +2058,66 @@ requirements</label><div class="sd-tab-content docutils">
 </div>
 </section>
 </section>
-<section id="create-the-connections">
-<h2><span class="section-number">3.2. </span>Create the Connections<a class="headerlink" href="#create-the-connections" title="Permalink to this heading">#</a></h2>
-<p>We can now connect the <a class="reference internal" href="../Reference/Glossary.html#term-Component"><span class="xref std std-term">Component</span></a>s we created to ensure that outputs and inputs are passed between them as expected. A <a class="reference internal" href="../Reference/Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a> is defined as a data link from a <a class="reference internal" href="../Reference/Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> output handle to another <a class="reference internal" href="../Reference/Glossary.html#term-Component"><span class="xref std std-term">Component</span></a> input handle.</p>
-<section id="first-connection">
-<h3><span class="section-number">3.2.1. </span>First connection<a class="headerlink" href="#first-connection" title="Permalink to this heading">#</a></h3>
-<p>Create a first connection by selecting the output handle of the parametric-model component and dragging a line to the 'files.cgx_file' input handle of the calculix-fea component.
-Hover the mouse pointer over a handle to see the name of the associated input or output data appear below the component.</p>
-<p>By default, a new connection is a 'Design variable' type connection (black line), that is not valid for transferring files (see the dashboard Reference section for details).</p>
-<p>Edit the <a class="reference internal" href="../Reference/Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a> by selecting it in the workspace.
-In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab change the <a class="reference internal" href="../Reference/Glossary.html#term-Connection"><span class="xref std std-term">Connection</span></a> Type option from the default 'Design variable' to the 'Implicit variable or file' option by selecting the corresponding radio button.</p>
-<p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save the change and close the connection interface.
-Verify that the connection line colour has become green, which indicates an 'implicit' type data connection.</p>
+<section id="id5">
+<h2><span class="section-number">3.2. </span>创建连接<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>我们现在可以连接我们创建的各个<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>，以确保预期的输入和输出在它们之间有效传递。<a class="reference internal" href="../Reference/Glossary.html#term-1"><span class="xref std std-term">连接</span></a>被定义为从<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>输出句柄到另一个<a class="reference internal" href="../Reference/Glossary.html#term-0"><span class="xref std std-term">组件</span></a>输入句柄的数据链接。</p>
+<section id="id6">
+<h3><span class="section-number">3.2.1. </span>第一次连接<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>通过选择参数化模型组件的输出句柄并将线条拖动到calculix-fea组件的【files.cgx_file】输入句柄，创建第一个连接。将鼠标悬停在句柄上，可以看到相关输入或输出数据的名称出现在组件下面。</p>
+<p>默认情况下，一个新连接是【设计变量】类型连接（黑色线），不能用于传输文件（有关详细信息，请参见仪表板参考部分）。</p>
+<p>在工作区中选择<a class="reference internal" href="../Reference/Glossary.html#term-1"><span class="xref std std-term">连接</span></a>并编辑它。在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下，通过选择相应的单选按钮，
+将<a class="reference internal" href="../Reference/Glossary.html#term-1"><span class="xref std std-term">连接</span></a>类型选项从默认的【设计变量】更改为【隐式变量或文件】。</p>
+<p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>以保存更改并关闭连接界面。检查连接线颜色是否变为绿色，这表示一种【隐式】类型的数据连接。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default the connection label is set to the name of the associated output handle data.
-Indeed, there is no requirement for the input and output data names to match - so we could easily connect output 'apples' to input 'oranges' if we are not careful!</p>
+<p>默认情况下，连接标签设置为相关输出句柄数据的名称。实际上，没有要求输入和输出数据名称必须匹配。
+因此，如果我们不小心的话，很容易连接错误！</p>
 </div>
 </section>
-<section id="more-connections">
-<h3><span class="section-number">3.2.2. </span>More connections<a class="headerlink" href="#more-connections" title="Permalink to this heading">#</a></h3>
-<p>In the same way, create 3 more connections between the calculix-fea component and the fea-results-processor component, linking the handles with matching data names.</p>
-<p>Edit all 3 connections to modify them to 'implicit' type data connections, since we are again transferring files and not design variables.</p>
-<p>Check that all 3 components have green tick marks appearing next to the component name to indicate that they are valid.</p>
-<p>Save the session data now by selecting <code class="docutils literal notranslate"><span class="pre">Download</span></code> from the interface controls.</p>
+<section id="id7">
+<h3><span class="section-number">3.2.2. </span>更多连接<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>以相同的方式，在计算calculix-fea组件和fea-results-processor组件之间创建3个连接，将具有匹配数据名称的句柄链接起来。</p>
+<p>编辑所有3个连接，将它们修改为【隐式】类型数据连接，因为我们传输文件而不是设计变量。</p>
+<p>检查所有3个组件旁边是否出现绿色勾号，以指示它们是有效的。</p>
+<p>现在通过从界面控件中选择<code class="docutils literal notranslate"><span class="pre">下载</span></code>来保存会话数据。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The four connection objects should appear under the 'connections' key in the session data file.</p>
+<p>四个连接对象应该出现在会话数据文件的'connections'键下。</p>
 </div>
 </section>
 </section>
-<section id="execute-the-workflow">
-<h2><span class="section-number">3.3. </span>Execute the workflow<a class="headerlink" href="#execute-the-workflow" title="Permalink to this heading">#</a></h2>
-<p>We can now execute the chained component analysis <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> by selecting the play symbol ▶ in the Run controls interface.</p>
-<p>Once the run has started, each component will setup and then execute one at a time.
-The setup order is arbitrary, but the compute functions will always be executed from the 'Start Node' to the 'End Node' (see dashboard Reference section for details).</p>
-<p>The <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> should complete once the fea-results-component compute has completed.</p>
+<section id="id8">
+<h2><span class="section-number">3.3. </span>执行工作流程<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>现在，我们可以通过选择<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>控制界面中的运行符号 ▶ 来执行链接组件的分析运行。</p>
+<p>一旦运行开始，每个组件将会被设置然后依次执行。设置顺序是任意的，
+但是计算函数总是会从【起始节点】到【结束节点】执行（有关详细信息，请参见控制面板参考部分）。</p>
+<p>一旦fea-results-component计算完成后，<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>应该就完成了。</p>
 </section>
-<section id="inspect-the-outputs">
-<h2><span class="section-number">3.4. </span>Inspect the outputs<a class="headerlink" href="#inspect-the-outputs" title="Permalink to this heading">#</a></h2>
-<p>The <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log summarises the output of the components. Open the log by selecting <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Log</span></code> in the interface controls.</p>
-<p>Scroll down to the &quot;run_output&quot; section to see that this contains the compute function output messages from all three components in the order of execution as shown below.
-The last message contains the wing tip deflection and rotation data as expected.</p>
-<p>Also inspect the <code class="docutils literal notranslate"><span class="pre">Log</span></code> tab of all 3 components and download the file snapshots to view the input, connection and output files of all components.</p>
-<p>Save the session data and the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log now by selecting <code class="docutils literal notranslate"><span class="pre">Download</span></code> from the interface controls.</p>
+<section id="id9">
+<h2><span class="section-number">3.4. </span>检查输出<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>日志总结了组件的输出。通过选择界面控件中的<code class="docutils literal notranslate"><span class="pre">查看日志</span></code>来打开日志。</p>
+<p>向下滚动到【run_output】部分，可以看到它包含了所有三个组件按照执行顺序排列的计算函数输出信息，
+如下图所示。最后一条信息包含了预期的翼尖挠度和转角数据。</p>
+<p>也需要检查所有3个组件的<code class="docutils literal notranslate"><span class="pre">日志</span></code>选项卡，并下载文件快照以查看所有组件的输入、连接和输出文件。</p>
+<p>现在，通过选择界面控件中的<code class="docutils literal notranslate"><span class="pre">下载</span></code>来保存会话数据和<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>日志。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The 'connections' folder that appears in the 'files snapshot' zip folder contains any incoming connection files. This is to differentiate them from parametric and API input files in the user file storage system, where these files exist as symbolic links to the upstream component file to improve efficiency. However, the connection files are copied into the <code class="docutils literal notranslate"><span class="pre">parameters[&quot;inputs_folder_path&quot;]</span></code> before the compute function starts.</p>
+<p>【文件快照】zip文件夹中出现的【连接】文件夹包含任何传入的连接文件。
+这是为了将它们与用户文件存储系统中的参数化和API输入文件区分开来，其中这些文件存在于指向上游组件文件的符号链接中，
+以提高效率。然而，在计算函数开始之前，连接文件会被复制到<code class="docutils literal notranslate"><span class="pre">parameters[&quot;inputs_folder_path&quot;]</span></code>中。</p>
 </div>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/parametric-model-3.png"><img alt="run log" class="bg-primary mb-1 align-center" src="../_images/parametric-model-3.png" style="width: 700px;" /></a>
 </section>
-<section id="clean-up">
-<h2><span class="section-number">3.5. </span>Clean-up<a class="headerlink" href="#clean-up" title="Permalink to this heading">#</a></h2>
-<p>Delete your session by selecting <code class="docutils literal notranslate"><span class="pre">New</span></code> in the interface.
-It may take a minute or so for the Cloud session to be reset.</p>
+<section id="id10">
+<h2><span class="section-number">3.5. </span>清理<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<p>通过选择界面中的<code class="docutils literal notranslate"><span class="pre">创建</span></code>来删除您的会话，可能需要一分钟左右在云端重置会话。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You should see a warning message whenever you are about to delete a <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. If you select to continue, then all the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> session data (Run log and component logs) will be permanently deleted.</p>
+<p>当您即将删除一个<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>时，您应该会看到一个警告消息。如果您选择继续，则所有的<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>数据（会话数据、输入和输出）将被永久删除。</p>
 </div>
 </section>
-<section id="references">
-<span id="tutorials-chaining-component-analyses-references"></span><h2><span class="section-number">3.6. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<section id="tutorials-chaining-component-analyses-references">
+<span id="id11"></span><h2><span class="section-number">3.6. </span>参考文献<a class="headerlink" href="#tutorials-chaining-component-analyses-references" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.dapta.com/parametric-fem-model-creation-with-python-and-calculix-graphix-cgx/">Parametric FEM model creation with Python and CalculiX GraphiX (cgx)</a></p></li>
 <li><p><a class="reference external" href="https://www.dapta.com/automated-fem-analysis-and-output-processing-with-python-and-calculix-crunchix-ccx/">Automated FEM analysis and output processing with Python and CalculiX CrunchiX (ccx)</a></p></li>
@@ -2188,21 +2192,21 @@ It may take a minute or so for the Cloud session to be reset.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-components">3.1. Create the Components</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametric-model-component">3.1.1. Parametric-model component</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculix-fea-component">3.1.2. Calculix-fea component</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-processor-component">3.1.3. Results processor component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1. 创建组件</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.1. 参数化模型组件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculix-fea">3.1.2. Calculix-fea组件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.3. 结果处理组件</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-connections">3.2. Create the Connections</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-connection">3.2.1. First connection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-connections">3.2.2. More connections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. 创建连接</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.1. 第一次连接</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.2. 更多连接</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-workflow">3.3. Execute the workflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-outputs">3.4. Inspect the outputs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up">3.5. Clean-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.6. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.3. 执行工作流程</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.4. 检查输出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.5. 清理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-chaining-component-analyses-references">3.6. 参考文献</a></li>
 </ul>
   </nav></div>
 

@@ -1,12 +1,12 @@
 # 链接组件分析
 
-[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> Load tutorial into dapta app](https://app.daptaflow.com/tutorial/3).
-[<img src="media/github.svg" alt="github" width="25px" height="25px"> View files on Github](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model).
+[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> 加载教程到dapta应用程序](https://app.daptaflow.com/tutorial/3).
+[<img src="media/github.svg" alt="github" width="25px" height="25px"> 在Github中查看文件](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model).
 
-**Duration: 45 min**
+**预计时间：45分钟**
 
-In this tutorial we explore the usage of {term}`Connection`s to chain the execution of {term}`Component`s. 
-The example also introduces a finite element analysis specific 'calculix-fea-comp' component API.  
+在本教程中，我们探讨了{term}`连接`的用法：将{term}`组件`的执行链接起来。
+该示例还介绍了一个关于有限元分析的特定组件API ：`calculix-fea-comp`。
 
 ```{image} media/parametric-model-1.png
 :alt: chained process
@@ -15,15 +15,18 @@ The example also introduces a finite element analysis specific 'calculix-fea-com
 :align: center
 ```
 
-## Create the Components
+## 创建组件
 
-This example replicates the chained analyses described in Parts 1 and 2 of the [Parametric wing model series](https://youtube.com/playlist?list=PL3ZV4Vo-Sjze6-DaoPgJcIvU-uAYB7KpZ). 
-We make use of python and the open source software [CalculiX GraphiX](http://www.dhondt.de/) to create a parametric finite element model of a composite wing subject to a static tip load, which is then analysed using [CalculiX CrunchiX](http://www.dhondt.de/).
+本示例复制了[参数化机翼模型系列](https://youtube.com/playlist?list=PL3ZV4Vo-Sjze6-DaoPgJcIvU-uAYB7KpZ)
+第1与2部分中介绍的链接分析。我们利用Python和开源软件[CalculiX GraphiX](http://www.dhondt.de/) 
+创建了一个受静态尖端载荷作用的复合材料机翼的参数化有限元模型，
+然后使用[CalculiX CrunchiX](http://www.dhondt.de/)进行分析。
 
-We show how the previously monolithic python code can be split into discrete and potentially re-usable {term}`Component`s.
-The details of the python code were previously covered in the videos and associated blog posts (see [references 1 and 2](tutorials-chaining-component-analyses-references)). 
+我们展示了如何将之前的单体Python代码分割成离散的、具有潜在重用价值的{term}`组件`。
+详细的Python代码在之前的视频和相关博客文章中已经涵盖
+（见[参考文献1和2](tutorials-chaining-component-analyses-references)）。
 
-We group the parametric model analysis processes into three distinct {term}`Component`s as shown in the figure below. 
+我们将参数化模型分析过程分为三个不同的{term}`组件`，如下图所示。
 
 ```{image} media/parametric-model-2.png
 :alt: chained-process-components
@@ -32,26 +35,21 @@ We group the parametric model analysis processes into three distinct {term}`Comp
 :align: center
 ```
 
-### Parametric-model component
+### 参数化模型组件
 
-The parametric-model component defines a parametric three-dimensional wing geometry in python. It also outputs meshing instructions for Calculix GraphiX in the .fdb file format.  
+参数化模型组件使用Python定义参数化三维机翼几何形状。它还会为Calculix GraphiX输出.fdb文件格式的网格生成指令。
 
-The component Parameters include the span and chord of the wing, as well as the aerofoil wing cross-section, which is defined by uploading a CSV input file with x and y section coordinates.  
+该组件的参数包括机翼的展长和弦长，以及通过上传包含 x 和 y 截面坐标的CSV输入文件定义的翼型横截面。
 
-Create the component:
+创建组件：
 
-* Right-click in the workspace and select `Add Empty Node`. Select the empty component to edit it.
-
-* In the `Properties` tab, fill in the component name, `parametric-model`, and select the generic python component API `generic-python3-comp:latest`. 
-
-* Copy the contents of the `setup.py`, `compute.py`, `requirements.txt` and `naca0012.csv` files from below into a text editor, save them locally.
-Then upload the first 3 files under the `Properties` tab and upload the `naca0012.csv` under the `Parameters` tab by selecting `upload user input files`. 
-
-* In the `Properties` tab check the box next to the `Start Node` option. 
-
-* Copy the contents of the parameters JSON object below into the `Parameters` tab text box. 
-
-* Copy the following JSON object into the `Outputs` tab text box:
+* 在工作区中单击右键，选择`添加空节点`。选择空组件进行编辑。
+* 在`属性`选项卡中，填写组件名称为`parametric-model`，并选择通用的Python组件API`generic-python3-comp:latest`。
+* 将下面的`setup.py`、`compute.py`、`requirements.txt`和`naca0012.csv`文件内容复制到文本编辑器中，并在本地保存。
+然后在`属性`选项卡下上传前三个文件，在`参数`选项卡下通过选择`上传用户输入文件`来上传`naca0012.csv`文件。
+* 在`属性`选项卡中，勾选`开始节点`选项的复选框。
+* 将下面的参数JSON对象内容复制到`参数`选项卡的文本框中。
+* 将以下JSON对象复制到`输出`选项卡的文本框中：
 
 ```{code}
 {
@@ -59,7 +57,7 @@ Then upload the first 3 files under the `Properties` tab and upload the `naca001
 }
 ```
 
-* Select `Save data` to save and close the component. 
+* 选择`保存数据`保存并关闭组件。
 
 (tutorials-chained_components-parametric_model-files)=
 `````{tab-set}
@@ -90,29 +88,31 @@ Then upload the first 3 files under the `Properties` tab and upload the `naca001
 ````
 `````
 
-### Calculix-fea component
+### Calculix-fea组件
 
-This component first executes CalculiX GraphiX in batch mode on the .fdb file from the parametric-model component to generate the finite element model mesh file (all.msh). 
-Then, the composite material shell section properties are generated in python and written to file (composite_shell.inp), before the finite element analysis (FEA) of the model is executed with CalculiX CrunchiX. 
+该组件首先在参数化模型组件的.fdb文件上批处理执行CalculiX GraphiX，生成有限元模型网格文件（all.msh）。
+然后，使用Python生成复合材料壳体截面属性并写入文件（composite_shell.inp），
+再使用CalculiX CrunchiX执行模型的有限元分析（FEA）。
 
-The component outputs the mesh node deflections at the tip of the wing (FEA output file 'ccx_static_tip_shear.dat'), as well as the model mesh file and a node set definition file, which will be needed for post-processing of the FEA results in the next component.
+该组件的输出：机翼尖部的网格节点挠度（FEA输出文件【ccx_static_tip_shear.dat】），
+以及模型网格文件和节点集定义文件，都将被用于下一个组件中的有限元分析结果后处理。
 
-Here we use an application-specific component API called 'calculix-fea-comp', which ensures Calculix is installed in the local compute environment. 
-It also allows us to execute CalculiX from python, by importing the `execute_cgx` and `execute_fea` methods from the `calculix` module in the compute function. 
-In all other respects, this API is identical to the generic python component API `generic-python3-comp`.
+在这里，我们使用一个特定于应用的组件API称为【calculix-fea-comp】，它确保Calculix被安装在本地计算环境。
+它还允许我们通过从计算函数中的`calculix`模块导入`execute_cgx`和`execute_fea`方法从Python中执行CalculiX。
+在所有其他方面，该API与通用Python组件API`generic-python3-comp`相同。
 
-Create the component:
+创建组件：
 
-* Right-click in the workspace and select `Add Empty Node`. Select the empty component to edit it.
+* 在工作区中单击右键并选择`添加空节点`。选择空组件并编辑。
 
-* In the `Properties` tab, fill in the component name, `calculix-fea`, and select the component API `calculix-fea-comp:latest`. 
+* 在`属性`选项卡中填写组件名称为`calculix-fea`，并选择组件API`calculix-fea-comp:latest`。
 
-* Copy the contents of the `setup.py`, `compute.py`, `requirements.txt` and `ccx_static_tip_shear.inp` files from below into a text editor, save them locally.
-Then upload the first 3 files under the `Properties` tab and upload the last one under the `Parameters` tab by selecting `upload user input files`. 
+* 将下面的`setup.py`、`compute.py`、`requirements.txt`和`ccx_static_tip_shear.inp`文件的内容复制到文本编辑器中，
+并在本地保存。然后在`属性`选项卡下上传前3个文件，在`参数`选项卡下通过选择`上传用户输入文件`上传最后一个文件。
 
-* Copy the contents of the parameters JSON object below into the `Parameters` tab text box. 
+* 将下面的参数JSON对象的内容复制到`参数`选项卡文本框中。
 
-* Copy the following JSON object into the `Inputs` tab text box:
+* 将以下JSON对象复制到`输入`选项卡文本框中：
 
 ```{code}
 {
@@ -121,7 +121,7 @@ Then upload the first 3 files under the `Properties` tab and upload the last one
 }
 ```
 
-* Copy the following JSON object into the `Outputs` tab text box:
+* 将以下JSON对象复制到`输出`选项卡文本框中：
 
 ```{code}
 {
@@ -131,7 +131,7 @@ Then upload the first 3 files under the `Properties` tab and upload the last one
 }
 ```
 
-* Select `Save data` to save and close the component. 
+* 选择`保存数据`以保存并关闭组件。
 
 (tutorials-chained_components-calculix_fea-files)=
 `````{tab-set}
@@ -162,23 +162,23 @@ Then upload the first 3 files under the `Properties` tab and upload the last one
 ````
 `````
 
-### Results processor component
+### 结果处理组件
 
-The last component in the execution chain reads the FEA analysis outputs at the mesh nodes at the tip of the wing and calculates average wing tip deflections and rotations. 
-This data is output as a python dictionary with six entries: the 3 deflections ("U") in global x, y and z, and the 3 rotations ("R") about x, y, z.  
+执行链中的最后一个组件读取有限元分析输出，并计算机翼尖端网格节点处的挠度和扭转。
+该数据作为一个包括六个条目的Python字典输出：全局x、y和z中的三个挠度（“U”）以及绕x、y、z旋转的三个转角（“R”）。
 
-Create the component:
+创建组件：
 
-* Right-click in the workspace and select `Add Empty Node`. Select the empty component to edit it.
+* 在工作区中单击右键并选择`添加空节点`。选择空组件并进行编辑。
 
-* In the `Properties` tab, fill in the component name, `fea-results-processor`, and select the component API `generic-python3-comp:latest`. 
+* 在`属性`选项卡中，填写组件名称`fea-results-processor`，并选择组件API`generic-python3-comp:latest`。
 
-* Copy the contents of the `setup.py`, `compute.py`, `requirements.txt` files from below into a text editor, save them locally.
-Then upload them under the `Properties` tab. 
+* 从下面的内容中复制`setup.py`、`compute.py`、`requirements.txt`文件的内容到文本编辑器中，并在本地保存。
+然后在`属性`选项卡下上传它们。
 
-* In the `Properties` tab check the box next to the `End Node` option. 
+* 在`属性`选项卡中勾选`结束节点`选项复选框。
 
-* Copy the following JSON object into the `Inputs` tab text box:
+* 将以下JSON对象复制到`输入`选项卡文本框中：
 
 ```{code}
 {
@@ -188,7 +188,7 @@ Then upload them under the `Properties` tab.
 }
 ```
 
-* Copy the following JSON object into the `Outputs` tab text box:
+* 将以下JSON对象复制到`输出`选项卡文本框中：
 
 ```{code}
 {
@@ -201,10 +201,10 @@ Then upload them under the `Properties` tab.
 }
 ```
 
-* Select `Save data` to save and close the component. 
+* 选择`保存数据`以保存编辑并关闭组件界面。
 
 ```{note}
-Remember to save the session data now by selecting `Download` from the interface controls. 
+现在请记得通过选择界面控件`下载`来保存会话数据。
 ```
 
 (tutorials-chained_components-results_processor-files)=
@@ -226,64 +226,64 @@ Remember to save the session data now by selecting `Download` from the interface
 ````
 `````
 
-## Create the Connections
+## 创建连接
 
-We can now connect the {term}`Component`s we created to ensure that outputs and inputs are passed between them as expected. A {term}`Connection` is defined as a data link from a {term}`Component` output handle to another {term}`Component` input handle. 
+我们现在可以连接我们创建的各个{term}`组件`，以确保预期的输入和输出在它们之间有效传递。{term}`连接`被定义为从{term}`组件`输出句柄到另一个{term}`组件`输入句柄的数据链接。
+ 
+### 第一次连接 
 
-### First connection 
+通过选择参数化模型组件的输出句柄并将线条拖动到calculix-fea组件的【files.cgx_file】输入句柄，创建第一个连接。将鼠标悬停在句柄上，可以看到相关输入或输出数据的名称出现在组件下面。
 
-Create a first connection by selecting the output handle of the parametric-model component and dragging a line to the 'files.cgx_file' input handle of the calculix-fea component. 
-Hover the mouse pointer over a handle to see the name of the associated input or output data appear below the component.   
+默认情况下，一个新连接是【设计变量】类型连接（黑色线），不能用于传输文件（有关详细信息，请参见仪表板参考部分）。
 
-By default, a new connection is a 'Design variable' type connection (black line), that is not valid for transferring files (see the dashboard Reference section for details).  
+在工作区中选择{term}`连接`并编辑它。在`属性`选项卡下，通过选择相应的单选按钮，
+将{term}`连接`类型选项从默认的【设计变量】更改为【隐式变量或文件】。
 
-Edit the {term}`Connection` by selecting it in the workspace. 
-In the `Properties` tab change the {term}`Connection` Type option from the default 'Design variable' to the 'Implicit variable or file' option by selecting the corresponding radio button.
-
-Select `Save data` to save the change and close the connection interface.
-Verify that the connection line colour has become green, which indicates an 'implicit' type data connection. 
+选择`保存数据`以保存更改并关闭连接界面。检查连接线颜色是否变为绿色，这表示一种【隐式】类型的数据连接。
 
 ```{note}
-By default the connection label is set to the name of the associated output handle data. 
-Indeed, there is no requirement for the input and output data names to match - so we could easily connect output 'apples' to input 'oranges' if we are not careful!    
+默认情况下，连接标签设置为相关输出句柄数据的名称。实际上，没有要求输入和输出数据名称必须匹配。
+因此，如果我们不小心的话，很容易连接错误！
 ```
 
-### More connections
+### 更多连接
 
-In the same way, create 3 more connections between the calculix-fea component and the fea-results-processor component, linking the handles with matching data names. 
+以相同的方式，在计算calculix-fea组件和fea-results-processor组件之间创建3个连接，将具有匹配数据名称的句柄链接起来。
 
-Edit all 3 connections to modify them to 'implicit' type data connections, since we are again transferring files and not design variables.
+编辑所有3个连接，将它们修改为【隐式】类型数据连接，因为我们传输文件而不是设计变量。
 
-Check that all 3 components have green tick marks appearing next to the component name to indicate that they are valid. 
+检查所有3个组件旁边是否出现绿色勾号，以指示它们是有效的。
 
-Save the session data now by selecting `Download` from the interface controls. 
+现在通过从界面控件中选择`下载`来保存会话数据。
 
 ```{note}
-The four connection objects should appear under the 'connections' key in the session data file.    
+四个连接对象应该出现在会话数据文件的'connections'键下。   
 ```
 
-## Execute the workflow
+## 执行工作流程
 
-We can now execute the chained component analysis {term}`Run` by selecting the play symbol ▶ in the Run controls interface. 
+现在，我们可以通过选择{term}`运行`控制界面中的运行符号 ▶ 来执行链接组件的分析运行。
 
-Once the run has started, each component will setup and then execute one at a time. 
-The setup order is arbitrary, but the compute functions will always be executed from the 'Start Node' to the 'End Node' (see dashboard Reference section for details).
+一旦运行开始，每个组件将会被设置然后依次执行。设置顺序是任意的，
+但是计算函数总是会从【起始节点】到【结束节点】执行（有关详细信息，请参见控制面板参考部分）。
 
-The {term}`Run` should complete once the fea-results-component compute has completed.
+一旦fea-results-component计算完成后，{term}`运行`应该就完成了。
 
-## Inspect the outputs
+## 检查输出
 
-The {term}`Run` log summarises the output of the components. Open the log by selecting `View Log` in the interface controls. 
+{term}`运行`日志总结了组件的输出。通过选择界面控件中的`查看日志`来打开日志。
 
-Scroll down to the "run_output" section to see that this contains the compute function output messages from all three components in the order of execution as shown below. 
-The last message contains the wing tip deflection and rotation data as expected.
+向下滚动到【run_output】部分，可以看到它包含了所有三个组件按照执行顺序排列的计算函数输出信息，
+如下图所示。最后一条信息包含了预期的翼尖挠度和转角数据。
 
-Also inspect the `Log` tab of all 3 components and download the file snapshots to view the input, connection and output files of all components. 
+也需要检查所有3个组件的`日志`选项卡，并下载文件快照以查看所有组件的输入、连接和输出文件。
 
-Save the session data and the {term}`Run` log now by selecting `Download` from the interface controls. 
+现在，通过选择界面控件中的`下载`来保存会话数据和{term}`运行`日志。
 
 ```{note}
-The 'connections' folder that appears in the 'files snapshot' zip folder contains any incoming connection files. This is to differentiate them from parametric and API input files in the user file storage system, where these files exist as symbolic links to the upstream component file to improve efficiency. However, the connection files are copied into the `parameters["inputs_folder_path"]` before the compute function starts.    
+【文件快照】zip文件夹中出现的【连接】文件夹包含任何传入的连接文件。
+这是为了将它们与用户文件存储系统中的参数化和API输入文件区分开来，其中这些文件存在于指向上游组件文件的符号链接中，
+以提高效率。然而，在计算函数开始之前，连接文件会被复制到`parameters["inputs_folder_path"]`中。
 ```
 
 ```{image} media/parametric-model-3.png
@@ -292,17 +292,16 @@ The 'connections' folder that appears in the 'files snapshot' zip folder contain
 :width: 700px
 :align: center
 ```
-## Clean-up
+## 清理
 
-Delete your session by selecting `New` in the interface. 
-It may take a minute or so for the Cloud session to be reset. 
+通过选择界面中的`创建`来删除您的会话，可能需要一分钟左右在云端重置会话。
 
 ```{warning}
-You should see a warning message whenever you are about to delete a {term}`Run`. If you select to continue, then all the {term}`Run` session data (Run log and component logs) will be permanently deleted. 
+当您即将删除一个{term}`运行`时，您应该会看到一个警告消息。如果您选择继续，则所有的{term}`运行`数据（会话数据、输入和输出）将被永久删除。
 ```
 
 (tutorials-chaining-component-analyses-references)=
-## References
+## 参考文献
 
 1. [Parametric FEM model creation with Python and CalculiX GraphiX (cgx)](https://www.dapta.com/parametric-fem-model-creation-with-python-and-calculix-graphix-cgx/)
 2. [Automated FEM analysis and output processing with Python and CalculiX CrunchiX (ccx)](https://www.dapta.com/automated-fem-analysis-and-output-processing-with-python-and-calculix-crunchix-ccx/)
