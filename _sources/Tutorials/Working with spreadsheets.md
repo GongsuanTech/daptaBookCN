@@ -1,16 +1,16 @@
 # 使用电子表格仿真
 
-[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> Load tutorial into dapta app](https://app.daptaflow.com/tutorial/6).
-[<img src="media/github.svg" alt="github" width="25px" height="25px"> View files on Github](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/libreoffice).
+[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> 加载教程到dapta应用程序](https://app.daptaflow.com/tutorial/6).
+[<img src="media/github.svg" alt="github" width="25px" height="25px"> 在Github中查看文件](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/libreoffice).
 
-**Duration: 15 min**
+**预计时间：15分钟**
 
-In this example we explore the use of **spreadsheets and macros** within simulation workflows.
+在这个例子中，我们探索了在仿真工作流中**电子表格和宏**的使用。
 
-We replicate the [Simple optimisation problem](./Simple%20optimisation%20problem.md) simulation workflow, but this time using the spreadsheet component `libreoffice-comp` for the paraboloid function calculation instead of a pure python component. 
+我们复制了[简单优化问题](./Simple%20optimisation%20problem.md)的仿真工作流程，
+但这次使用电子表格组件`libreoffice-comp`来计算抛物面函数，而不是纯Python组件。
 
-Don't have time to work though the example yourself? 
-Watch the **[video tutorial](https://youtu.be/2GaVVrot-4I)** instead.
+没有时间亲自尝试这个示例吗？那就看**[视频教程](https://youtu.be/2GaVVrot-4I)**吧。
 
 ```{image} media/spreadsheet_1.png
 :alt: paraboloid-spreadsheet
@@ -19,65 +19,66 @@ Watch the **[video tutorial](https://youtu.be/2GaVVrot-4I)** instead.
 :align: center
 ```
 
-## Component description
+## 组件说明
 
-Spreadsheets, such as Microsoft's Excel® files, are widely used in engineering. 
+像Microsoft's Excel®文件一样，电子表格在工程领域被广泛使用。
 
-In simulation workflows, spreadsheets can be used to:
+在仿真工作流程中，电子表格可用于：
 
-* import data, from experiments for example; 
-* perform calculations on input data in an automated fashion;
-* record, visualise and store outputs.
+* 导入数据，例如来自实验的数据；
+* 自动对输入数据进行计算；
+* 记录、可视化和存储输出。
 
-Using the `libreoffice-comp` component API, spreadsheets can easily be integrated into any dapta {term}`Run`.
+组件API，电子表格可以轻松集成到任何dapta{term}`运行`中。
 
-The `libreoffice-comp` includes a full installation of [LibreOffice](https://www.libreoffice.org/), which includes a spreadsheet editor (Calc). 
-Calc can open and save files in its native Open Document Format (.ods), as well as Microsoft Excel® format (.xls), and it is also is compatible with macros (currently supported languages are LibreOffice Basic, BeanShell, JavaScript, and Python, with some support for importing Microsoft VBA macros too). 
-To find out more about writing LibreOffice macros, we recommend having a look at the [Getting Started with Macros](https://books.libreoffice.org/en/GS70/GS7013-GettingStartedWithMacros.html) guide. [Reference 1](tutorials-working-with-spreadsheets-references) also provides a good introduction to python macros for Calc. 
+`libreoffice-comp`包括[LibreOffice](https://www.libreoffice.org/)的完整安装版，
+其中包括电子表格编辑器（Calc）。Calc可以打开和保存其本地的Open Document Format (.ods)文件，
+以及Microsoft Excel®格式(.xls)文件，并且它也兼容宏（当前支持的语言是LibreOffice Basic、BeanShell、JavaScript和Python，同时还支持导入Microsoft VBA宏）。了解更多有关编写LibreOffice宏的信息，
+我们建议查看[入门指南](https://books.libreoffice.org/en/GS70/GS7013-GettingStartedWithMacros.html)。参考文献1也为Calc的Python宏提供了很好的介绍。
 
-Download the example spreadsheet (shown in the figure above) here: [paraboloid.ods](https://github.com/daptablade/docs/raw/master/mynewbook/Tutorials/libreoffice/paraboloid.ods). 
+请在这里下载示例电子表格（如上图所示）：[paraboloid.ods](https://github.com/daptablade/docs/raw/master/mynewbook/Tutorials/libreoffice/paraboloid.ods)。
 
-It includes a VBA macro that automatically calculates the paraboloid function f(x,y) from the [Simple component analysis](./Simple%20component%20analysis.md) example, whenever the spreadsheet x and y inputs are updated.
-The spreadsheet also contains an initially empty optimisation history table, which will be used to store and plot the optimisation history data during the {term}`Run`.   
+它包括一个VBA宏，每当电子表格的x和y输入被更新时，
+自动计算[简单组件分析](./Simple%20component%20analysis.md)示例中的抛物面函数f(x,y)。
+电子表格还包含一个最初为空的优化历史记录表，该表将用于存储和绘制{term}`运行`期间的优化历程数据。
 
-## Opening a saved session
+## 打开已保存的会话
 
-Since we already created and analysed the paraboloid component previously, we can load our previous session to speed things up. 
+由于我们之前已经创建和分析了抛物面组件，我们可以加载先前的会话以加快速度。
 
-Select `Open` from the interface controls to load the JSON formatted version of our previous session (dapta_input.json). 
-Alternatively, copy the object below into a text editor and save it locally, then select `Open` to load it. 
+从界面控件中选择`打开`以加载我们先前会话的JSON格式版本（dapta_input.json）。
+或者，将以下对象复制到文本编辑器中并在本地保存，然后选择`打开`以加载它。
 
 ```{literalinclude} ./paraboloid/dapta_input.json   
 :language: json
 ```
 
-The paraboloid component should have appeared in the workspace, but the question mark next to the component name indicates that it is missing some data. 
+抛物面组件应该已经出现在工作区，但组件名称旁边的问号表示它缺少一些数据。
 
-## Update the paraboloid component
+## 更新抛物面组件
 
-Copy the contents of the new `setup.py` and `compute.py` API files below into a text editor and save the files locally: 
+将以下新的`setup.py`和`compute.py` API文件的内容复制到文本编辑器中，并将文件保存到本地：
 
-* The `setup.py` function is similar to the previous one, but it also copies the spreadsheet file into the outputs folder and starts LibreOffice in headless mode by calling the `start_libreoffice` function. 
+* `setup.py`函数与先前的函数类似，但它还将电子表格文件复制到输出文件夹中，并通过调用`start_libreoffice`函数以无头模式启动LibreOffice。
 
-* The `compute.py` function opens the spreadsheet, writes the input x and y values to the input cells (which automatically executes the spreadsheet macro), and then copies the current x, y and calculated f(x,y) values to the optimisation history table. 
-This also automatically updates the line plots. 
-Finally the spreadsheet is saved and closed.     
+* `compute.py`函数打开电子表格，将输入的x和y值写入输入单元格（这将自动执行电子表格宏），然后将当前的x，y和计算出的f(x，y)值复制到优化历程记录表中。这也会自动更新线条图。最后保存并关闭电子表格。 
 
-Open the paraboloid component by selecting it in the workspace. 
+在工作区中选择【抛物面组件】并打开它。
 
-Update the `Properties` tab:
+更新`属性`选项卡：
 
-1. From the API dropdown menu, choose `libreoffice-comp:latest`
-2. Upload the new `setup.py` and `compute.py` API files by clicking on the corresponding links
+1. 从API下拉菜单中选择`libreoffice-comp:latest`
 
-Then, update the `Parameters` tab:
+2. 通过单击相应的链接上传新的`setup.py`和`compute.py` API文件
 
-1. Add the following key / value pair to the JSON object: `"ods_file": "paraboloid.ods"`
-2. Upload the input spreadsheet (paraboloid.ods) by selecting `upload user input files`. 
+然后，更新`参数`选项卡：
 
-Save and close the component by selecting the `Save data` button.
+1. 将以下 键/值 添加到JSON对象中：`ods_file：paraboloid.ods`
+2. 通过选择`上传用户输入文件`来上传输入电子表格（paraboloid.ods）。
 
-You can check that the component works as expected by executing the {term}`Run` now, or you can add a driver component in the next section before launching the {term}`Run`. 
+通过选择`保存数据`按钮保存并关闭组件。
+
+您可以通过执行{term}`运行`来检查组件是否按预期工作，或者在启动{term}`运行`之前添加下一部分的驱动程序组件。
 
 `````{tab-set}
 ````{tab-item} setup
@@ -92,31 +93,30 @@ You can check that the component works as expected by executing the {term}`Run` 
 ````
 `````
 
-## Adding the driver component
+## 添加驱动程序组件
 
-We will re-use the OpenMDAO driver we used previously in the [Simple optimisation problem](./Simple%20optimisation%20problem.md). 
-We adjust the driver parameters for this optimisation problem:
+我们将重复使用之前在[简单优化问题](./Simple%20optimisation%20problem.md)中使用的OpenMDAO驱动程序。
+我们调整驱动程序参数以解决这个优化问题：
 
-* The calculation of total derivatives across the chained components (using finite differencing) is requested by setting `"approx_totals": true` and `"fd_step": 0.0001` in the driver parameters.
-* Optimisation iteration history plots are requested by adding the "plot_history" option into the "visualise" parameter list.   
+* 过在驱动程序参数中设置`approx_totals: true`和`fd_step: 0.0001`来计算链接组件全微分（使用有限差分）。
+* 通过将【lot_history】选项添加到【visualise】参数列表中来显示优化迭代历程记录图。
 
-To create the driver component:
+创建驱动程序组件：
 
-* Right-click in the workspace and select `Add Empty Node`. Select the empty component to edit it.
+* 在工作区中单击右键并选择`添加空节点`。选择空组件进行编辑。
 
-* In the `Properties` tab, fill in the component name, `open-mdao`, and select the component API `generic-python3-driver:latest`. 
+* 在`属性`选项卡中，填写组件名称为`open-mdao`，并选择组件API`generic-python3-driver:latest`。
 
-* Copy the contents of the `setup.py`, `compute.py`, `requirements.txt` files from below into a text editor, save them locally.
-Then upload them under the `Properties` tab. 
+* 将以下`setup.py`，`compute.py`，`requirements.txt`文件的内容复制到文本编辑器中，并在本地保存。然后在`属性`选项卡下上传它们。
 
-* In the `Properties` tab check the box next to the `Driver` option. 
+* 在`属性`选项卡中，勾选`驱动程序`选项旁边的复选框。
 
-* Copy the contents of the parameters JSON object below into the `Parameters` tab text box. 
+* 将以下参数JSON对象的内容复制到`参数`选项卡文本框中。
 
-* Copy the contents of the `om_component.py` file from below into a text editor and save it locally. 
-Then upload it under the `Parameters` tab by selecting `upload user input files`.
+* 将下面的`om_component.py`文件的内容复制到文本编辑器中并将其保存到本地。
+然后通过选择`上传用户输入文件`在`参数`选项卡下上传它。
 
-* Select `Save data` to save and close the component. 
+* 选择`保存数据`保存并关闭组件。
 
 `````{tab-set}
 ````{tab-item} setup
@@ -146,40 +146,37 @@ Then upload it under the `Parameters` tab by selecting `upload user input files`
 ````
 `````
 
-### Execute the workflow
+### 执行工作流程
 
-We can now execute the design optimisation by selecting the play symbol ▶ in the Run controls interface. 
+现在，我们可以通过在运行控件界面中【运行】符号 ▶ 来执行优化设计。
 
-As before, the {term}`Run` should complete after 13 iterations of the paraboloid component (1 iteration of the open-mdao component). 
+与之前一样，在13次paraboloid组件迭代（1次open-mdao组件迭代）后，{term}`运行`完成。
 
-### Inspect the outputs
+### 检查输出
 
-The {term}`Run` log summarises the output of the components. Open the log by selecting `View Log` in the interface controls. 
-The "run_output" entry (at the end of the log) should state that the "OpenMDAO compute completed".  
+{term}`运行`日志总结了组件的输出。通过在界面控件中选择`查看日志`来打开日志。
+日志的【un_output】条目（在日志的末尾）应该显示【OpenMDAO计算已完成】。
 
-Next, close the {term}`Run` log and select the paraboloid component.
-Then select the `Log` tab and click on `download files snapshot`.
+接下来，关闭{term}`运行`日志并选择paraboloid组件。然后选择`日志`选项卡并单击`下载文件快照`。
 
-Open the downloaded zip folder and open the 'paraboloid.ods' output spreadsheet under the outputs folder.
-The optimisation history data should appear as iterations 0 to 12 to the left of the sheet.
-This data should also be plotted in the line-plots to the right.
-The history data includes major iterations, minor iterations (line searches) and function evaluations used to calculate the finite difference gradients used by the SLSQP algorithm.    
+打开下载的zip文件夹并在outputs文件夹下打开【araboloid.ods】输出电子表格。
+优化历程数据应显示为左侧的0到12次迭代。此数据还应在右侧的线图中绘制。
+历史数据包括用于计算SLSQP算法使用的有限差分梯度的主迭代、次迭代（线搜索）和函数评估。
 
-Similarly, you can inspect the outputs of the open-mdao component, which should include convergence history plots, showing the major iterations only. 
+同样，您可以检查open-mdao组件的输出，其中应包括显示主要迭代的收敛历程线图。
 
-Finally, you can save the session data and Run log by selecting `Download` from the interface controls. 
+最后，您可以通过选择界面控件中的`下载`来保存会话数据和运行日志。
 
-## Clean-up
+## 清理
 
-Delete your session by selecting `New` in the interface. 
-It may take a minute or so for the Cloud session to be reset. 
+通过选择界面中的`创建`来删除您的会话，可能需要一分钟左右在云端重置会话。
+
 
 ```{warning}
-You should see a warning message whenever you are about to delete a {term}`Run`. If you select to continue, then all the {term}`Run` session data (Run log and component logs) will be permanently deleted. 
+当您即将删除一个{term}`运行`时，您应该会看到一个警告消息。如果您选择继续，
+则所有的{term}`运行`数据（会话数据、输入和输出）将被永久删除。
 ```
-
-
 (tutorials-working-with-spreadsheets-references)=
-## References
+## 参考文献
 
 1. [Interface-oriented programming in OpenOffice / LibreOffice : automate your office tasks with Python Macros, 06/12/2015](http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html)

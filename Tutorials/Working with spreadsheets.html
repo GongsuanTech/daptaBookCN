@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome!
+                    欢迎大家!
                 </a>
             </li>
         </ul>
@@ -373,16 +373,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-description">6.1. Component description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-saved-session">6.2. Opening a saved session</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-paraboloid-component">6.3. Update the paraboloid component</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-the-driver-component">6.4. Adding the driver component</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-workflow">6.4.1. Execute the workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-outputs">6.4.2. Inspect the outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 组件说明</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 打开已保存的会话</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.3. 更新抛物面组件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.4. 添加驱动程序组件</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.4.1. 执行工作流程</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.4.2. 检查输出</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up">6.5. Clean-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">6.6. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.5. 清理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-working-with-spreadsheets-references">6.6. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -396,36 +396,38 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">6. </span>使用电子表格仿真<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://app.daptaflow.com/tutorial/6"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> Load tutorial into dapta app</a>.
-<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/libreoffice"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> View files on Github</a>.</p>
-<p><strong>Duration: 15 min</strong></p>
-<p>In this example we explore the use of <strong>spreadsheets and macros</strong> within simulation workflows.</p>
-<p>We replicate the <a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">Simple optimisation problem</span></a> simulation workflow, but this time using the spreadsheet component <code class="docutils literal notranslate"><span class="pre">libreoffice-comp</span></code> for the paraboloid function calculation instead of a pure python component.</p>
-<p>Don't have time to work though the example yourself?
-Watch the <strong><a class="reference external" href="https://youtu.be/2GaVVrot-4I">video tutorial</a></strong> instead.</p>
+<p><a class="reference external" href="https://app.daptaflow.com/tutorial/6"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> 加载教程到dapta应用程序</a>.
+<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/libreoffice"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> 在Github中查看文件</a>.</p>
+<p><strong>预计时间：15分钟</strong></p>
+<p>在这个例子中，我们探索了在仿真工作流中<strong>电子表格和宏</strong>的使用。</p>
+<p>我们复制了<a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">简单优化问题</span></a>的仿真工作流程，
+但这次使用电子表格组件<code class="docutils literal notranslate"><span class="pre">libreoffice-comp</span></code>来计算抛物面函数，而不是纯Python组件。</p>
+<p>没有时间亲自尝试这个示例吗？那就看**<a class="reference external" href="https://youtu.be/2GaVVrot-4I">视频教程</a>**吧。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/spreadsheet_1.png"><img alt="paraboloid-spreadsheet" class="bg-primary mb-1 align-center" src="../_images/spreadsheet_1.png" style="width: 700px;" /></a>
-<section id="component-description">
-<h2><span class="section-number">6.1. </span>Component description<a class="headerlink" href="#component-description" title="Permalink to this heading">#</a></h2>
-<p>Spreadsheets, such as Microsoft's Excel® files, are widely used in engineering.</p>
-<p>In simulation workflows, spreadsheets can be used to:</p>
+<section id="id2">
+<h2><span class="section-number">6.1. </span>组件说明<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>像Microsoft's Excel®文件一样，电子表格在工程领域被广泛使用。</p>
+<p>在仿真工作流程中，电子表格可用于：</p>
 <ul class="simple">
-<li><p>import data, from experiments for example;</p></li>
-<li><p>perform calculations on input data in an automated fashion;</p></li>
-<li><p>record, visualise and store outputs.</p></li>
+<li><p>导入数据，例如来自实验的数据；</p></li>
+<li><p>自动对输入数据进行计算；</p></li>
+<li><p>记录、可视化和存储输出。</p></li>
 </ul>
-<p>Using the <code class="docutils literal notranslate"><span class="pre">libreoffice-comp</span></code> component API, spreadsheets can easily be integrated into any dapta <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">libreoffice-comp</span></code> includes a full installation of <a class="reference external" href="https://www.libreoffice.org/">LibreOffice</a>, which includes a spreadsheet editor (Calc).
-Calc can open and save files in its native Open Document Format (.ods), as well as Microsoft Excel® format (.xls), and it is also is compatible with macros (currently supported languages are LibreOffice Basic, BeanShell, JavaScript, and Python, with some support for importing Microsoft VBA macros too).
-To find out more about writing LibreOffice macros, we recommend having a look at the <a class="reference external" href="https://books.libreoffice.org/en/GS70/GS7013-GettingStartedWithMacros.html">Getting Started with Macros</a> guide. <a class="reference internal" href="#tutorials-working-with-spreadsheets-references"><span class="std std-ref">Reference 1</span></a> also provides a good introduction to python macros for Calc.</p>
-<p>Download the example spreadsheet (shown in the figure above) here: <a class="reference external" href="https://github.com/daptablade/docs/raw/master/mynewbook/Tutorials/libreoffice/paraboloid.ods">paraboloid.ods</a>.</p>
-<p>It includes a VBA macro that automatically calculates the paraboloid function f(x,y) from the <a class="reference internal" href="Simple%20component%20analysis.html"><span class="doc std std-doc">Simple component analysis</span></a> example, whenever the spreadsheet x and y inputs are updated.
-The spreadsheet also contains an initially empty optimisation history table, which will be used to store and plot the optimisation history data during the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.</p>
+<p>组件API，电子表格可以轻松集成到任何dapta<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>中。</p>
+<p><code class="docutils literal notranslate"><span class="pre">libreoffice-comp</span></code>包括<a class="reference external" href="https://www.libreoffice.org/">LibreOffice</a>的完整安装版，
+其中包括电子表格编辑器（Calc）。Calc可以打开和保存其本地的Open Document Format (.ods)文件，
+以及Microsoft Excel®格式(.xls)文件，并且它也兼容宏（当前支持的语言是LibreOffice Basic、BeanShell、JavaScript和Python，同时还支持导入Microsoft VBA宏）。了解更多有关编写LibreOffice宏的信息，
+我们建议查看<a class="reference external" href="https://books.libreoffice.org/en/GS70/GS7013-GettingStartedWithMacros.html">入门指南</a>。参考文献1也为Calc的Python宏提供了很好的介绍。</p>
+<p>请在这里下载示例电子表格（如上图所示）：<a class="reference external" href="https://github.com/daptablade/docs/raw/master/mynewbook/Tutorials/libreoffice/paraboloid.ods">paraboloid.ods</a>。</p>
+<p>它包括一个VBA宏，每当电子表格的x和y输入被更新时，
+自动计算<a class="reference internal" href="Simple%20component%20analysis.html"><span class="doc std std-doc">简单组件分析</span></a>示例中的抛物面函数f(x,y)。
+电子表格还包含一个最初为空的优化历史记录表，该表将用于存储和绘制<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>期间的优化历程数据。</p>
 </section>
-<section id="opening-a-saved-session">
-<h2><span class="section-number">6.2. </span>Opening a saved session<a class="headerlink" href="#opening-a-saved-session" title="Permalink to this heading">#</a></h2>
-<p>Since we already created and analysed the paraboloid component previously, we can load our previous session to speed things up.</p>
-<p>Select <code class="docutils literal notranslate"><span class="pre">Open</span></code> from the interface controls to load the JSON formatted version of our previous session (dapta_input.json).
-Alternatively, copy the object below into a text editor and save it locally, then select <code class="docutils literal notranslate"><span class="pre">Open</span></code> to load it.</p>
+<section id="id3">
+<h2><span class="section-number">6.2. </span>打开已保存的会话<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>由于我们之前已经创建和分析了抛物面组件，我们可以加载先前的会话以加快速度。</p>
+<p>从界面控件中选择<code class="docutils literal notranslate"><span class="pre">打开</span></code>以加载我们先前会话的JSON格式版本（dapta_input.json）。
+或者，将以下对象复制到文本编辑器中并在本地保存，然后选择<code class="docutils literal notranslate"><span class="pre">打开</span></code>以加载它。</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
@@ -455,30 +457,28 @@ Alternatively, copy the object below into a text editor and save it locally, the
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The paraboloid component should have appeared in the workspace, but the question mark next to the component name indicates that it is missing some data.</p>
+<p>抛物面组件应该已经出现在工作区，但组件名称旁边的问号表示它缺少一些数据。</p>
 </section>
-<section id="update-the-paraboloid-component">
-<h2><span class="section-number">6.3. </span>Update the paraboloid component<a class="headerlink" href="#update-the-paraboloid-component" title="Permalink to this heading">#</a></h2>
-<p>Copy the contents of the new <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and <code class="docutils literal notranslate"><span class="pre">compute.py</span></code> API files below into a text editor and save the files locally:</p>
+<section id="id4">
+<h2><span class="section-number">6.3. </span>更新抛物面组件<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>将以下新的<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>和<code class="docutils literal notranslate"><span class="pre">compute.py</span></code> API文件的内容复制到文本编辑器中，并将文件保存到本地：</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> function is similar to the previous one, but it also copies the spreadsheet file into the outputs folder and starts LibreOffice in headless mode by calling the <code class="docutils literal notranslate"><span class="pre">start_libreoffice</span></code> function.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">compute.py</span></code> function opens the spreadsheet, writes the input x and y values to the input cells (which automatically executes the spreadsheet macro), and then copies the current x, y and calculated f(x,y) values to the optimisation history table.
-This also automatically updates the line plots.
-Finally the spreadsheet is saved and closed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code>函数与先前的函数类似，但它还将电子表格文件复制到输出文件夹中，并通过调用<code class="docutils literal notranslate"><span class="pre">start_libreoffice</span></code>函数以无头模式启动LibreOffice。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">compute.py</span></code>函数打开电子表格，将输入的x和y值写入输入单元格（这将自动执行电子表格宏），然后将当前的x，y和计算出的f(x，y)值复制到优化历程记录表中。这也会自动更新线条图。最后保存并关闭电子表格。</p></li>
 </ul>
-<p>Open the paraboloid component by selecting it in the workspace.</p>
-<p>Update the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab:</p>
+<p>在工作区中选择【抛物面组件】并打开它。</p>
+<p>更新<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡：</p>
 <ol class="arabic simple">
-<li><p>From the API dropdown menu, choose <code class="docutils literal notranslate"><span class="pre">libreoffice-comp:latest</span></code></p></li>
-<li><p>Upload the new <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> and <code class="docutils literal notranslate"><span class="pre">compute.py</span></code> API files by clicking on the corresponding links</p></li>
+<li><p>从API下拉菜单中选择<code class="docutils literal notranslate"><span class="pre">libreoffice-comp:latest</span></code></p></li>
+<li><p>通过单击相应的链接上传新的<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>和<code class="docutils literal notranslate"><span class="pre">compute.py</span></code> API文件</p></li>
 </ol>
-<p>Then, update the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab:</p>
+<p>然后，更新<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡：</p>
 <ol class="arabic simple">
-<li><p>Add the following key / value pair to the JSON object: <code class="docutils literal notranslate"><span class="pre">&quot;ods_file&quot;:</span> <span class="pre">&quot;paraboloid.ods&quot;</span></code></p></li>
-<li><p>Upload the input spreadsheet (paraboloid.ods) by selecting <code class="docutils literal notranslate"><span class="pre">upload</span> <span class="pre">user</span> <span class="pre">input</span> <span class="pre">files</span></code>.</p></li>
+<li><p>将以下 键/值 添加到JSON对象中：<code class="docutils literal notranslate"><span class="pre">ods_file：paraboloid.ods</span></code></p></li>
+<li><p>通过选择<code class="docutils literal notranslate"><span class="pre">上传用户输入文件</span></code>来上传输入电子表格（paraboloid.ods）。</p></li>
 </ol>
-<p>Save and close the component by selecting the <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> button.</p>
-<p>You can check that the component works as expected by executing the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> now, or you can add a driver component in the next section before launching the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>.</p>
+<p>通过选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>按钮保存并关闭组件。</p>
+<p>您可以通过执行<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>来检查组件是否按预期工作，或者在启动<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>之前添加下一部分的驱动程序组件。</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -626,25 +626,24 @@ compute</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="adding-the-driver-component">
-<h2><span class="section-number">6.4. </span>Adding the driver component<a class="headerlink" href="#adding-the-driver-component" title="Permalink to this heading">#</a></h2>
-<p>We will re-use the OpenMDAO driver we used previously in the <a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">Simple optimisation problem</span></a>.
-We adjust the driver parameters for this optimisation problem:</p>
+<section id="id5">
+<h2><span class="section-number">6.4. </span>添加驱动程序组件<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>我们将重复使用之前在<a class="reference internal" href="Simple%20optimisation%20problem.html"><span class="doc std std-doc">简单优化问题</span></a>中使用的OpenMDAO驱动程序。
+我们调整驱动程序参数以解决这个优化问题：</p>
 <ul class="simple">
-<li><p>The calculation of total derivatives across the chained components (using finite differencing) is requested by setting <code class="docutils literal notranslate"><span class="pre">&quot;approx_totals&quot;:</span> <span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;fd_step&quot;:</span> <span class="pre">0.0001</span></code> in the driver parameters.</p></li>
-<li><p>Optimisation iteration history plots are requested by adding the &quot;plot_history&quot; option into the &quot;visualise&quot; parameter list.</p></li>
+<li><p>过在驱动程序参数中设置<code class="docutils literal notranslate"><span class="pre">approx_totals:</span> <span class="pre">true</span></code>和<code class="docutils literal notranslate"><span class="pre">fd_step:</span> <span class="pre">0.0001</span></code>来计算链接组件全微分（使用有限差分）。</p></li>
+<li><p>通过将【lot_history】选项添加到【visualise】参数列表中来显示优化迭代历程记录图。</p></li>
 </ul>
-<p>To create the driver component:</p>
+<p>创建驱动程序组件：</p>
 <ul class="simple">
-<li><p>Right-click in the workspace and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Empty</span> <span class="pre">Node</span></code>. Select the empty component to edit it.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab, fill in the component name, <code class="docutils literal notranslate"><span class="pre">open-mdao</span></code>, and select the component API <code class="docutils literal notranslate"><span class="pre">generic-python3-driver:latest</span></code>.</p></li>
-<li><p>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">compute.py</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> files from below into a text editor, save them locally.
-Then upload them under the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab check the box next to the <code class="docutils literal notranslate"><span class="pre">Driver</span></code> option.</p></li>
-<li><p>Copy the contents of the parameters JSON object below into the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab text box.</p></li>
-<li><p>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">om_component.py</span></code> file from below into a text editor and save it locally.
-Then upload it under the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab by selecting <code class="docutils literal notranslate"><span class="pre">upload</span> <span class="pre">user</span> <span class="pre">input</span> <span class="pre">files</span></code>.</p></li>
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save and close the component.</p></li>
+<li><p>在工作区中单击右键并选择<code class="docutils literal notranslate"><span class="pre">添加空节点</span></code>。选择空组件进行编辑。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，填写组件名称为<code class="docutils literal notranslate"><span class="pre">open-mdao</span></code>，并选择组件API<code class="docutils literal notranslate"><span class="pre">generic-python3-driver:latest</span></code>。</p></li>
+<li><p>将以下<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>，<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>，<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>文件的内容复制到文本编辑器中，并在本地保存。然后在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下上传它们。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，勾选<code class="docutils literal notranslate"><span class="pre">驱动程序</span></code>选项旁边的复选框。</p></li>
+<li><p>将以下参数JSON对象的内容复制到<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡文本框中。</p></li>
+<li><p>将下面的<code class="docutils literal notranslate"><span class="pre">om_component.py</span></code>文件的内容复制到文本编辑器中并将其保存到本地。
+然后通过选择<code class="docutils literal notranslate"><span class="pre">上传用户输入文件</span></code>在<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡下上传它。</p></li>
+<li><p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>保存并关闭组件。</p></li>
 </ul>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -1559,36 +1558,34 @@ om_component</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<section id="execute-the-workflow">
-<h3><span class="section-number">6.4.1. </span>Execute the workflow<a class="headerlink" href="#execute-the-workflow" title="Permalink to this heading">#</a></h3>
-<p>We can now execute the design optimisation by selecting the play symbol ▶ in the Run controls interface.</p>
-<p>As before, the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> should complete after 13 iterations of the paraboloid component (1 iteration of the open-mdao component).</p>
+<section id="id6">
+<h3><span class="section-number">6.4.1. </span>执行工作流程<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>现在，我们可以通过在运行控件界面中【运行】符号 ▶ 来执行优化设计。</p>
+<p>与之前一样，在13次paraboloid组件迭代（1次open-mdao组件迭代）后，<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>完成。</p>
 </section>
-<section id="inspect-the-outputs">
-<h3><span class="section-number">6.4.2. </span>Inspect the outputs<a class="headerlink" href="#inspect-the-outputs" title="Permalink to this heading">#</a></h3>
-<p>The <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log summarises the output of the components. Open the log by selecting <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Log</span></code> in the interface controls.
-The &quot;run_output&quot; entry (at the end of the log) should state that the &quot;OpenMDAO compute completed&quot;.</p>
-<p>Next, close the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log and select the paraboloid component.
-Then select the <code class="docutils literal notranslate"><span class="pre">Log</span></code> tab and click on <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">files</span> <span class="pre">snapshot</span></code>.</p>
-<p>Open the downloaded zip folder and open the 'paraboloid.ods' output spreadsheet under the outputs folder.
-The optimisation history data should appear as iterations 0 to 12 to the left of the sheet.
-This data should also be plotted in the line-plots to the right.
-The history data includes major iterations, minor iterations (line searches) and function evaluations used to calculate the finite difference gradients used by the SLSQP algorithm.</p>
-<p>Similarly, you can inspect the outputs of the open-mdao component, which should include convergence history plots, showing the major iterations only.</p>
-<p>Finally, you can save the session data and Run log by selecting <code class="docutils literal notranslate"><span class="pre">Download</span></code> from the interface controls.</p>
+<section id="id7">
+<h3><span class="section-number">6.4.2. </span>检查输出<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>日志总结了组件的输出。通过在界面控件中选择<code class="docutils literal notranslate"><span class="pre">查看日志</span></code>来打开日志。
+日志的【un_output】条目（在日志的末尾）应该显示【OpenMDAO计算已完成】。</p>
+<p>接下来，关闭<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>日志并选择paraboloid组件。然后选择<code class="docutils literal notranslate"><span class="pre">日志</span></code>选项卡并单击<code class="docutils literal notranslate"><span class="pre">下载文件快照</span></code>。</p>
+<p>打开下载的zip文件夹并在outputs文件夹下打开【araboloid.ods】输出电子表格。
+优化历程数据应显示为左侧的0到12次迭代。此数据还应在右侧的线图中绘制。
+历史数据包括用于计算SLSQP算法使用的有限差分梯度的主迭代、次迭代（线搜索）和函数评估。</p>
+<p>同样，您可以检查open-mdao组件的输出，其中应包括显示主要迭代的收敛历程线图。</p>
+<p>最后，您可以通过选择界面控件中的<code class="docutils literal notranslate"><span class="pre">下载</span></code>来保存会话数据和运行日志。</p>
 </section>
 </section>
-<section id="clean-up">
-<h2><span class="section-number">6.5. </span>Clean-up<a class="headerlink" href="#clean-up" title="Permalink to this heading">#</a></h2>
-<p>Delete your session by selecting <code class="docutils literal notranslate"><span class="pre">New</span></code> in the interface.
-It may take a minute or so for the Cloud session to be reset.</p>
+<section id="id8">
+<h2><span class="section-number">6.5. </span>清理<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>通过选择界面中的<code class="docutils literal notranslate"><span class="pre">创建</span></code>来删除您的会话，可能需要一分钟左右在云端重置会话。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You should see a warning message whenever you are about to delete a <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. If you select to continue, then all the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> session data (Run log and component logs) will be permanently deleted.</p>
+<p>当您即将删除一个<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>时，您应该会看到一个警告消息。如果您选择继续，
+则所有的<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>数据（会话数据、输入和输出）将被永久删除。</p>
 </div>
 </section>
-<section id="references">
-<span id="tutorials-working-with-spreadsheets-references"></span><h2><span class="section-number">6.6. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<section id="tutorials-working-with-spreadsheets-references">
+<span id="id9"></span><h2><span class="section-number">6.6. </span>参考文献<a class="headerlink" href="#tutorials-working-with-spreadsheets-references" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="http://christopher5106.github.io/office/2015/12/06/openoffice-libreoffice-automate-your-office-tasks-with-python-macros.html">Interface-oriented programming in OpenOffice / LibreOffice : automate your office tasks with Python Macros, 06/12/2015</a></p></li>
 </ol>
@@ -1662,16 +1659,16 @@ It may take a minute or so for the Cloud session to be reset.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#component-description">6.1. Component description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-saved-session">6.2. Opening a saved session</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-paraboloid-component">6.3. Update the paraboloid component</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-the-driver-component">6.4. Adding the driver component</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-workflow">6.4.1. Execute the workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-outputs">6.4.2. Inspect the outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 组件说明</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2. 打开已保存的会话</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.3. 更新抛物面组件</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.4. 添加驱动程序组件</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.4.1. 执行工作流程</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.4.2. 检查输出</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up">6.5. Clean-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">6.6. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.5. 清理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-working-with-spreadsheets-references">6.6. 参考文献</a></li>
 </ul>
   </nav></div>
 
