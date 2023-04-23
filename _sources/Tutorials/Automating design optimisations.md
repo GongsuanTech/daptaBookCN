@@ -1,14 +1,15 @@
 # 自动化复材机翼模型优化设计
 
-[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> Load tutorial into dapta app](https://app.daptaflow.com/tutorial/5).
-[<img src="media/github.svg" alt="github" width="25px" height="25px"> View files on Github](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model).
+[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> 加载教程到dapta应用程序](https://app.daptaflow.com/tutorial/5).
+[<img src="media/github.svg" alt="github" width="25px" height="25px"> 在Github中查看文件](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model).
 
-**Duration: 15 min**
+**预计时间：15分钟**
 
-Driver components can be used to automate complex analysis workflows.
+驱动程序组件可用于自动化复杂分析工作流程。
 
-In the previous example, we performed a parametric study on a single variable.
-In this tutorial we go one step further by re-using the OpenMDAO optimisation component from the [Simple optimisation problem](./Simple%20optimisation%20problem.md) example to optimise the wing design for minimum wing incidence at the tip.
+在先前的示例中，我们对单个变量进行了参数研究。在本教程中，
+我们进一步使用了来自[简单优化问题](./Simple%20optimisation%20problem.md)示例的OpenMDAO优化组件，
+以使机翼设计达到翼尖最小翼展角。
 
 ```{image} media/open-mdao-parametric-model-1.png
 :alt: chained process with optimiser
@@ -17,43 +18,43 @@ In this tutorial we go one step further by re-using the OpenMDAO optimisation co
 :align: center
 ```
 
-## Opening a saved session
+## 打开已保存的会话
 
-Follow the process outlined in the previous example for [Opening a saved session](tutorials-automating-parametric-studies-opening-a-saved-session).
+请参考前一个示例中[打开以保存会话](tutorials-automating-parametric-studies-opening-a-saved-session)
+部分给出的处理流程。
 
-## Automating a design optimisation study
+## 自动化一个优化设计研究
 
-The aim is to determine which composite fibre angle minimises the deflected wing incidence ("Ry"), whilst satisfying the design constraint on the maximum allowable vertical deflection ("Uz") of 6 cm maximum. 
+设计目标是确定哪种复合纤维角度可以最小化挠曲翼展角（“Ry”），同时满足最大允许垂直挠度（“Uz”）为6厘米的设计约束条件。
 
-To answer this question, we can perform a design optimisation study.
-This example is based on the pure python implementation in [Reference 1](tutorials-automating-design-optimisations-references).   
+为了回答这个问题，我们可以进行优化设计研究。
+本示例基于[参考文献 1](tutorials-automating-design-optimisations-references)中的纯Python实施。
 
-### The driver component 
+### 驱动程序组件 
 
-As in the previous example, the variable of interest is the `calculix-fea` input variable `fibre_rotation_angle.ORI_0.1`.
-The driver component is identical to the OpenMDAO optimisation component used in the [Simple optimisation problem](./Simple%20optimisation%20problem.md) example, except for the driver parameters, which have been adjusted for the wing optimisation problem:
+与先前的示例一样，感兴趣的变量是`calculix-fea`输入变量`fibre_rotation_angle.ORI_0.1`。
+驱动程序组件与[简单优化问题](./Simple%20optimisation%20problem.md)示例中使用的OpenMDAO优化组件相同，
+只是调整了用于机翼优化问题的驱动参数：
 
-* The "input_variables" and "output_variables" parameters set the optimisation variables, objective and constraint functions.
-* The calculation of total derivatives across the chained components (using finite differencing) is requested by setting `"approx_totals": true` and `"fd_step": 1.0` in the driver parameters.
-* Optimisation iteration history plots are requested by adding the "plot_history" option into the "visualise" parameter list.   
+* 【input_variables】和【output_variables】参数设置了优化设计变量、目标函数和约束函数。
+* 通过在驱动程序参数中设置`【approx_totals】: true`和`【fd_step】: 1.0`实现夸链接组件全微分计算（使用有限差分法）。
+* 通过在【visualise】参数列表中添加【plot_history】选项输出优化迭代历程图。
 
-To create the driver component:
+创建驱动程序组件：
 
-* Right-click in the workspace and select `Add Empty Node`. Select the empty component to edit it.
+* 在工作区中单击右键并选择`添加空节点`。选择空组件并编辑它。
 
-* In the `Properties` tab, fill in the component name, `open-mdao`, and select the component API `generic-python3-driver:latest`. 
+* 在`属性`选项卡中，填写组件名称为`open-mdao`，并选择组件API`generic-python3-driver:latest`。
 
-* Copy the contents of the `setup.py`, `compute.py`, `requirements.txt` files from below into a text editor, save them locally.
-Then upload them under the `Properties` tab. 
+* Then upload them under the `Properties` tab. 将下面的`setup.py`、`compute.py`和`requirements.txt`文件内容复制到文本编辑器中，并将其保存到本地设备。然后在`属性`选项卡下上传它们。
 
-* In the `Properties` tab check the box next to the `Driver` option. 
+* 在`属性`选项卡中勾选`驱动程序`选项旁边复选框。
 
-* Copy the contents of the parameters JSON object below into the `Parameters` tab text box. 
+* 将下面的参数JSON对象的内容复制到`参数`选项卡文本框中。
 
-* Copy the contents of the `om_component.py` file from below into a text editor and save it locally. 
-Then upload it under the `Parameters` tab by selecting `upload user input files`.
+* 将下面的`om_component.py`文件内容复制到文本编辑器中，并在本地保存。然后通过选择【上传用户输入文件】将其上传到【参数】选项卡下。
 
-* Select `Save data` to save and close the component. 
+* 选择`保存数据`保存并关闭组件。
 
 `````{tab-set}
 ````{tab-item} setup
@@ -83,16 +84,17 @@ Then upload it under the `Parameters` tab by selecting `upload user input files`
 ````
 `````
 
-### Add design variables and connections
+### 添加设计变量与连接
 
-Despite all the components seeming valid, we would encounter errors if we tried to launch the Run now. 
+尽管所有组件似乎都是有效的，但如果我们现在尝试启动运行，将会遇到故障。
 
-By inspecting the driver compute function, we can see that OpenMDAO is only aware of design variable inputs, outputs and connections (`connection["type"] == "design"`). 
-The design variable connections in particular are used by OpenMDAO to determine the order of component execution.
+通过检查驱动计算函数，我们可以看到OpenMDAO仅知道设计变量输入、输出和连接（`connection["type"] == "design"`）。
+设计变量连接专门用于OpenMDAO确定组件执行顺序。
 
-It is necessary to define the following artificial design variables and connections before we can launch the Run. 
+在我们可以启动运行之前，需要定义以下人工设计变量和连接。
 
-Select the **parametric-model** component and update the `Inputs` and `Outputs` tabs:
+选择 **parametric-model** 组件并更新`输入`和`输出`选项卡：
+
 `````{tab-set}
 ````{tab-item} Inputs
 ```{code} 
@@ -111,7 +113,8 @@ Select the **parametric-model** component and update the `Inputs` and `Outputs` 
 ````
 `````
 
-Select the **calculix-fea** component and update the `Inputs` and `Outputs` tabs:
+选择 **calculix-fea** 组件并更新`输入`和`输出`选项卡：
+
 `````{tab-set}
 ````{tab-item} Inputs
 ```{code} 
@@ -134,7 +137,8 @@ Select the **calculix-fea** component and update the `Inputs` and `Outputs` tabs
 ````
 `````
 
-Select the **fea-results-processor** component and update the `Inputs` tab only:
+选择 **fea-results-processor** 组件并只更新`输入`选项卡：
+
 `````{tab-set}
 ````{tab-item} Inputs
 ```{code} 
@@ -148,34 +152,31 @@ Select the **fea-results-processor** component and update the `Inputs` tab only:
 ````
 `````
 
-Next, create two design variable connections:
+接下来，创建两个设计变量连接：
 
-1. from the 'output_0' output handle of the parametric-model component to the 'output_0' input handle of the calculix-fea component. 
-2. from the 'output_1' output handle of the calculix-fea component to the 'output_1' input handle of the fea-results-processor component.
+1. 从 parametric-model 组件的【output_0】输出句柄到 calculix-fea 组件的【output_0】输入句柄。
+2. 从 calculix-fea 组件的【output_1】输出句柄到 fea-results-processor 组件的【output_1】输入句柄。
 
+### 执行工作流程
+ 
+现在，我们可以通过在运行控制界面中选择【运行】符号 ▶ 来执行优化设计。
 
-### Execute the workflow
-
-We can now execute the design optimisation by selecting the play symbol ▶ in the Run controls interface. 
-
-The {term}`Run` should complete after 23 iterations of the chained components (1 iteration of the `open-mdao` component). 
+在链接组件执行23次迭代（`open-mdao`组件的1次迭代）后，{term}`运行`完成。
 
 ```{note}
-Note that the `parametric-model` component executes only once, since it's artificially created design variable input ("input_0": 0.1) doesn't change. 
+请注意，`parametric-model`组件只会执行一次，因为人为创建的设计变量输入（【input_0】：0.1）不会更改。
 ```
 
-### Inspect the outputs
+### 检查输出
 
-The {term}`Run` log summarises the output of the components. Open the log by selecting `View Log` in the interface controls. 
-The "run_output" entry (at the end of the log) should state that the "OpenMDAO compute completed".  
+{term}`运行`日志总结了组件的输出。通过在界面控件中选择`查看日志`来打开日志。【run_output】条目（在日志的结尾处）应该指出【OpenMDAO compute completed】（OpenMDAO计算完成）。
 
-Next, close the {term}`Run` log and select the `open-mdao` component.
-Then select the `Log` tab and click on `download files snapshot`.
+接下来，关闭{term}`运行`日志并选择 `open-mdao` 组件。然后选择`日志`选项卡并单击`下载文件快照`。
 
-The optimisation study outputs are summarised at the end of the 'run_driver.log' file in the 'outputs' folder, as shown below.
-We can also inspect the convergence history plots of the design variable, objective and constraints functions in the same folder.
+优化研究的输出总结在【outputs】文件夹中的【run_driver.log】文件的末尾，如下图所示。
+我们还可以在同一文件夹中检查设计变量、目标和约束函数的收敛历程图。
 
-The optimal fibre rotation angle converges after 11 SLSQP algorithm iterations to ~22.68 degrees, which results in a wing tip incidence of -0.0377 radians and a vertical deflection of 6cm. 
+最优复合纤维角度在11个SLSQP算法迭代后收敛到约22.68度，这导致翼尖入射角为-0.0377弧度，垂直挠度为6厘米。
 
 ```{code}
 Driver debug print for iter coord: rank0:ScipyOptimize_SLSQP|22
@@ -230,16 +231,17 @@ Optimization Complete
 :align: center
 ```
 
-## Clean-up
+## 清理
 
-Delete your session by selecting `New` in the interface. 
-It may take a minute or so for the Cloud session to be reset. 
+通过选择界面中的`创建`来删除您的会话，可能需要一分钟左右在云端重置会话。
 
-```{warning}
-You should see a warning message whenever you are about to delete a {term}`Run`. If you select to continue, then all the {term}`Run` session data (Run log and component logs) will be permanently deleted. 
+
+```{warning} 
+当您即将删除一个{term}`运行`时，您应该会看到一个警告消息。如果您选择继续，
+则所有的{term}`运行`数据（会话数据、输入和输出）将被永久删除。
 ```
 
 (tutorials-automating-design-optimisations-references)=
-## References
+## 参考文献
 
 1. [Design optimisation in practice with Python, OpenMDAO and Scipy](https://www.dapta.com/design-optimisation-in-practice-with-python-openmdao-and-scipy/)
