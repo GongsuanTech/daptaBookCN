@@ -1,13 +1,13 @@
 # 自动化复材机翼模型参数研究 
 
-[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> Load tutorial into dapta app](https://app.daptaflow.com/tutorial/4).
-[<img src="media/github.svg" alt="github" width="25px" height="25px"> View files on Github](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model).
+[<img src="media/Dapta-Brandmark-RGB.svg" alt="dapta" width="25px" height="25px"> 加载教程到dapta应用程序](https://app.daptaflow.com/tutorial/4).
+[<img src="media/github.svg" alt="github" width="25px" height="25px"> 在Github中查看文件](https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model).
 
-**Duration: 15 min**
+**预计时间：15分钟**
 
-Driver components can be used to automate complex analysis workflows.
+驱动程序组件可用于自动化复杂分析工作流程。
 
-In this tutorial, we automate the execution of a parametric study using the chained component analyses from the previous example.
+在本教程中，我们使用前面示例中的链式组件分析来自动执行参数研究。
 
 ```{image} media/driver-parametric-model-1.png
 :alt: chained process
@@ -16,13 +16,13 @@ In this tutorial, we automate the execution of a parametric study using the chai
 :align: center
 ```
 (tutorials-automating-parametric-studies-opening-a-saved-session)=
-## Opening a saved session
+## 打开已保存的会话
 
-Start by loading the session file from the previous example.
+首先，加载之前示例的会话文件。
 
-Select `Open` from the interface controls to load the JSON formatted version of our previous session (dapta_input.json). 
-Alternatively, copy the JSON object below into a text editor and save it locally, then select `Open` to load it. 
-Three connected components should appear in the workspace. 
+从界面控件中选择`打开`以加载我们先前会话的JSON格式版本（dapta_input.json）。
+或者，将下面的JSON对象复制到文本编辑器中并在本地保存，然后选择`打开`以加载它。
+工作区中应该会出现三个连接的组件。
 
 ````{dropdown} dapta_input.json
 ```{literalinclude} ./parametric_wing_model/1_Chaining_component_analyses/dapta_input.json   
@@ -30,55 +30,51 @@ Three connected components should appear in the workspace.
 ```
 ````
 
-The question marks next to the component names indicate that they are missing some data. 
-To fully define them, we need to upload all the components' `setup.py`, `compute.py`, `requirements.txt` and user input files, as described in the previous example. 
+组件名称旁边的问号表示它们缺少一些数据。要完全定义它们，我们需要上传所有组件的`setup.py`，`compute.py`，`requirements.txt`和用户输入文件，正如之前的示例所述。
 
-Here are quick links to the file contents available under the [Chaining component analyses](./Chaining%20component%20analyses.md) example:
+以下是[链接组件分析](./Chaining%20component%20analyses.md)示例文件内容的快速链接：
 
 * [Parametric model component](tutorials-chained_components-parametric_model-files)
 * [Calculix-fea component](tutorials-chained_components-calculix_fea-files)
 * [Results processor component](tutorials-chained_components-results_processor-files)
 
-Once the files are uploaded, check that the all components are valid. 
-There should be green tick marks next to the component names in the workspace view.
+上传文件后，请检查所有组件是否有效。在工作区中，组件名称旁应显示绿色勾号。
 
+## 自动化一个参数研究
 
-## Automating a parametric study
+改变复合材料的属性对翼尖挠度的影响是什么？
 
-What is the effect of changing the composite material properties on the deflections at the tip of the wing?
+为了回答这个问题，我们可以进行一个参数研究。
+我们针对一系列复合材料属性输入执行链接分析，并记录输出的平均翼尖挠度和转角。
+此示例基于[参考文献 1](tutorials-automating-parametric-studies-references)中的纯Python实现。
 
-To answer this question, we can perform a parametric study. 
-We execute the chained analyses for a range of composite property inputs and record the output average wing tip deflections and rotations.   
-This example is based on the pure python implementation in [Reference 1](tutorials-automating-parametric-studies-references). 
+### 驱动程序组件
 
-### The driver component 
+感兴趣的设计变量是`calculix-fea`输入变量`fibre_rotation_angle.ORI_0.1`，我们之前将它设置为零（纤维与翼展方向对齐）。驱动程序`compute.py`函数必须执行以下任务：
 
-The design variable of interest is the `calculix-fea` input variable `fibre_rotation_angle.ORI_0.1`, which was previously set to zero (fibres aligned with the wing span direction). 
-The driver `compute.py` function has to perform the following tasks:
-
-1. iterate over a range of variable values, where the range is defined through the component `Parameters` tab values `rotation_min` (-10 degrees) to `rotation_max` (10 degrees), with increments of `rotation_inc` (5 degrees);
-2. in each iteration, the `run_workflow` function is called to execute the chained component analyses with the current variable value;
-3. finally, the plotting function (`_plot_study_results`) generates a line plot of the wing tip deflections as a function of variable value.  
+1. 在一系列变量值上进行迭代，变量取值范围通过组件`参数`选项卡中的`rotation_min`（-10度）到`rotation_max`（10度）的值来定义，并设置增量`rotation_inc`（5度）；
+2. 在每次迭代中，调用`run_workflow`函数以使用当前变量值执行链接的组件分析；
+3. 最后，绘图函数(`_plot_study_results`)生成翼尖挠度作为变量值函数的线性图。
 
 ```{note}
-Note that the `parametric-model` component executes in each workflow iteration, even though it's inputs do not change. 
-To reduce the overhead associated with this component, we could move the `parametric-model` compute function logic into the setup function, which is only executed once.  
+请注意，即使输入不变，`参数模型`组件在每个工作流迭代中都会被执行。为了减少与此组件相关的计算量，
+我们可以将`参数模型`计算函数逻辑移动到设置函数中，该函数仅执行一次。
 ```
 
-To create the driver component:
+创建驱动组件的方法如下：
 
-* Right-click in the workspace and select `Add Empty Node`. Select the empty component to edit it.
+* 在工作区中单击右键，选择`添加空节点`。选择空组件并进行编辑。
 
-* In the `Properties` tab, fill in the component name, `parametric-study-driver`, and select the component API `generic-python3-driver:latest`. 
+* 在`属性`选项卡中，填写组件名称为`parametric-study-driver`，并选择组件API`generic-python3-driver:latest`。
 
-* Copy the contents of the `setup.py`, `compute.py`, `requirements.txt` files from below into a text editor, save them locally.
-Then upload them under the `Properties` tab. 
+* 从以下文件中复制`setup.py`、`compute.py`、`requirements.txt`文件的内容到文本编辑器中，
+然后在`属性`选项卡下上传它们。
 
-* In the `Properties` tab check the box next to the `Driver` option. 
+* 在`属性`选项卡中，勾选`驱动程序`选项的复选框。
 
-* Copy the contents of the parameters JSON object below into the `Parameters` tab text box. 
+* 将下面的参数JSON对象的内容复制到`参数`选项卡文本框中。
 
-* Select `Save data` to save and close the component. 
+* 选择`保存数据`保存并关闭组件。
 
 `````{tab-set}
 ````{tab-item} setup
@@ -103,26 +99,24 @@ Then upload them under the `Properties` tab.
 ````
 `````
 
-### Execute the workflow
+### 执行工作流程
 
-We can now execute the parametric study by selecting the play symbol ▶ in the Run controls interface. 
+现在我们可以通过在运行控件界面中选择【运行】符号 ▶ 来执行参数研究。
 
-Once the run has started, each component will setup and then execute one at a time. 
-The setup order is arbitrary, but the compute functions will always be executed from the 'Start Node' to the 'End Node' (see dashboard Reference section for details).
+一旦运行开始，每个组件将会被设置和依次执行。设置顺序是任意的，
+但计算函数将始终从【开始节点】到【结束节点】执行（有关详细信息，请参阅控制面板参考部分）。
 
-The {term}`Run` should complete after 5 iterations of the connected components (or 1 iteration of the `parametric-study-driver` component). 
+{term}`运行`应在连接组件的5次迭代（或`parametric-study-driver`组件的1次迭代）后完成。
 
-### Inspect the outputs
+### 检查输出
 
-The {term}`Run` log summarises the output of the components. Open the log by selecting `View Log` in the interface controls. 
+{term}`运行`日志总结了组件的输出。通过在界面控件中选择`查看日志`来打开日志。
 
-We can see that each component's compute function was executed 5 times. 
-The "run_output" (at the end of the log) lists the compute output messages for the 5th workflow iteration only.  
+我们可以看到每个组件的计算函数都执行了5次。【un_output】（在日志末尾）仅列出了第5个工作流迭代的计算输出信息。
 
-Next, close the {term}`Run` log and select the `parametric-study-driver` component.
-Then select the `Log` tab and click on `download files snapshot`.
-
-The parametric study outputs are visibly summarised in the 'results_plot.png' and 'results_plot.png' plots in the 'outputs' folder.
+接下来，关闭{term}`运行`日志，选择`parametric-study-driver`组件。然后选择`日志`选项卡，单击`下载文件快照`。
+ 
+参数研究的输出被总结在【outputs】文件夹中的【results_plot.png】和【results_plot.png】图表。
 
 ```{image} media/driver-parametric-model-2.png
 :alt: results-plot
@@ -131,16 +125,16 @@ The parametric study outputs are visibly summarised in the 'results_plot.png' an
 :align: center
 ```
 
-## Clean-up
+## 清理
 
-Delete your session by selecting `New` in the interface. 
-It may take a minute or so for the Cloud session to be reset. 
+通过选择界面中的`创建`来删除您的会话，可能需要一分钟左右在云端重置会话。
 
 ```{warning}
-You should see a warning message whenever you are about to delete a {term}`Run`. If you select to continue, then all the {term}`Run` session data (Run log and component logs) will be permanently deleted. 
+当您即将删除一个{term}`运行`时，您应该会看到一个警告消息。
+如果您选择继续，则所有的{term}`运行`数据（会话数据、输入和输出）将被永久删除。
 ```
 
 (tutorials-automating-parametric-studies-references)=
-## References
+## 参考文献
 
 1. [Automated FEM analysis and output processing with Python and CalculiX CrunchiX (ccx)](https://www.dapta.com/automated-fem-analysis-and-output-processing-with-python-and-calculix-crunchix-ccx/)

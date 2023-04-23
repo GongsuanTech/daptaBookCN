@@ -161,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Welcome!
+                    欢迎大家!
                 </a>
             </li>
         </ul>
@@ -373,15 +373,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-saved-session">4.1. Opening a saved session</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-a-parametric-study">4.2. Automating a parametric study</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-driver-component">4.2.1. The driver component</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-workflow">4.2.2. Execute the workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-outputs">4.2.3. Inspect the outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-automating-parametric-studies-opening-a-saved-session">4.1. 打开已保存的会话</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 自动化一个参数研究</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2.1. 驱动程序组件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2.2. 执行工作流程</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2.3. 检查输出</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up">4.3. Clean-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">4.4. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.3. 清理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-automating-parametric-studies-references">4.4. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -395,18 +395,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">4. </span>自动化复材机翼模型参数研究<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://app.daptaflow.com/tutorial/4"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> Load tutorial into dapta app</a>.
-<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> View files on Github</a>.</p>
-<p><strong>Duration: 15 min</strong></p>
-<p>Driver components can be used to automate complex analysis workflows.</p>
-<p>In this tutorial, we automate the execution of a parametric study using the chained component analyses from the previous example.</p>
+<p><a class="reference external" href="https://app.daptaflow.com/tutorial/4"><img alt="dapta" height="25px" src="../_images/Dapta-Brandmark-RGB.svg" width="25px" /> 加载教程到dapta应用程序</a>.
+<a class="reference external" href="https://github.com/daptablade/docs/tree/master/mynewbook/Tutorials/parametric_wing_model"><img alt="github" height="25px" src="../_images/github.svg" width="25px" /> 在Github中查看文件</a>.</p>
+<p><strong>预计时间：15分钟</strong></p>
+<p>驱动程序组件可用于自动化复杂分析工作流程。</p>
+<p>在本教程中，我们使用前面示例中的链式组件分析来自动执行参数研究。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/driver-parametric-model-1.png"><img alt="chained process" class="bg-primary mb-1 align-center" src="../_images/driver-parametric-model-1.png" style="width: 700px;" /></a>
-<section id="opening-a-saved-session">
-<span id="tutorials-automating-parametric-studies-opening-a-saved-session"></span><h2><span class="section-number">4.1. </span>Opening a saved session<a class="headerlink" href="#opening-a-saved-session" title="Permalink to this heading">#</a></h2>
-<p>Start by loading the session file from the previous example.</p>
-<p>Select <code class="docutils literal notranslate"><span class="pre">Open</span></code> from the interface controls to load the JSON formatted version of our previous session (dapta_input.json).
-Alternatively, copy the JSON object below into a text editor and save it locally, then select <code class="docutils literal notranslate"><span class="pre">Open</span></code> to load it.
-Three connected components should appear in the workspace.</p>
+<section id="tutorials-automating-parametric-studies-opening-a-saved-session">
+<span id="id2"></span><h2><span class="section-number">4.1. </span>打开已保存的会话<a class="headerlink" href="#tutorials-automating-parametric-studies-opening-a-saved-session" title="Permalink to this heading">#</a></h2>
+<p>首先，加载之前示例的会话文件。</p>
+<p>从界面控件中选择<code class="docutils literal notranslate"><span class="pre">打开</span></code>以加载我们先前会话的JSON格式版本（dapta_input.json）。
+或者，将下面的JSON对象复制到文本编辑器中并在本地保存，然后选择<code class="docutils literal notranslate"><span class="pre">打开</span></code>以加载它。
+工作区中应该会出现三个连接的组件。</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 dapta_input.json<div class="sd-summary-down docutils">
@@ -595,46 +595,43 @@ dapta_input.json<div class="sd-summary-down docutils">
 </pre></div>
 </div>
 </div>
-</details><p>The question marks next to the component names indicate that they are missing some data.
-To fully define them, we need to upload all the components' <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">compute.py</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> and user input files, as described in the previous example.</p>
-<p>Here are quick links to the file contents available under the <a class="reference internal" href="Chaining%20component%20analyses.html"><span class="doc std std-doc">Chaining component analyses</span></a> example:</p>
+</details><p>组件名称旁边的问号表示它们缺少一些数据。要完全定义它们，我们需要上传所有组件的<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>，<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>，<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>和用户输入文件，正如之前的示例所述。</p>
+<p>以下是<a class="reference internal" href="Chaining%20component%20analyses.html"><span class="doc std std-doc">链接组件分析</span></a>示例文件内容的快速链接：</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="Chaining%20component%20analyses.html#tutorials-chained-components-parametric-model-files"><span class="std std-ref">Parametric model component</span></a></p></li>
 <li><p><a class="reference internal" href="Chaining%20component%20analyses.html#tutorials-chained-components-calculix-fea-files"><span class="std std-ref">Calculix-fea component</span></a></p></li>
 <li><p><a class="reference internal" href="Chaining%20component%20analyses.html#tutorials-chained-components-results-processor-files"><span class="std std-ref">Results processor component</span></a></p></li>
 </ul>
-<p>Once the files are uploaded, check that the all components are valid.
-There should be green tick marks next to the component names in the workspace view.</p>
+<p>上传文件后，请检查所有组件是否有效。在工作区中，组件名称旁应显示绿色勾号。</p>
 </section>
-<section id="automating-a-parametric-study">
-<h2><span class="section-number">4.2. </span>Automating a parametric study<a class="headerlink" href="#automating-a-parametric-study" title="Permalink to this heading">#</a></h2>
-<p>What is the effect of changing the composite material properties on the deflections at the tip of the wing?</p>
-<p>To answer this question, we can perform a parametric study.
-We execute the chained analyses for a range of composite property inputs and record the output average wing tip deflections and rotations.<br />
-This example is based on the pure python implementation in <a class="reference internal" href="#tutorials-automating-parametric-studies-references"><span class="std std-ref">Reference 1</span></a>.</p>
-<section id="the-driver-component">
-<h3><span class="section-number">4.2.1. </span>The driver component<a class="headerlink" href="#the-driver-component" title="Permalink to this heading">#</a></h3>
-<p>The design variable of interest is the <code class="docutils literal notranslate"><span class="pre">calculix-fea</span></code> input variable <code class="docutils literal notranslate"><span class="pre">fibre_rotation_angle.ORI_0.1</span></code>, which was previously set to zero (fibres aligned with the wing span direction).
-The driver <code class="docutils literal notranslate"><span class="pre">compute.py</span></code> function has to perform the following tasks:</p>
+<section id="id3">
+<h2><span class="section-number">4.2. </span>自动化一个参数研究<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>改变复合材料的属性对翼尖挠度的影响是什么？</p>
+<p>为了回答这个问题，我们可以进行一个参数研究。
+我们针对一系列复合材料属性输入执行链接分析，并记录输出的平均翼尖挠度和转角。
+此示例基于<a class="reference internal" href="#tutorials-automating-parametric-studies-references"><span class="std std-ref">参考文献 1</span></a>中的纯Python实现。</p>
+<section id="id4">
+<h3><span class="section-number">4.2.1. </span>驱动程序组件<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>感兴趣的设计变量是<code class="docutils literal notranslate"><span class="pre">calculix-fea</span></code>输入变量<code class="docutils literal notranslate"><span class="pre">fibre_rotation_angle.ORI_0.1</span></code>，我们之前将它设置为零（纤维与翼展方向对齐）。驱动程序<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>函数必须执行以下任务：</p>
 <ol class="arabic simple">
-<li><p>iterate over a range of variable values, where the range is defined through the component <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab values <code class="docutils literal notranslate"><span class="pre">rotation_min</span></code> (-10 degrees) to <code class="docutils literal notranslate"><span class="pre">rotation_max</span></code> (10 degrees), with increments of <code class="docutils literal notranslate"><span class="pre">rotation_inc</span></code> (5 degrees);</p></li>
-<li><p>in each iteration, the <code class="docutils literal notranslate"><span class="pre">run_workflow</span></code> function is called to execute the chained component analyses with the current variable value;</p></li>
-<li><p>finally, the plotting function (<code class="docutils literal notranslate"><span class="pre">_plot_study_results</span></code>) generates a line plot of the wing tip deflections as a function of variable value.</p></li>
+<li><p>在一系列变量值上进行迭代，变量取值范围通过组件<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡中的<code class="docutils literal notranslate"><span class="pre">rotation_min</span></code>（-10度）到<code class="docutils literal notranslate"><span class="pre">rotation_max</span></code>（10度）的值来定义，并设置增量<code class="docutils literal notranslate"><span class="pre">rotation_inc</span></code>（5度）；</p></li>
+<li><p>在每次迭代中，调用<code class="docutils literal notranslate"><span class="pre">run_workflow</span></code>函数以使用当前变量值执行链接的组件分析；</p></li>
+<li><p>最后，绘图函数(<code class="docutils literal notranslate"><span class="pre">_plot_study_results</span></code>)生成翼尖挠度作为变量值函数的线性图。</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">parametric-model</span></code> component executes in each workflow iteration, even though it's inputs do not change.
-To reduce the overhead associated with this component, we could move the <code class="docutils literal notranslate"><span class="pre">parametric-model</span></code> compute function logic into the setup function, which is only executed once.</p>
+<p>请注意，即使输入不变，<code class="docutils literal notranslate"><span class="pre">参数模型</span></code>组件在每个工作流迭代中都会被执行。为了减少与此组件相关的计算量，
+我们可以将<code class="docutils literal notranslate"><span class="pre">参数模型</span></code>计算函数逻辑移动到设置函数中，该函数仅执行一次。</p>
 </div>
-<p>To create the driver component:</p>
+<p>创建驱动组件的方法如下：</p>
 <ul class="simple">
-<li><p>Right-click in the workspace and select <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Empty</span> <span class="pre">Node</span></code>. Select the empty component to edit it.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab, fill in the component name, <code class="docutils literal notranslate"><span class="pre">parametric-study-driver</span></code>, and select the component API <code class="docutils literal notranslate"><span class="pre">generic-python3-driver:latest</span></code>.</p></li>
-<li><p>Copy the contents of the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, <code class="docutils literal notranslate"><span class="pre">compute.py</span></code>, <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> files from below into a text editor, save them locally.
-Then upload them under the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab.</p></li>
-<li><p>In the <code class="docutils literal notranslate"><span class="pre">Properties</span></code> tab check the box next to the <code class="docutils literal notranslate"><span class="pre">Driver</span></code> option.</p></li>
-<li><p>Copy the contents of the parameters JSON object below into the <code class="docutils literal notranslate"><span class="pre">Parameters</span></code> tab text box.</p></li>
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">data</span></code> to save and close the component.</p></li>
+<li><p>在工作区中单击右键，选择<code class="docutils literal notranslate"><span class="pre">添加空节点</span></code>。选择空组件并进行编辑。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，填写组件名称为<code class="docutils literal notranslate"><span class="pre">parametric-study-driver</span></code>，并选择组件API<code class="docutils literal notranslate"><span class="pre">generic-python3-driver:latest</span></code>。</p></li>
+<li><p>从以下文件中复制<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>、<code class="docutils literal notranslate"><span class="pre">compute.py</span></code>、<code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>文件的内容到文本编辑器中，
+然后在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡下上传它们。</p></li>
+<li><p>在<code class="docutils literal notranslate"><span class="pre">属性</span></code>选项卡中，勾选<code class="docutils literal notranslate"><span class="pre">驱动程序</span></code>选项的复选框。</p></li>
+<li><p>将下面的参数JSON对象的内容复制到<code class="docutils literal notranslate"><span class="pre">参数</span></code>选项卡文本框中。</p></li>
+<li><p>选择<code class="docutils literal notranslate"><span class="pre">保存数据</span></code>保存并关闭组件。</p></li>
 </ul>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -822,35 +819,33 @@ parameters</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="execute-the-workflow">
-<h3><span class="section-number">4.2.2. </span>Execute the workflow<a class="headerlink" href="#execute-the-workflow" title="Permalink to this heading">#</a></h3>
-<p>We can now execute the parametric study by selecting the play symbol ▶ in the Run controls interface.</p>
-<p>Once the run has started, each component will setup and then execute one at a time.
-The setup order is arbitrary, but the compute functions will always be executed from the 'Start Node' to the 'End Node' (see dashboard Reference section for details).</p>
-<p>The <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> should complete after 5 iterations of the connected components (or 1 iteration of the <code class="docutils literal notranslate"><span class="pre">parametric-study-driver</span></code> component).</p>
+<section id="id5">
+<h3><span class="section-number">4.2.2. </span>执行工作流程<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>现在我们可以通过在运行控件界面中选择【运行】符号 ▶ 来执行参数研究。</p>
+<p>一旦运行开始，每个组件将会被设置和依次执行。设置顺序是任意的，
+但计算函数将始终从【开始节点】到【结束节点】执行（有关详细信息，请参阅控制面板参考部分）。</p>
+<p><a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>应在连接组件的5次迭代（或<code class="docutils literal notranslate"><span class="pre">parametric-study-driver</span></code>组件的1次迭代）后完成。</p>
 </section>
-<section id="inspect-the-outputs">
-<h3><span class="section-number">4.2.3. </span>Inspect the outputs<a class="headerlink" href="#inspect-the-outputs" title="Permalink to this heading">#</a></h3>
-<p>The <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log summarises the output of the components. Open the log by selecting <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">Log</span></code> in the interface controls.</p>
-<p>We can see that each component's compute function was executed 5 times.
-The &quot;run_output&quot; (at the end of the log) lists the compute output messages for the 5th workflow iteration only.</p>
-<p>Next, close the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> log and select the <code class="docutils literal notranslate"><span class="pre">parametric-study-driver</span></code> component.
-Then select the <code class="docutils literal notranslate"><span class="pre">Log</span></code> tab and click on <code class="docutils literal notranslate"><span class="pre">download</span> <span class="pre">files</span> <span class="pre">snapshot</span></code>.</p>
-<p>The parametric study outputs are visibly summarised in the 'results_plot.png' and 'results_plot.png' plots in the 'outputs' folder.</p>
+<section id="id6">
+<h3><span class="section-number">4.2.3. </span>检查输出<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>日志总结了组件的输出。通过在界面控件中选择<code class="docutils literal notranslate"><span class="pre">查看日志</span></code>来打开日志。</p>
+<p>我们可以看到每个组件的计算函数都执行了5次。【un_output】（在日志末尾）仅列出了第5个工作流迭代的计算输出信息。</p>
+<p>接下来，关闭<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>日志，选择<code class="docutils literal notranslate"><span class="pre">parametric-study-driver</span></code>组件。然后选择<code class="docutils literal notranslate"><span class="pre">日志</span></code>选项卡，单击<code class="docutils literal notranslate"><span class="pre">下载文件快照</span></code>。</p>
+<p>参数研究的输出被总结在【outputs】文件夹中的【results_plot.png】和【results_plot.png】图表。</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/driver-parametric-model-2.png"><img alt="results-plot" class="bg-primary mb-1 align-center" src="../_images/driver-parametric-model-2.png" style="width: 500px;" /></a>
 </section>
 </section>
-<section id="clean-up">
-<h2><span class="section-number">4.3. </span>Clean-up<a class="headerlink" href="#clean-up" title="Permalink to this heading">#</a></h2>
-<p>Delete your session by selecting <code class="docutils literal notranslate"><span class="pre">New</span></code> in the interface.
-It may take a minute or so for the Cloud session to be reset.</p>
+<section id="id7">
+<h2><span class="section-number">4.3. </span>清理<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>通过选择界面中的<code class="docutils literal notranslate"><span class="pre">创建</span></code>来删除您的会话，可能需要一分钟左右在云端重置会话。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You should see a warning message whenever you are about to delete a <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a>. If you select to continue, then all the <a class="reference internal" href="../Reference/Glossary.html#term-Run"><span class="xref std std-term">Run</span></a> session data (Run log and component logs) will be permanently deleted.</p>
+<p>当您即将删除一个<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>时，您应该会看到一个警告消息。
+如果您选择继续，则所有的<a class="reference internal" href="../Reference/Glossary.html#term-2"><span class="xref std std-term">运行</span></a>数据（会话数据、输入和输出）将被永久删除。</p>
 </div>
 </section>
-<section id="references">
-<span id="tutorials-automating-parametric-studies-references"></span><h2><span class="section-number">4.4. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<section id="tutorials-automating-parametric-studies-references">
+<span id="id8"></span><h2><span class="section-number">4.4. </span>参考文献<a class="headerlink" href="#tutorials-automating-parametric-studies-references" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://www.dapta.com/automated-fem-analysis-and-output-processing-with-python-and-calculix-crunchix-ccx/">Automated FEM analysis and output processing with Python and CalculiX CrunchiX (ccx)</a></p></li>
 </ol>
@@ -924,15 +919,15 @@ It may take a minute or so for the Cloud session to be reset.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opening-a-saved-session">4.1. Opening a saved session</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automating-a-parametric-study">4.2. Automating a parametric study</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-driver-component">4.2.1. The driver component</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-the-workflow">4.2.2. Execute the workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-the-outputs">4.2.3. Inspect the outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-automating-parametric-studies-opening-a-saved-session">4.1. 打开已保存的会话</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.2. 自动化一个参数研究</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2.1. 驱动程序组件</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2.2. 执行工作流程</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2.3. 检查输出</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up">4.3. Clean-up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">4.4. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.3. 清理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials-automating-parametric-studies-references">4.4. 参考文献</a></li>
 </ul>
   </nav></div>
 
